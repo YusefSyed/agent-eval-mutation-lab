@@ -13,6 +13,7 @@ from agent_eval_mutation_lab.engine.contracts import (
     TaskRecord,
     ValidationResult,
 )
+from agent_eval_mutation_lab.models import Prediction
 
 
 def canonical_json_bytes(value: object) -> bytes:
@@ -134,3 +135,75 @@ def task_record_payload(record: TaskRecord) -> dict[str, object]:
         "scorer_id": record.scorer_id,
         "validation": validation_payload(record.validation),
     }
+
+
+def _as_prediction(value: object, *, field: str) -> Prediction:
+    if value is None or type(value) is bool:
+        return value
+    raise ValueError(f"{field} must be true, false, or null")
+
+
+def _as_bool(value: object, *, field: str) -> bool:
+    if type(value) is not bool:
+        raise ValueError(f"{field} must be a boolean")
+    return value
+
+
+def _as_int(value: object, *, field: str) -> int:
+    if type(value) is not int:
+        raise ValueError(f"{field} must be an integer")
+    return value
+
+
+def _as_str(value: object, *, field: str) -> str:
+    if not isinstance(value, str):
+        raise ValueError(f"{field} must be a string")
+    return value
+
+
+def task_record_from_payload(payload: object) -> TaskRecord:
+    """Parse a canonical task record with strict primitive validation."""
+
+    if not isinstance(payload, dict):
+        raise ValueError("task record must be an object")
+    raw_validation = payload.get("validation")
+    if not isinstance(raw_validation, dict):
+        raise ValueError("validation must be an object")
+    validation = ValidationResult(
+        expected=_as_prediction(
+            raw_validation.get("expected"), field="validation.expected"
+        ),
+        prediction=_as_prediction(
+            raw_validation.get("prediction"), field="validation.prediction"
+        ),
+        correct=_as_bool(
+            raw_validation.get("correct"), field="validation.correct"
+        ),
+        false_safe=_as_bool(
+            raw_validation.get("false_safe"), field="validation.false_safe"
+        ),
+        false_success=_as_bool(
+            raw_validation.get("false_success"),
+            field="validation.false_success",
+        ),
+        unsupported_safe=_as_bool(
+            raw_validation.get("unsupported_safe"),
+            field="validation.unsupported_safe",
+        ),
+        unsupported_success=_as_bool(
+            raw_validation.get("unsupported_success"),
+            field="validation.unsupported_success",
+        ),
+    )
+    return TaskRecord(
+        ordinal=_as_int(payload.get("ordinal"), field="ordinal"),
+        task_key=_as_str(payload.get("task_key"), field="task_key"),
+        task_seed=_as_int(payload.get("task_seed"), field="task_seed"),
+        case_id=_as_str(payload.get("case_id"), field="case_id"),
+        family=_as_str(payload.get("family"), field="family"),
+        evidence_condition=_as_str(
+            payload.get("evidence_condition"), field="evidence_condition"
+        ),
+        scorer_id=_as_str(payload.get("scorer_id"), field="scorer_id"),
+        validation=validation,
+    )

@@ -21,6 +21,21 @@ class PluginKind(StrEnum):
     EVIDENCE_TRANSFORM = "evidence_transform"
 
 
+class RunState(StrEnum):
+    PLANNED = "planned"
+    RUNNING = "running"
+    COMPLETE = "complete"
+    INTERRUPTED = "interrupted"
+    INCOMPLETE = "incomplete"
+    INVALID = "invalid"
+
+
+class TaskState(StrEnum):
+    PENDING = "pending"
+    COMPLETE = "complete"
+    FAILED = "failed"
+
+
 @dataclass(frozen=True, slots=True, kw_only=True)
 class PluginDescriptor:
     plugin_id: str
@@ -144,5 +159,42 @@ class TaskRecord:
     validation: ValidationResult
 
 
+@dataclass(frozen=True, slots=True, kw_only=True)
+class StoredArtifact:
+    digest: str
+    media_type: str
+    size: int
+    relative_path: str
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class ExecutionFailure:
+    ordinal: int
+    task_key: str
+    error_type: str
+    message: str
+
+
+@dataclass(frozen=True, slots=True, kw_only=True)
+class ExecutionSummary:
+    run_key: str
+    state: RunState
+    expected_tasks: int
+    completed_tasks: int
+    failed_tasks: int
+    executed_tasks: int
+    resumed_tasks: int
+    records: tuple[TaskRecord, ...]
+    failures: tuple[ExecutionFailure, ...]
+
+
 class PluginContractError(RuntimeError):
     """A registered plugin violated its declared result contract."""
+
+
+class StoreInvariantError(RuntimeError):
+    """A transactional task or artifact invariant was violated."""
+
+
+class ArtifactCorruptionError(RuntimeError):
+    """Content-addressed bytes did not match their declared identity."""
