@@ -92,6 +92,7 @@ def test_terminal_status_requires_matching_receipt_and_error_metadata() -> None:
         arm=StudyArm.DIRECT,
         model=_identity(),
         config=_config(),
+        input_ref="input-0000",
         input_digest="c" * 64,
         prompt_digest="d" * 64,
         response_schema_digest="e" * 64,

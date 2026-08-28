@@ -101,6 +101,7 @@ class TrialIdentity:
     arm: StudyArm
     model: ModelIdentity
     config: ModelConfig
+    input_ref: str
     input_digest: str
     prompt_digest: str
     response_schema_digest: str
@@ -118,6 +119,8 @@ class TrialIdentity:
             _sha256(getattr(self, name), name)
         if not self.study_id or not self.adapter_version:
             raise ValueError("study_id and adapter_version must be non-empty")
+        if not self.input_ref:
+            raise ValueError("input_ref must be non-empty")
         if self.seed < 0 or self.replicate_index < 0:
             raise ValueError("seed and replicate_index must be non-negative")
 
@@ -154,6 +157,7 @@ def build_trial_identity(
     arm: StudyArm,
     model: ModelIdentity,
     config: ModelConfig,
+    input_ref: str,
     input_digest: str,
     prompt_digest: str,
     response_schema_digest: str,
@@ -168,6 +172,7 @@ def build_trial_identity(
         "arm": arm.value,
         "model": asdict(model),
         "config": asdict(config),
+        "input_ref": input_ref,
         "input_digest": input_digest,
         "prompt_digest": prompt_digest,
         "response_schema_digest": response_schema_digest,
@@ -182,6 +187,7 @@ def build_trial_identity(
         arm=arm,
         model=model,
         config=config,
+        input_ref=input_ref,
         input_digest=input_digest,
         prompt_digest=prompt_digest,
         response_schema_digest=response_schema_digest,

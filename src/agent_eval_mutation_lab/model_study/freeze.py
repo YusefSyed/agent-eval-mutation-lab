@@ -25,7 +25,7 @@ from agent_eval_mutation_lab.model_study.schemas import (
 )
 
 STUDY_ID = "execution-evidence-ledger-v1"
-ADAPTER_VERSION = "1"
+ADAPTER_VERSION = "2"
 SEEDS = (101, 202, 303)
 FROZEN_CONFIG = ModelConfig(
     temperature=0.2,

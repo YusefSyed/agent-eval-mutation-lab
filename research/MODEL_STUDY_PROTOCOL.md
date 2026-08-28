@@ -100,6 +100,7 @@ verdict. Preserve all attempt receipts.
 
 Trial identity hashes:
 
+- the stable opaque input-instance reference;
 - the opaque input payload;
 - prompt and response-schema digests;
 - complete model blob digest;

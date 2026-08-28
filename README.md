@@ -155,6 +155,12 @@ full study has not started and this repository makes no model-comparison or prom
 effect claim yet. See [`research/MODEL_STUDY_PROTOCOL.md`](research/MODEL_STUDY_PROTOCOL.md)
 for retry rules, analysis, promotion gates, and required null-result reporting.
 
+The committed runner verifies every frozen checksum and local model blob before use,
+registers all 624 identities in a transactional SQLite ledger, stores exact request
+and response bytes by SHA-256, permits one retry only after a response-free transport
+failure, and resumes pending trials in frozen order. It does not export aggregate
+evidence from a partial run.
+
 ## Reproduce everything from a clean directory
 
 ```bash

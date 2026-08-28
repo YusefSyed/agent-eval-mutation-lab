@@ -17,6 +17,7 @@ from agent_eval_mutation_lab.model_study.ollama_adapter import (
     model_identity_from_show,
 )
 from agent_eval_mutation_lab.model_study.pilot import run_format_pilot
+from agent_eval_mutation_lab.model_study.runtime import run_frozen_study
 
 
 def parse_args() -> argparse.Namespace:
@@ -44,6 +45,17 @@ def parse_args() -> argparse.Namespace:
         action="append",
         required=True,
     )
+    run = subparsers.add_parser("run")
+    run.add_argument("--root", type=Path, default=Path.cwd())
+    run.add_argument(
+        "--frozen",
+        type=Path,
+        default=Path("benchmarks/model-study-v1/frozen"),
+    )
+    run.add_argument("--output", type=Path, required=True)
+    run.add_argument("--base-url", default="http://127.0.0.1:11434")
+    run.add_argument("--timeout-seconds", type=float, default=240.0)
+    run.add_argument("--max-new-trials", type=int)
     return parser.parse_args()
 
 
@@ -58,6 +70,23 @@ def main() -> None:
         print(args.output.resolve() / "plan.json")
         if plan["planned_terminal_trials"] != 624:
             raise SystemExit(1)
+        return
+    if args.command == "run":
+        root = args.root.resolve()
+        frozen = args.frozen
+        if not frozen.is_absolute():
+            frozen = root / frozen
+        report = run_frozen_study(
+            project_root=root,
+            frozen_dir=frozen,
+            output_dir=args.output.resolve(),
+            client=OllamaClient(base_url=args.base_url),
+            timeout_seconds=args.timeout_seconds,
+            max_new_trials=args.max_new_trials,
+        )
+        print(json.dumps(report, indent=2, sort_keys=True))
+        if report["interrupted"]:
+            raise SystemExit(130)
         return
     client = OllamaClient(base_url=args.base_url)
     identity = model_identity_from_show(

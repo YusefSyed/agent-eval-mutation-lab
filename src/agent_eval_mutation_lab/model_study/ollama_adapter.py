@@ -134,6 +134,19 @@ class OllamaClient:
             config=config,
             seed=seed,
         )
+        return self.send_chat_request(
+            request_bytes=request_bytes,
+            timeout_seconds=timeout_seconds,
+        )
+
+    def send_chat_request(
+        self,
+        *,
+        request_bytes: bytes,
+        timeout_seconds: float,
+    ) -> OllamaChatReceipt:
+        """Send already-frozen request bytes and preserve the exact response."""
+
         response_bytes = self._transport.request(
             method="POST",
             url=f"{self._base_url}/api/chat",

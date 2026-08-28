@@ -1,5 +1,5 @@
 {
-  "adapter_version": "1",
+  "adapter_version": "2",
   "arms": [
     "direct",
     "evidence_first"
