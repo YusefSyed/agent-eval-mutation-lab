@@ -52,7 +52,8 @@ def build_default_run_spec(project_root: Path, *, seed: int = 20260828) -> RunSp
         evidence_conditions=DEFAULT_CONDITIONS,
         seed=seed,
         source_digest=source_tree_digest(
-            project_root / "src/agent_eval_mutation_lab"
+            project_root / "src/agent_eval_mutation_lab",
+            excluded_directories={"model_study"},
         ),
         frozen_lock_digest=sha256_file(
             project_root / "artifacts/baseline-v1/LOCK.json"

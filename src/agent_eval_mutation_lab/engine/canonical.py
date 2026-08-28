@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Collection
 from pathlib import Path
 
 from agent_eval_mutation_lab.engine.contracts import (
@@ -43,11 +44,20 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def source_tree_digest(package_root: Path) -> str:
+def source_tree_digest(
+    package_root: Path,
+    *,
+    excluded_directories: Collection[str] = (),
+) -> str:
     """Hash Python sources with stable relative names and length framing."""
 
     digest = hashlib.sha256()
-    files = sorted(package_root.rglob("*.py"))
+    excluded = frozenset(excluded_directories)
+    files = sorted(
+        path
+        for path in package_root.rglob("*.py")
+        if path.relative_to(package_root).parts[0] not in excluded
+    )
     if not files:
         raise ValueError(f"no Python source files found below {package_root}")
     for path in files:

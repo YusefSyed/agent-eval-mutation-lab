@@ -1,0 +1,39 @@
+{
+  "adapter_version": "1",
+  "arms": [
+    "direct",
+    "evidence_first"
+  ],
+  "config": {
+    "context_tokens": 8192,
+    "max_output_tokens": 512,
+    "presence_penalty": 0.0,
+    "repeat_penalty": 1.0,
+    "response_schema_version": 1,
+    "streaming": false,
+    "temperature": 0.2,
+    "thinking": false,
+    "tools_enabled": false,
+    "top_p": 0.95
+  },
+  "input_count": 52,
+  "model_count": 2,
+  "planned_terminal_trials": 624,
+  "positive_claim_gate": {
+    "fewer_directional_overclaims_for_each_model": true,
+    "maximum_coverage_drop_per_model": 0.1,
+    "no_increase_in_safety_directed_overclaims": true,
+    "not_reversed_by_leave_one_family_out": true
+  },
+  "research_question": "Does a cited evidence ledger reduce unsupported directional claims relative to direct classification on the fixed 52-input corpus?",
+  "retry_policy": "one retry only after transport failure before a complete response",
+  "schema_version": 1,
+  "scope": "finite public hand-authored corpus; model-, prompt-, and version-specific",
+  "seeds": [
+    101,
+    202,
+    303
+  ],
+  "status": "frozen_before_benchmark_inference",
+  "study_id": "execution-evidence-ledger-v1"
+}

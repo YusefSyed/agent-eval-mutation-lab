@@ -136,6 +136,25 @@ runs each mutant in a fresh process. See
 [`artifacts/mutation-benchmark/`](artifacts/mutation-benchmark/) for the canonical JSON
 and reviewer-facing Markdown report.
 
+## Preregistered local-model study — no benchmark result yet
+
+The next experiment is frozen before benchmark inference under
+[`benchmarks/model-study-v1/frozen/`](benchmarks/model-study-v1/frozen/). It asks
+whether a cited evidence ledger reduces unsupported directional claims relative to
+direct tri-state classification on the same finite corpus.
+
+The frozen plan contains 52 model-safe inputs, two content-pinned local models whose
+upstream licenses are Apache-2.0, two prompt arms, and three seeds: 624 planned
+terminal trials. Model-visible records use opaque scenario/action references and exclude case IDs, families,
+evidence-condition names, oracle labels, and expected metrics. Oracle truth lives in
+a separate analysis ledger that is never sent to the model.
+
+Live inference is an optional, dependency-free Ollama workflow. It is excluded from
+the deterministic engine's source identity, default dependencies, tests, and CI. The
+full study has not started and this repository makes no model-comparison or prompting-
+effect claim yet. See [`research/MODEL_STUDY_PROTOCOL.md`](research/MODEL_STUDY_PROTOCOL.md)
+for retry rules, analysis, promotion gates, and required null-result reporting.
+
 ## Reproduce everything from a clean directory
 
 ```bash

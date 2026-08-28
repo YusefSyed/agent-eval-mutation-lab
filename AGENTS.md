@@ -37,6 +37,7 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Durable state | `engine/store.py`, `engine/artifacts.py` | SQLite is derived; JSON object digests are verified |
 | Engine evidence | `engine/export.py`, `engine/aggregation.py` | Canonical order excludes operational noise |
 | Semantic mutation harness | `mutation_benchmark/`, `benchmarks/mutations-v2-development.json` | Development and held-out partitions never mix |
+| Optional model study | `model_study/`, `benchmarks/model-study-v1/frozen/` | Live inference never enters the deterministic engine or sees oracle metadata |
 | Research | `DESIGN.md`, `PRIOR_ART.md`, `OWNERSHIP.md` | No first-ever, framework-safety, or unaided-fluency claim |
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
@@ -55,6 +56,7 @@ scorer-safe observation, each scorer, and the generated case result.
 | Resume repeats completed work | `engine/runtime.py`, `engine/store.py` | persistence and scheduler tests |
 | Cached object fails hash | `engine/artifacts.py`, task ledger | corruption quarantine test |
 | Semantic mutant survives | catalog activation case, `tests/test_scorers_v2.py` | focused mutation benchmark |
+| Model-study output changes | frozen prompt/schema/model/input digests | replay tests before live reruns |
 | HTML differs from JSONL | `engine/export.py`, `engine/aggregation.py` | export consistency tests |
 
 ## Working safely
@@ -86,6 +88,8 @@ uv run agent-eval-ownership-preflight
 uv run agent-eval-reproduce --verify
 uv run agent-eval-engine --workers 1 --output artifacts/engine/latest
 uv run agent-eval-mutate-v2
+uv run agent-eval-model-study preflight --tag MODEL --output tmp/preflight
+uv run agent-eval-model-study pilot --tag MODEL --output tmp/pilot
 ```
 
 ## Definition of done
@@ -98,5 +102,7 @@ uv run agent-eval-mutate-v2
 - `agent-eval-reproduce --verify` matches all 17 committed canonical artifacts.
 - Package-only branch coverage remains at or above the configured 80% floor.
 - Public claims remain bounded to current finite evidence.
+- No model-study result is claimed until the frozen 624-trial plan completes and its
+  predeclared promotion gates pass.
 - Dated PDF and generated artifacts agree with the current result hash.
 - Unrelated career-workspace state is untouched.

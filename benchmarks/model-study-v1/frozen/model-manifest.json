@@ -1,0 +1,29 @@
+{
+  "models": [
+    {
+      "blob_digest": "1fa8532d986d729117d6b5ac2c884824d0717c9468094554fd1d36412c740cfc",
+      "license": "Apache-2.0",
+      "license_evidence": "upstream_model_card",
+      "license_source": "https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503",
+      "parameter_count": 24011361280,
+      "provider": "ollama",
+      "quantization": "Q4_K_M",
+      "runtime_version": "0.33.1",
+      "tag": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "template_digest": "6db27cd4e277c91264572b9c899c1980daa8dea11e902f0070a6f4763f3d13c8"
+    },
+    {
+      "blob_digest": "dec52a44569a2a25341c4e4d3fee25846eed4f6f0b936278e3a3c900bb99d37c",
+      "license": "Apache-2.0",
+      "license_evidence": "local_manifest",
+      "license_source": "ollama:/api/show",
+      "parameter_count": 9653104368,
+      "provider": "ollama",
+      "quantization": "Q4_K_M",
+      "runtime_version": "0.33.1",
+      "tag": "qwen3.5:9b-q4_K_M",
+      "template_digest": "b507b9c2f6ca642bffcd06665ea7c91f235fd32daeefdf875a0f938db05fb315"
+    }
+  ],
+  "schema_version": 1
+}
