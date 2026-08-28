@@ -23,3 +23,8 @@ The blind review packet under `review/packet/` is for an external human label au
 Preparing the packet and verifier does not count as completing the review. The reviewer
 must receive only the blind cases and an unfilled copy of the form, and the returned
 attestation remains self-reported rather than cryptographically proven.
+
+The project ownership preflight is intentionally blocked until a reviewed protected
+blank-file foundation result exists and its preserved artifact hash matches. The exact
+ownership task is not stored or revealed yet. Broad authorization to continue this
+project does not count as passing that technical prerequisite.

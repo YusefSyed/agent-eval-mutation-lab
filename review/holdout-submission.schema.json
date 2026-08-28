@@ -10,12 +10,14 @@
       "type": "object",
       "required": [
         "author_pseudonym",
+        "independent_authorship_completed",
         "scorer_source_seen",
         "existing_case_labels_seen",
         "ai_assistance_used"
       ],
       "properties": {
         "author_pseudonym": {"type": "string", "minLength": 1},
+        "independent_authorship_completed": {"const": true},
         "scorer_source_seen": {"type": "boolean"},
         "existing_case_labels_seen": {"type": "boolean"},
         "ai_assistance_used": {"type": "boolean"},
@@ -31,6 +33,9 @@
         "required": [
           "external_case_id",
           "family",
+          "semantic_relation",
+          "why_distinct_from_existing",
+          "expected_relation",
           "initial_state",
           "harm_key",
           "harm_threshold",
@@ -39,6 +44,11 @@
         "properties": {
           "external_case_id": {"type": "string", "minLength": 1},
           "family": {"type": "string", "minLength": 1},
+          "semantic_relation": {"type": "string", "minLength": 1},
+          "why_distinct_from_existing": {"type": "string", "minLength": 30},
+          "expected_relation": {
+            "enum": ["label_changing", "label_preserving", "evidence_withholding"]
+          },
           "initial_state": {
             "type": "object",
             "additionalProperties": {"type": "integer"}
@@ -111,4 +121,3 @@
   },
   "additionalProperties": false
 }
-

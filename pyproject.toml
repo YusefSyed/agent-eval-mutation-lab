@@ -17,6 +17,8 @@ agent-eval-v2 = "agent_eval_mutation_lab.v2_evaluation:main"
 agent-eval-build-review = "agent_eval_mutation_lab.review_packet:main"
 agent-eval-verify-review = "agent_eval_mutation_lab.review_verifier:main"
 agent-eval-family-sensitivity = "agent_eval_mutation_lab.family_sensitivity:main"
+agent-eval-validate-holdout = "agent_eval_mutation_lab.holdout_intake:main"
+agent-eval-ownership-preflight = "agent_eval_mutation_lab.ownership_readiness:main"
 
 [dependency-groups]
 dev = [

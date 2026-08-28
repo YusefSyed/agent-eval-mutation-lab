@@ -71,6 +71,8 @@ uv run agent-eval-verify-lock
 uv run agent-eval-v2 --output artifacts/v2
 uv run agent-eval-family-sensitivity --output artifacts/v2
 uv run agent-eval-build-review --output review/packet
+uv run agent-eval-validate-holdout holdout-submission.json
+uv run agent-eval-ownership-preflight
 ```
 
 ## Definition of done

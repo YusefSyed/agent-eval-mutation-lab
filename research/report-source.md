@@ -185,3 +185,25 @@ the packet; the corpus remains unaudited.
 Remaining unsupported branches include cancellation timing, authoritative rollback/no-
 effect guarantees, and externally authored holdout cases. V2 remains experimental, and
 the project still does not prove unaided Python fluency or a completed empirical study.
+
+## Continuation update - holdout intake and ownership preflight
+
+The separately authored holdout boundary now has a standard-library validator. It
+requires at least four cases across two families, unique identities, consistent
+execution/effect records, a description of each semantic relation, and at least one
+relation name not already used by the current families or mutations. A qualifying
+submission also self-attests that the author did not see scorer source or existing
+labels and did not use AI assistance. Structural validation cannot prove attestation
+truth or scientific novelty, so valid submissions still require human semantic review
+before import.
+
+The project ownership gate remains unrevealed. Its fail-closed preflight verifies the
+frozen v1 lock, v2 artifact presence, a preserved foundation result path/hash, a reviewed
+pass record, and no AI assistance. Current authoritative `python-learning` state says
+the protected foundation baseline is staged but not started. The current preflight is
+therefore deterministically `ready: false` with one blocker: reviewed foundation evidence
+is missing. It records `ownership_task_revealed: false`.
+
+This is the correct stop boundary. More Codex implementation cannot replace the user's
+protected blank-file attempt, unfamiliar-code debugging, clean reproduction, or human
+oral defense.

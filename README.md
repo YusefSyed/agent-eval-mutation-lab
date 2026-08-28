@@ -27,6 +27,8 @@ uv run agent-eval-v2 --output artifacts/v2
 uv run agent-eval-family-sensitivity --output artifacts/v2
 uv run agent-eval-build-review --output review/packet
 uv run agent-eval-verify-lock
+uv run agent-eval-validate-holdout holdout-submission.json
+uv run agent-eval-ownership-preflight
 ```
 
 The last command creates:
@@ -135,6 +137,12 @@ contract comparisons, and a framework-independent finite benchmark. See
   Expanded adapter and ablation work must not overwrite those hashes.
 - Blind independent-review materials are prepared under [`review/`](review/), but no
   human review has been completed and the corpus is not independently audited.
+- The holdout intake validator checks structure, execution/effect consistency,
+  minimum family breadth, and self-reported independent authorship. It does not prove
+  novelty or attestation truth and does not import cases automatically.
+- The protected ownership task remains unrevealed. Current preflight is correctly
+  blocked because the separate `python-learning` foundation baseline is staged but
+  not completed and reviewed.
 
 ## License
 

@@ -1,0 +1,11 @@
+{
+  "baseline_lock_verified": true,
+  "blockers": [
+    "reviewed foundation evidence is missing"
+  ],
+  "foundation_evidence_path": "ownership/FOUNDATION-EVIDENCE.json",
+  "ownership_task_revealed": false,
+  "ready": false,
+  "rule": "Do not reveal or start the ownership task while Codex or another AI surface is open.",
+  "schema_version": 1
+}

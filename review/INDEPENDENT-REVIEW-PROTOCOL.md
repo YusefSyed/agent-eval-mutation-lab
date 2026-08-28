@@ -65,3 +65,23 @@ ground-truth labels were not seen.
 The packet and verifier are prepared, but no independent human review has been
 completed. Do not describe the corpus as independently audited yet.
 
+## Separately authored holdout
+
+An external author can use `holdout-submission.schema.json` to provide at least four
+cases across two families. Every case must name its semantic relation, explain why it
+is distinct from existing relations, and classify the intended relation as
+label-changing, label-preserving, or evidence-withholding.
+
+Validate a returned submission before import:
+
+```text
+uv run agent-eval-validate-holdout holdout-submission.json \
+  --output review/holdout-validation.json
+```
+
+Validation checks structure, status/effect consistency, unique identities, minimum
+family breadth, self-reported independence, and at least one relation name not already
+used by the current benchmark. It cannot prove the author's attestation or scientific
+novelty. Do not merge even a structurally valid holdout until its semantics receive
+human review.
+
