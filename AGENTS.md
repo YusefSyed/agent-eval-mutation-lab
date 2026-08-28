@@ -68,6 +68,9 @@ uv run agent-eval-mutation --output artifacts/latest
 uv run agent-eval-ablate --output artifacts/ablations
 uv run agent-eval-inspect path/to/log.json --output artifacts/inspect/run
 uv run agent-eval-verify-lock
+uv run agent-eval-v2 --output artifacts/v2
+uv run agent-eval-family-sensitivity --output artifacts/v2
+uv run agent-eval-build-review --output review/packet
 ```
 
 ## Definition of done

@@ -1,0 +1,9 @@
+{
+  "case_count": 13,
+  "files": {
+    "blind-cases.json": "1373d42aada89f644e211650261d4cd073cc315748a875d8e7b1b19dd8b4ebcc",
+    "review-form.json": "9f763f9c752e2449742b40f194d50f4f984a5d7be35545efe70e5dc6a722ba72"
+  },
+  "schema_version": 1,
+  "warning": "Provide only blind-cases.json and a copy of review-form.json to the reviewer; do not provide repository source or scorer outputs."
+}

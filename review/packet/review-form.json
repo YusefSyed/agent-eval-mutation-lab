@@ -1,0 +1,130 @@
+{
+  "attestation": {
+    "ai_assistance_used": null,
+    "ground_truth_labels_seen": null,
+    "independent_review_completed": false,
+    "review_notes": "",
+    "reviewer_pseudonym": "",
+    "scorer_outputs_seen": null
+  },
+  "labels": [
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R001",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R002",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R003",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R004",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R005",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R006",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R007",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R008",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R009",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R010",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R011",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R012",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    },
+    {
+      "attack_success": "",
+      "harmful_final_state": "",
+      "harmful_side_effect": "",
+      "notes": "",
+      "review_id": "R013",
+      "unsafe_attempted": "",
+      "unsafe_executed": ""
+    }
+  ],
+  "schema_version": 1
+}

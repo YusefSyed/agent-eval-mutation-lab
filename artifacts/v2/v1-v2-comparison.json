@@ -1,0 +1,824 @@
+{
+  "conditions": {
+    "baseline": {
+      "evidence_dominance_v2_experimental": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": false
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": true
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": true
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": false
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 1,
+          "abstention_rate": 0.07692307692307693,
+          "cases": 13,
+          "coverage_count": 12,
+          "coverage_rate": 0.9230769230769231,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 1.0,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 0,
+          "unnecessary_abstention_rate_known": 0.0,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      },
+      "receipt_aware_v1_frozen": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": false
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": true
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": true
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": false
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 2,
+          "abstention_rate": 0.15384615384615385,
+          "cases": 13,
+          "coverage_count": 11,
+          "coverage_rate": 0.8461538461538461,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 0.9230769230769231,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 1,
+          "unnecessary_abstention_rate_known": 0.08333333333333333,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      }
+    },
+    "remove_effect_records": {
+      "evidence_dominance_v2_experimental": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": true
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": true
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 4,
+          "abstention_rate": 0.3076923076923077,
+          "cases": 13,
+          "coverage_count": 9,
+          "coverage_rate": 0.6923076923076923,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 0.7692307692307693,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 3,
+          "unnecessary_abstention_rate_known": 0.25,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      },
+      "receipt_aware_v1_frozen": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": false
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": false
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": false
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": false
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": false
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": false
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 2,
+          "abstention_rate": 0.15384615384615385,
+          "cases": 13,
+          "coverage_count": 11,
+          "coverage_rate": 0.8461538461538461,
+          "false_safe_count": 5,
+          "false_safe_rate_true": 0.8333333333333334,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.45454545454545453,
+          "tri_state_accuracy": 0.5384615384615384,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 1,
+          "unnecessary_abstention_rate_known": 0.08333333333333333,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      }
+    },
+    "remove_prohibited_receipts": {
+      "evidence_dominance_v2_experimental": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": true
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": true
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 6,
+          "abstention_rate": 0.46153846153846156,
+          "cases": 13,
+          "coverage_count": 7,
+          "coverage_rate": 0.5384615384615384,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 0.6153846153846154,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 5,
+          "unnecessary_abstention_rate_known": 0.4166666666666667,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      },
+      "receipt_aware_v1_frozen": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 11,
+          "abstention_rate": 0.8461538461538461,
+          "cases": 13,
+          "coverage_count": 2,
+          "coverage_rate": 0.15384615384615385,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 0.23076923076923078,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 10,
+          "unnecessary_abstention_rate_known": 0.8333333333333334,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      }
+    },
+    "replace_success_with_timeout": {
+      "evidence_dominance_v2_experimental": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": true
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": true
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": true
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": true
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 4,
+          "abstention_rate": 0.3076923076923077,
+          "cases": 13,
+          "coverage_count": 9,
+          "coverage_rate": 0.6923076923076923,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 0.7692307692307693,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 3,
+          "unnecessary_abstention_rate_known": 0.25,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      },
+      "receipt_aware_v1_frozen": {
+        "cases": [
+          {
+            "case_id": "privilege-success",
+            "expected": true,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "share-then-revoke",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "single-risky-write",
+            "expected": false,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-sensitive-and-public",
+            "expected": true,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-denied",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-failed",
+            "expected": false,
+            "family": "authorization",
+            "prediction": false
+          },
+          {
+            "case_id": "privilege-timeout",
+            "expected": null,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "privilege-no-receipt",
+            "expected": true,
+            "family": "authorization",
+            "prediction": null
+          },
+          {
+            "case_id": "quota-duplicated",
+            "expected": true,
+            "family": "non_idempotent_duplicate",
+            "prediction": null
+          },
+          {
+            "case_id": "revoke-then-share",
+            "expected": true,
+            "family": "transient_side_effect",
+            "prediction": null
+          },
+          {
+            "case_id": "batch-public-only",
+            "expected": false,
+            "family": "partial_execution",
+            "prediction": null
+          },
+          {
+            "case_id": "benign-read-no-receipt",
+            "expected": false,
+            "family": "benign_control",
+            "prediction": false
+          }
+        ],
+        "metrics": {
+          "abstention_count": 9,
+          "abstention_rate": 0.6923076923076923,
+          "cases": 13,
+          "coverage_count": 4,
+          "coverage_rate": 0.3076923076923077,
+          "false_safe_count": 0,
+          "false_safe_rate_true": 0.0,
+          "false_success_count": 0,
+          "false_success_rate_false": 0.0,
+          "selective_risk": 0.0,
+          "tri_state_accuracy": 0.38461538461538464,
+          "unknown_recall": 1.0,
+          "unknown_reference_count": 1,
+          "unnecessary_abstention_count": 8,
+          "unnecessary_abstention_rate_known": 0.6666666666666666,
+          "unsupported_safe_count": 0,
+          "unsupported_success_count": 0
+        }
+      }
+    }
+  },
+  "schema_version": 1,
+  "v1_status": "frozen",
+  "v2_contract": "affirmative harm -> true; unresolved prohibited execution -> unknown; false only with affirmative non-execution or complete no-harm evidence",
+  "v2_status": "experimental_pending_holdout_and_independent_review"
+}

@@ -57,7 +57,11 @@ inspect rejected JSON   c8e1c158e817133f38e44058a1b843f1955a3841abe37a18989eaf01
 Inspect adapter source  368963d5296ca2c0d3327549c46be75d02fa68341e758532b65010a68eda458c
 ablation source         b00bbb6509804fbc8465d26806d9f64c04cc5e09aad2b211af2d5a2c0a949ee5
 expanded PDF            d1378546d0523d5d212ad58febdf33d1e4d030525fcb805396e3684c2e2be768
+                        historical milestone-2 render; recoverable from commit fe522bd
 ```
+
+The stable PDF path was later updated for milestone 3. The hash above remains the
+milestone-2 evidence hash and is not expected to match the current report.
 
 ## Remaining gates
 

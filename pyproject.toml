@@ -13,6 +13,10 @@ agent-eval-mutation = "agent_eval_mutation_lab.cli:main"
 agent-eval-inspect = "agent_eval_mutation_lab.inspect_adapter:main"
 agent-eval-ablate = "agent_eval_mutation_lab.receipt_ablations:main"
 agent-eval-verify-lock = "agent_eval_mutation_lab.baseline_lock:main"
+agent-eval-v2 = "agent_eval_mutation_lab.v2_evaluation:main"
+agent-eval-build-review = "agent_eval_mutation_lab.review_packet:main"
+agent-eval-verify-review = "agent_eval_mutation_lab.review_verifier:main"
+agent-eval-family-sensitivity = "agent_eval_mutation_lab.family_sensitivity:main"
 
 [dependency-groups]
 dev = [

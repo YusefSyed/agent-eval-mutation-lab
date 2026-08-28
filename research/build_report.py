@@ -23,6 +23,9 @@ RESULTS = ROOT / "artifacts/latest/results.json"
 ABLATIONS = ROOT / "artifacts/ablations/receipt-ablations.json"
 INSPECT_APPROVED = ROOT / "artifacts/inspect/approved/inspect-evidence.json"
 INSPECT_REJECTED = ROOT / "artifacts/inspect/rejected/inspect-evidence.json"
+V2_COMPARISON = ROOT / "artifacts/v2/v1-v2-comparison.json"
+FAMILY_SENSITIVITY = ROOT / "artifacts/v2/family-sensitivity.json"
+REVIEW_MANIFEST = ROOT / "review/packet/MANIFEST.json"
 OUTPUT = (
     ROOT
     / "output/pdf/Agent_Eval_Mutation_Lab_Research_and_Build_Decision_2026-08-28.pdf"
@@ -274,6 +277,9 @@ def build() -> Path:
     ablations = json.loads(ABLATIONS.read_text(encoding="utf-8"))
     inspect_approved = json.loads(INSPECT_APPROVED.read_text(encoding="utf-8"))
     inspect_rejected = json.loads(INSPECT_REJECTED.read_text(encoding="utf-8"))
+    v2_comparison = json.loads(V2_COMPARISON.read_text(encoding="utf-8"))
+    family_sensitivity = json.loads(FAMILY_SENSITIVITY.read_text(encoding="utf-8"))
+    review_manifest = json.loads(REVIEW_MANIFEST.read_text(encoding="utf-8"))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     s = styles()
     doc = SimpleDocTemplate(
@@ -285,14 +291,14 @@ def build() -> Path:
         bottomMargin=0.68 * inch,
         title="Agent Eval Mutation Lab - Research and Build Decision",
         author="Yusef Syed",
-        subject="Python portfolio evidence, prior art, benchmark design, and verified first milestone",
+        subject="Python portfolio evidence, prior art, benchmark design, and verified evaluation milestones",
     )
     story = []
     story.append(Spacer(1, 0.24 * inch))
     story.append(para("Agent Eval Mutation Lab", s["title"]))
     story.append(
         para(
-            "Deep Research, GPT-5.6 Pro decision review, prior-art correction, and verified offline Python milestone",
+            "Deep Research, three GPT-5.6 Pro decision reviews, prior-art correction, and verified offline Python milestones",
             s["subtitle"],
         )
     )
@@ -330,9 +336,10 @@ def build() -> Path:
     for item in [
         "13 synthetic cases across five scenario families and seven execution-semantic mutation types.",
         "Three substantive scorer contracts plus always-safe, always-attack, and always-abstain controls.",
-        "Sixteen focused tests, Ruff, and strict mypy all pass.",
+        "Thirty-two focused tests, Ruff, and strict mypy all pass.",
         "The run is offline, needs no API key, and emits deterministic JSON and Markdown reports.",
         "A fail-closed Inspect AI adapter was verified against fresh full JSON logs, and receipt ablations expose a concrete v1 scorer weakness.",
+        "A separately versioned evidence-dominance v2 eliminates observed directional overclaims by trading some binary coverage for abstention; blind review materials are prepared but uncompleted.",
         "No real-model, framework-safety, production-safety, or independent-fluency claim is supported yet.",
     ]:
         story.append(bullet(item, s["bullet"]))
@@ -587,12 +594,14 @@ def build() -> Path:
     receipt = Table(
         [
             [para("Check", s["table_header"]), para("Observed outcome", s["table_header"])],
-            [para("pytest", s["table"]), para("16 passed", s["table"])],
+            [para("pytest", s["table"]), para("32 passed", s["table"])],
             [para("Ruff", s["table"]), para("All checks passed", s["table"])],
-            [para("mypy --strict", s["table"]), para("No issues in 13 source files", s["table"])],
+            [para("mypy --strict", s["table"]), para("No issues in 18 source files", s["table"])],
             [para("Offline report", s["table"]), para("Deterministic JSON and Markdown generated with no API key", s["table"])],
             [para("Baseline lock", s["table"]), para("Seven frozen files verified", s["table"])],
             [para("Inspect integration", s["table"]), para("Fresh approved and rejected full logs normalized correctly", s["table"])],
+            [para("V2 and sensitivity", s["table"]), para("Byte-deterministic; zero observed directional/unknown overclaims", s["table"])],
+            [para("Blind review packet", s["table"]), para("13 opaque cases; deterministic; human review not completed", s["table"])],
             [para("Results JSON SHA-256", s["table"]), para("b7ad1de4c15cabd64360c55e2ba451ecc813d8e3a3abe1dfac904589234ef093", s["small"])],
         ],
         colWidths=[1.55 * inch, 5.05 * inch],
@@ -609,22 +618,106 @@ def build() -> Path:
     story.append(receipt)
 
     story.append(PageBreak())
-    story.append(para("6. Limitations and next gates", s["h1"]))
+    story.append(para("6. Evidence-dominance v2 and review readiness", s["h1"]))
+    story.append(
+        para(
+            "A third focused GPT-5.6 Pro review selected an evidence-dominance tri-state contract: affirmative harm evidence returns true; unresolved prohibited execution returns unknown; false requires affirmative non-execution or complete no-harm evidence. The visible Pro run was configured at 5 of 5 with GPT-5.6 Sol and completed with the UI-reported gpt-5-6-pro message route after approximately 11 minutes 53 seconds.",
+            s["body"],
+        )
+    )
+    story.append(para("Frozen v1 versus experimental v2", s["h2"]))
+    v2_rows = [
+        [
+            para("Condition", s["table_header"]),
+            para("V1 tri", s["table_header"]),
+            para("V2 tri", s["table_header"]),
+            para("V1 cov", s["table_header"]),
+            para("V2 cov", s["table_header"]),
+            para("V1 false safe", s["table_header"]),
+            para("V2 false safe", s["table_header"]),
+            para("V2 unnecessary abstain", s["table_header"]),
+        ]
+    ]
+    for condition, scorer_results in v2_comparison["conditions"].items():
+        v1 = scorer_results["receipt_aware_v1_frozen"]["metrics"]
+        v2 = scorer_results["evidence_dominance_v2_experimental"]["metrics"]
+        v2_rows.append(
+            [
+                para(condition.replace("_", " "), s["table"]),
+                f"{v1['tri_state_accuracy']:.3f}",
+                f"{v2['tri_state_accuracy']:.3f}",
+                f"{v1['coverage_rate']:.3f}",
+                f"{v2['coverage_rate']:.3f}",
+                str(v1["false_safe_count"]),
+                str(v2["false_safe_count"]),
+                f"{v2['unnecessary_abstention_rate_known']:.3f}",
+            ]
+        )
+    v2_table = Table(
+        v2_rows,
+        colWidths=[1.48 * inch, 0.55 * inch, 0.55 * inch, 0.55 * inch, 0.55 * inch, 0.67 * inch, 0.67 * inch, 0.9 * inch],
+        repeatRows=1,
+    )
+    v2_table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT]),
+                ("GRID", (0, 0), (-1, -1), 0.35, RULE),
+                ("ALIGN", (1, 1), (-1, -1), "RIGHT"),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("FONTSIZE", (1, 1), (-1, -1), 7.2),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+            ]
+        )
+    )
+    story.append(v2_table)
+    story.append(
+        para(
+            "Across all four conditions, v2 produced zero false-safe, false-success, unsupported-safe, and unsupported-success counts. Under removed effects, v2 replaces v1's five false-safe classifications with three abstentions on known cases. This is a finite-suite coverage-for-risk result, not a universal guarantee.",
+            s["callout"],
+        )
+    )
+    story.append(para("Scenario-family sensitivity", s["h2"]))
+    baseline_v2 = family_sensitivity["conditions"]["baseline"][
+        "evidence_dominance_v2_experimental"
+    ]
+    removed_v2 = family_sensitivity["conditions"]["remove_effect_records"][
+        "evidence_dominance_v2_experimental"
+    ]
+    story.append(
+        para(
+            "Leaving out each scenario family preserves zero directional and reference-unknown overclaims. Baseline v2 tri-state accuracy ranges from "
+            f"{baseline_v2['tri_state_accuracy_range'][0]:.3f} to {baseline_v2['tri_state_accuracy_range'][1]:.3f}; under removed effects it ranges from "
+            f"{removed_v2['tri_state_accuracy_range'][0]:.3f} to {removed_v2['tri_state_accuracy_range'][1]:.3f}, with coverage from {removed_v2['coverage_range'][0]:.3f} to {removed_v2['coverage_range'][1]:.3f}. These are exact sensitivity ranges, not confidence intervals.",
+            s["body"],
+        )
+    )
+    story.append(para("Blind review readiness", s["h2"]))
+    story.append(
+        para(
+            f"The deterministic review packet contains {review_manifest['case_count']} opaque cases and an unfilled form with no case names, mutation names, expected labels, scorer names, or predictions. A verifier requires complete agreement plus a self-reported independence attestation. No human has completed it; preparation is not audit completion.",
+            s["body"],
+        )
+    )
+
+    story.append(PageBreak())
+    story.append(para("7. Limitations and next gates", s["h1"]))
     for item in [
         "The cases are hand-authored synthetic fixtures. Exact finite-corpus results do not estimate real-world model or framework behavior.",
-        "The receipt-aware scorer is favored by the ontology; effect-record ablation now proves a v1 false-safe weakness that requires a separately versioned v2.",
+        "V2 resolves the observed v1 effect-record false-safe behavior on the current corpus, but cancellation timing, authoritative no-effect guarantees, and externally authored holdouts remain incomplete.",
         "Mutants derived from one base case are correlated. Any later bootstrap must resample scenario families and be described only as corpus-sensitivity analysis.",
         "The Inspect adapter proves proposal, approval, and coarse execution coverage only; domain side effects and attack success remain unsupported.",
-        "Independent label review and a protected no-AI ownership gate remain uncompleted.",
+        "Blind review materials are prepared, but independent label review and the protected no-AI ownership gate remain uncompleted.",
     ]:
         story.append(bullet(item, s["bullet"]))
     story.append(para("Required next milestone", s["h2"]))
     for item in [
         "Preserve the verified baseline-v1 lock and do not rewrite its scorer results.",
+        "Obtain completed blind independent case-label review and preserve any disagreement.",
         "Add one held-out or separately authored mutation family.",
-        "Design a v2 scorer that abstains on successful prohibited calls with missing effect evidence.",
-        "Run leave-one-family-out sensitivity without treating correlated mutants as independent samples.",
-        "Obtain independent case-label review.",
+        "Extend v2 only through a new version if cancellation or rollback semantics change its contract.",
         "Add a domain-specific Inspect extension only if it can supply validated side-effect and final-state evidence.",
         "Complete the separate changed-contract, seeded-debugging, explanation, and clean-reproduction ownership gate.",
     ]:
@@ -634,7 +727,7 @@ def build() -> Path:
             [
                 para("Claim boundary", s["h2"]),
                 para(
-                    "Truthful current phrasing: Codex-assisted offline Python benchmark with frozen synthetic results, verified evidence ablations, and a fail-closed Inspect execution-evidence adapter. Unsupported phrasing: independently built proof of Python fluency, first-ever mutation benchmark, generic Inspect attack-success scoring, proof that a framework is unsafe, or completed empirical research study.",
+                    "Truthful current phrasing: Codex-assisted offline Python benchmark with frozen v1 evidence, experimental evidence-dominance v2, deterministic family sensitivity, and a fail-closed Inspect adapter. Unsupported phrasing: independently built proof of Python fluency, independently audited corpus, first-ever mutation benchmark, generic Inspect attack-success scoring, proof that a framework is unsafe, or completed empirical research study.",
                     s["callout"],
                 ),
             ]
@@ -657,6 +750,8 @@ def build() -> Path:
         ("Yang et al.", "SWE-Mutation", "https://arxiv.org/abs/2605.22175"),
         ("Bareiss et al.", "LLMorpheus", "https://arxiv.org/abs/2404.09952"),
         ("Recent primary paper", "Breaking Models to Test the Judge", "https://arxiv.org/abs/2608.14315"),
+        ("Franc, Prusa, and Voracek", "Optimal strategies for reject option classifiers", "https://arxiv.org/abs/2101.12523"),
+        ("Geifman and El-Yaniv", "Selective Classification for Deep Neural Networks", "https://arxiv.org/abs/1705.08500"),
     ]
     for publisher, title, url in sources:
         story.append(

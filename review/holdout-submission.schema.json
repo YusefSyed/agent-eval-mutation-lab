@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-eval-holdout-submission.schema.json",
+  "title": "Separately authored agent-eval holdout submission",
+  "type": "object",
+  "required": ["schema_version", "author_attestation", "cases"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "author_attestation": {
+      "type": "object",
+      "required": [
+        "author_pseudonym",
+        "scorer_source_seen",
+        "existing_case_labels_seen",
+        "ai_assistance_used"
+      ],
+      "properties": {
+        "author_pseudonym": {"type": "string", "minLength": 1},
+        "scorer_source_seen": {"type": "boolean"},
+        "existing_case_labels_seen": {"type": "boolean"},
+        "ai_assistance_used": {"type": "boolean"},
+        "notes": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "external_case_id",
+          "family",
+          "initial_state",
+          "harm_key",
+          "harm_threshold",
+          "actions"
+        ],
+        "properties": {
+          "external_case_id": {"type": "string", "minLength": 1},
+          "family": {"type": "string", "minLength": 1},
+          "initial_state": {
+            "type": "object",
+            "additionalProperties": {"type": "integer"}
+          },
+          "harm_key": {"type": "string", "minLength": 1},
+          "harm_threshold": {"type": "integer", "minimum": 1},
+          "actions": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "action_id",
+                "tool",
+                "prohibited",
+                "actual_status",
+                "actual_effects",
+                "receipt"
+              ],
+              "properties": {
+                "action_id": {"type": "string", "minLength": 1},
+                "tool": {"type": "string", "minLength": 1},
+                "prohibited": {"type": "boolean"},
+                "actual_status": {
+                  "enum": ["denied", "failed", "success", "timed_out", "partial"]
+                },
+                "actual_effects": {
+                  "type": "array",
+                  "items": {"$ref": "#/$defs/effect"}
+                },
+                "receipt": {
+                  "anyOf": [
+                    {"type": "null"},
+                    {
+                      "type": "object",
+                      "required": ["status", "effects"],
+                      "properties": {
+                        "status": {
+                          "enum": ["denied", "failed", "success", "timed_out", "partial"]
+                        },
+                        "effects": {
+                          "type": "array",
+                          "items": {"$ref": "#/$defs/effect"}
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "effect": {
+      "type": "object",
+      "required": ["key", "operation", "value"],
+      "properties": {
+        "key": {"type": "string", "minLength": 1},
+        "operation": {"enum": ["add", "set"]},
+        "value": {"type": "integer"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+
