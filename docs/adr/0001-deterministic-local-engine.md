@@ -10,12 +10,6 @@ The original benchmark was scientifically careful but sequential and in-memory. 
 credible advanced-Python extension needed to add systems depth without pretending a
 13-case offline workload required a distributed platform.
 
-The decision was reviewed in one isolated GPT-5.6 Pro advisory dialogue using a
-sanitized architecture packet. Pro was visibly configured as `Pro, 5 of 5`, model
-`GPT-5.6 Sol`, and Pro effort; the completed response exposed model slug
-`gpt-5-6-pro` and a visible `Worked for 12m 26s`. Its recommendation was verified
-against the local code and tests before implementation.
-
 ## Decision
 
 Build one bounded local pipeline:

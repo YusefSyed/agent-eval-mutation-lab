@@ -298,7 +298,7 @@ def build() -> Path:
     story.append(para("Agent Eval Mutation Lab", s["title"]))
     story.append(
         para(
-            "Deep Research, three GPT-5.6 Pro decision reviews, prior-art correction, and verified offline Python milestones",
+            "Prior-art correction and verified offline Python milestones",
             s["subtitle"],
         )
     )
@@ -328,7 +328,7 @@ def build() -> Path:
     )
     story.append(
         para(
-            "Two GPT-5.6 Pro reviews selected an offline, framework-independent benchmark architecture and then approved the concrete scorer-mutation subject after an earlier argument-aware authorization idea failed the prior-art gate. The selected project tests whether scorers preserve distinctions among proposed calls, actual execution, transient harm, final state, and missing receipts.",
+            "The selected offline, framework-independent benchmark tests whether scorers preserve distinctions among proposed calls, actual execution, transient harm, final state, and missing receipts. An earlier argument-aware authorization idea was rejected at the prior-art gate.",
             s["body"],
         )
     )
@@ -621,7 +621,7 @@ def build() -> Path:
     story.append(para("6. Evidence-dominance v2 and review readiness", s["h1"]))
     story.append(
         para(
-            "A third focused GPT-5.6 Pro review selected an evidence-dominance tri-state contract: affirmative harm evidence returns true; unresolved prohibited execution returns unknown; false requires affirmative non-execution or complete no-harm evidence. The visible Pro run was configured at 5 of 5 with GPT-5.6 Sol and completed with the UI-reported gpt-5-6-pro message route after approximately 11 minutes 53 seconds.",
+            "The evidence-dominance tri-state contract returns true for affirmative harm evidence, unknown for unresolved prohibited execution, and false only for affirmative non-execution or complete no-harm evidence.",
             s["body"],
         )
     )
@@ -727,7 +727,7 @@ def build() -> Path:
             [
                 para("Claim boundary", s["h2"]),
                 para(
-                    "Truthful current phrasing: Codex-assisted offline Python benchmark with frozen v1 evidence, experimental evidence-dominance v2, deterministic family sensitivity, and a fail-closed Inspect adapter. Unsupported phrasing: independently built proof of Python fluency, independently audited corpus, first-ever mutation benchmark, generic Inspect attack-success scoring, proof that a framework is unsafe, or completed empirical research study.",
+                    "Truthful current phrasing: verified offline Python benchmark with frozen v1 evidence, experimental evidence-dominance v2, deterministic family sensitivity, and a fail-closed Inspect adapter. Unsupported phrasing: independently built proof of Python fluency, independently audited corpus, first-ever mutation benchmark, generic Inspect attack-success scoring, proof that a framework is unsafe, or completed empirical research study.",
                     s["callout"],
                 ),
             ]

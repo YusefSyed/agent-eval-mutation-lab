@@ -3,10 +3,10 @@
 ## Purpose
 
 Measure whether the project owner can independently implement, debug, explain, and
-reproduce the benchmark after Codex-assisted construction.
+reproduce the benchmark in a protected environment.
 
-This gate is separate from project correctness. Passing tests on Codex-authored code
-does not pass the ownership gate.
+This gate is separate from project correctness. Passing repository tests does not
+pass the ownership gate.
 
 ## Current prerequisite
 
@@ -46,12 +46,12 @@ and reveal one task at a time:
 
 ## Integrity rules
 
-- Do not start from this Codex task.
-- Close Codex, ChatGPT, Copilot, Claude, Gemini, AI search, and every other AI surface.
+- Do not start from an existing implementation task.
+- Close every AI assistant, AI search surface, and generated-code tool.
 - Do not inspect a future hidden task or evaluator before the timer starts.
 - Work only in the generated attempt directory.
 - Preserve incomplete work and errors; do not rehearse or silently replace them.
-- Reopen Codex only after the attempt is finalized and hashed.
+- Reopen external tools only after the attempt is finalized and hashed.
 
 ## Evidence required before a fluency claim
 
@@ -64,4 +64,3 @@ and reveal one task at a time:
 - recorded oral defense reviewed by a human.
 
 No single phase, self-attestation, or passing repository test is sufficient on its own.
-

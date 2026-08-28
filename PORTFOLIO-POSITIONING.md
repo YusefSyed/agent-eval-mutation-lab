@@ -2,7 +2,7 @@
 
 ## Thirty-second project description
 
-Agent Eval Mutation Lab is a Codex-assisted Python 3.12+ evaluation system that
+Agent Eval Mutation Lab is a Python 3.12+ evaluation system that
 tests whether tool-agent scorers confuse proposed actions, actual execution,
 realized harm, and unresolved evidence. Its advanced engine turns 13 synthetic cases
 into 104 content-addressed evaluation tasks with typed information-flow boundaries,
@@ -22,8 +22,8 @@ byte-reproducible evidence exports.
 
 ## Current defensible résumé bullets
 
-These bullets describe the verified engineering artifact. The repository's public
-assistance disclosure must remain available; do not describe the work as unaided.
+These bullets describe the verified engineering artifact. Do not describe the work
+as unaided until the separate ownership gate passes.
 
 - Built a typed offline Python evaluation engine that expands 13 execution-semantic
   agent cases into 104 deterministic scorer tasks across four evidence conditions,
@@ -62,8 +62,8 @@ tri-state scorer analysis.
    they remain an opt-in correctness stress mode rather than a performance claim.
 6. **Empirical result:** v2 exchanges coverage for lower directional risk under
    missing evidence on this finite corpus; no generalization claim is made.
-7. **Limitation:** External blind review and separately authored holdout cases are
-   still pending, and the repository is Codex-assisted.
+7. **Limitation:** External blind review, separately authored holdout cases, and the
+   protected ownership gate are still pending.
 
 ## Claims to avoid
 

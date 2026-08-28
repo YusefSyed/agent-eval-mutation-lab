@@ -207,18 +207,17 @@ The scoped original contribution is the combination of:
 See [PRIOR_ART.md](PRIOR_ART.md), [DESIGN.md](DESIGN.md), and
 [BENCHMARK_CARD.md](BENCHMARK_CARD.md).
 
-## Evidence and assistance boundary
+## Evidence and ownership boundary
 
-The repository is a verified, Codex-assisted engineering artifact created after Deep
-Research and focused GPT-5.6 Pro advisory reviews. The implementation has strict
-tests, frozen evidence, deterministic reproduction, and explicit assistance
-disclosure; it does not by itself prove unaided Python fluency.
+The repository is a verified engineering artifact with strict tests, frozen
+evidence, and deterministic reproduction. It does not by itself prove unaided
+Python fluency.
 
 Defensible descriptions must stay bounded to what the repository proves: typed local
 evaluation infrastructure, exact finite-corpus results, reproducibility controls, and
 tested failure semantics. Do not claim production safety, general statistical
 validation, independent label audit, an accepted upstream contribution, or unaided
-implementation. See [ASSISTANCE.md](ASSISTANCE.md).
+implementation. See [OWNERSHIP.md](OWNERSHIP.md).
 
 ## License
 

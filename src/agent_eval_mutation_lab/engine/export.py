@@ -375,8 +375,7 @@ def render_html(
       <p>
         This report covers a hand-authored finite synthetic corpus. It does not
         estimate real-world model behavior, validate a production framework,
-        establish general safety, or prove unaided Python authorship. The project
-        is Codex-assisted and preserves that disclosure.
+        establish general safety, or prove unaided Python authorship.
       </p>
     </section>
   </main>

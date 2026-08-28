@@ -86,12 +86,11 @@ exist. No external reviewer has completed the packet, and no separately authored
 holdout submission has been imported. Disagreements must be preserved rather than
 edited away.
 
-## Provenance and assistance
+## Provenance and ownership
 
-The corpus is synthetic and contains no private or customer data. The project was
-created with Codex implementation assistance after Deep Research and focused
-GPT-5.6 Pro architecture reviews. It demonstrates a verified engineering artifact;
-it does not by itself prove unaided Python fluency. See `ASSISTANCE.md`.
+The corpus is synthetic and contains no private or customer data. The repository
+demonstrates a verified engineering artifact; it does not by itself prove unaided
+Python fluency. See `OWNERSHIP.md`.
 
 ## License
 

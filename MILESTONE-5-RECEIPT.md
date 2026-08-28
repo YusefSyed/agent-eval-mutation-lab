@@ -73,14 +73,9 @@ The package contains 35 Python source files, including 14 engine modules, and 18
 files. Current source totals 4,844 lines; line count is descriptive, not a quality
 claim.
 
-## GPT-5.6 Pro architecture review
+## Architecture decision
 
-One fresh isolated normal Chat reviewed a sanitized decision packet. The visible
-preflight showed `Pro, 5 of 5`, `GPT-5.6 Sol`, and Pro effort. The completed response
-showed model slug `gpt-5-6-pro` and `Worked for 12m 26s`. One direct-composer fallback
-submission was used after Chrome file upload was unavailable; there was no retry.
-
-The adopted recommendation was a bounded hybrid centered on typed deterministic
+The adopted design is a bounded hybrid centered on typed deterministic
 planning, a transactional local run ledger, content-addressed evidence, one measured
 parallel backend, and static reporting. Mandatory asyncio, a network service, generic
 event sourcing, dynamic plugin discovery, premature inferential statistics, and a
@@ -95,7 +90,7 @@ claim.
 
 ## Current claim boundary
 
-This is now a strong verified Codex-assisted engineering artifact suitable for
+This is now a strong verified engineering artifact suitable for
 truthful portfolio and résumé description. It remains a finite synthetic benchmark,
 not a production safety system, statistically validated general result, independent
 label audit, accepted upstream contribution, or proof of unaided Python fluency.

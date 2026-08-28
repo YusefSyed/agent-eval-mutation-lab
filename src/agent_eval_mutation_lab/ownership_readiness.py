@@ -77,8 +77,8 @@ def ownership_preflight(
         "foundation_evidence_path": str(evidence_path),
         "ownership_task_revealed": False,
         "rule": (
-            "Do not reveal or start the ownership task while Codex or another AI "
-            "surface is open."
+            "Do not reveal or start the ownership task while an AI assistant or "
+            "generated-code tool is open."
         ),
     }
 

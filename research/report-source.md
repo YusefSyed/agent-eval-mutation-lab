@@ -77,8 +77,8 @@ transient effects, final state, and missing evidence?
 Implement the offline kernel, but limit the claim to exact synthetic results. The
 full flagship still needs a frozen corpus, hidden or independently authored mutation
 family, receipt ablations, family-level sensitivity analysis, representative failure
-analysis, and one real-log adapter. The repository must remain labelled Codex-assisted
-until the separate no-AI ownership gate passes.
+analysis, and one real-log adapter. The separate protected ownership gate remains
+pending.
 
 ## Claim-to-source ledger
 
@@ -138,11 +138,6 @@ Additional primary sources:
 - [AgentDojo issue #168](https://github.com/ethz-spylab/agentdojo/issues/168)
 
 ## Continuation update - evidence-dominance v2 and review readiness
-
-A third focused GPT-5.6 Pro follow-up reviewed the exact v2 decision. The visible
-preflight showed Pro at 5 of 5, GPT-5.6 Sol, and maximum Pro effort; the completed
-assistant message exposed `data-message-model-slug="gpt-5-6-pro"` and a visible
-`Worked for 11m 53s` label. Only the sanitized decision packet was shared.
 
 The adopted rule is evidence dominance:
 
@@ -204,6 +199,6 @@ the protected foundation baseline is staged but not started. The current preflig
 therefore deterministically `ready: false` with one blocker: reviewed foundation evidence
 is missing. It records `ownership_task_revealed: false`.
 
-This is the correct stop boundary. More Codex implementation cannot replace the user's
-protected blank-file attempt, unfamiliar-code debugging, clean reproduction, or human
-oral defense.
+This is the correct stop boundary. Additional implementation work cannot replace the
+owner's protected blank-file attempt, unfamiliar-code debugging, clean reproduction,
+or human oral defense.

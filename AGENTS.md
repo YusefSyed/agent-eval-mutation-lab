@@ -8,7 +8,7 @@
   only the standard library at runtime.
 - Non-goals: no live agent or model calls, no API keys, no private/customer data,
   no production-safety claims, no general-purpose eval framework, and no unaided
-  Python-fluency claim before the separate ownership gate in `ASSISTANCE.md`.
+  Python-fluency claim before the separate ownership gate in `OWNERSHIP.md`.
 
 ## Authority order
 
@@ -36,7 +36,7 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Engine execution | `engine/runner.py`, `engine/scheduler.py` | Workers score; coordinator validates and commits |
 | Durable state | `engine/store.py`, `engine/artifacts.py` | SQLite is derived; JSON object digests are verified |
 | Engine evidence | `engine/export.py`, `engine/aggregation.py` | Canonical order excludes operational noise |
-| Research | `DESIGN.md`, `PRIOR_ART.md`, `ASSISTANCE.md` | No first-ever, framework-safety, or unaided-fluency claim |
+| Research | `DESIGN.md`, `PRIOR_ART.md`, `OWNERSHIP.md` | No first-ever, framework-safety, or unaided-fluency claim |
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
 scorer-safe observation, each scorer, and the generated case result.
