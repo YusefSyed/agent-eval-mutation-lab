@@ -36,6 +36,7 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Engine execution | `engine/runner.py`, `engine/scheduler.py` | Workers score; coordinator validates and commits |
 | Durable state | `engine/store.py`, `engine/artifacts.py` | SQLite is derived; JSON object digests are verified |
 | Engine evidence | `engine/export.py`, `engine/aggregation.py` | Canonical order excludes operational noise |
+| Semantic mutation harness | `mutation_benchmark/`, `benchmarks/mutations-v2-development.json` | Development and held-out partitions never mix |
 | Research | `DESIGN.md`, `PRIOR_ART.md`, `OWNERSHIP.md` | No first-ever, framework-safety, or unaided-fluency claim |
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
@@ -53,6 +54,7 @@ scorer-safe observation, each scorer, and the generated case result.
 | Engine result changes by worker count | `engine/scheduler.py`, task keys | scheduler equivalence tests |
 | Resume repeats completed work | `engine/runtime.py`, `engine/store.py` | persistence and scheduler tests |
 | Cached object fails hash | `engine/artifacts.py`, task ledger | corruption quarantine test |
+| Semantic mutant survives | catalog activation case, `tests/test_scorers_v2.py` | focused mutation benchmark |
 | HTML differs from JSONL | `engine/export.py`, `engine/aggregation.py` | export consistency tests |
 
 ## Working safely
@@ -83,6 +85,7 @@ uv run agent-eval-validate-holdout holdout-submission.json
 uv run agent-eval-ownership-preflight
 uv run agent-eval-reproduce --verify
 uv run agent-eval-engine --workers 1 --output artifacts/engine/latest
+uv run agent-eval-mutate-v2
 ```
 
 ## Definition of done
@@ -92,7 +95,7 @@ uv run agent-eval-engine --workers 1 --output artifacts/engine/latest
 - Two clean runs produce byte-identical JSON and Markdown.
 - Sequential, parallel, interrupted/resumed, cold-cache, and warm-cache engine runs
   preserve the same canonical task records and semantic run identity.
-- `agent-eval-reproduce --verify` matches all 15 committed canonical artifacts.
+- `agent-eval-reproduce --verify` matches all 17 committed canonical artifacts.
 - Package-only branch coverage remains at or above the configured 80% floor.
 - Public claims remain bounded to current finite evidence.
 - Dated PDF and generated artifacts agree with the current result hash.

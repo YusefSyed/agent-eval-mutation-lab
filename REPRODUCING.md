@@ -19,8 +19,21 @@ uv run --frozen agent-eval-reproduce --verify
 
 The final command starts from an empty temporary directory, verifies the seven-file
 frozen v1 lock, rebuilds the legacy reports and blind-review packet, executes the
-104-task typed engine, and byte-compares 15 committed canonical artifacts. It does
+104-task typed engine and 14-mutant development benchmark, and byte-compares 17
+committed canonical artifacts. It does
 not overwrite the working tree.
+
+## Run the semantic mutation benchmark
+
+```bash
+uv run --frozen agent-eval-mutate-v2
+```
+
+The command refuses source-hash drift, first verifies the unmodified scorer through
+the same snapshot boundary, and then runs one predeclared semantic mutant per child
+process. Its stable JSON and Markdown outputs are written to
+`artifacts/mutation-benchmark/`. Runtime durations are intentionally excluded from
+the canonical evidence.
 
 ## Run or resume the advanced engine
 

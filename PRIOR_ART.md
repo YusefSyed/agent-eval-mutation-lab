@@ -21,6 +21,13 @@ It contains no copied source code from the projects below.
 
 ## Mutation-testing lineage
 
+- [mutmut](https://github.com/boxed/mutmut) is a BSD-3-Clause Python mutation
+  tester with source mutation, incremental state, test selection, and parallel
+  execution.
+- [Cosmic Ray](https://github.com/sixty-north/cosmic-ray) is an MIT-licensed,
+  distributed Python mutation-testing tool.
+- [mutatest](https://github.com/EvanKepner/mutatest) is an MIT-licensed Python
+  mutation tester using AST transformations and coverage-guided mutation trials.
 - [SWE-Mutation](https://arxiv.org/abs/2605.22175) applies mutation testing to
   evaluate generated software test suites.
 - [LLMorpheus](https://arxiv.org/abs/2404.09952) studies LLM-generated program
@@ -30,6 +37,10 @@ It contains no copied source code from the projects below.
 
 These works mean the honest claim is adaptation, not invention: this project adapts
 established mutation-testing principles to execution-semantic tool-agent scorers.
+The local runner is an original, narrow implementation; it does not vendor source
+from these tools. Its design borrows the established ideas of isolated mutant runs,
+AST-aware targeting, explicit mutant outcomes, and focused test selection, while
+adding source-segment digests and scorer-contract-specific operators.
 
 ## Rejected overlap
 

@@ -1,6 +1,6 @@
 [project]
 name = "agent-eval-mutation-lab"
-version = "0.2.0"
+version = "0.3.0"
 description = "Typed deterministic mutation engine for execution-semantic agent scorers"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -39,6 +39,7 @@ agent-eval-validate-holdout = "agent_eval_mutation_lab.holdout_intake:main"
 agent-eval-ownership-preflight = "agent_eval_mutation_lab.ownership_readiness:main"
 agent-eval-reproduce = "agent_eval_mutation_lab.reproduction:main"
 agent-eval-engine = "agent_eval_mutation_lab.engine.cli:main"
+agent-eval-mutate-v2 = "agent_eval_mutation_lab.mutation_benchmark.cli:main"
 
 [dependency-groups]
 dev = [

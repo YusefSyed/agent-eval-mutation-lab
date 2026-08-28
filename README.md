@@ -59,6 +59,9 @@ The project is deliberately more than a collection of scorer functions:
   only canonical plan order;
 - valid `unknown` evaluations remain distinct from plugin, parsing, worker, cache, and
   storage failures;
+- a source-hash-guarded semantic mutation harness performs AST node selection,
+  narrow source-span replacement, one-mutant-per-process execution in ephemeral
+  snapshots, explicit invalid/run-error classification, and conservative scoring;
 - canonical JSONL, manifests, SHA-256 sums, and a dependency-free static HTML report
   are generated from finalized records; and
 - CI exercises Python 3.12–3.14, strict mypy, Ruff, an 80% package-wide branch
@@ -113,6 +116,26 @@ The generated evidence is under
 
 Open `report.html` directly; it has no external assets, scripts, or server dependency.
 
+## Run the v2 semantic mutation benchmark
+
+```bash
+uv run agent-eval-mutate-v2
+```
+
+The committed development catalog contains 14 predeclared, scorer-specific mutations
+covering tri-state returns, receipt uncertainty, harm thresholds, partial execution,
+capability metadata, and final-state attribution. The frozen semantic suite kills all
+14 with no invalid mutants or run errors. This is a 100% score on a development
+catalog used to strengthen the suite—not held-out evidence or a general test-quality
+claim.
+
+The runner checks the baseline source digest, selects exactly one AST node by type and
+source-segment digest, changes only that node's source span, reparses and compiles the
+result, copies an ephemeral package snapshot, verifies the imported mutant path, and
+runs each mutant in a fresh process. See
+[`artifacts/mutation-benchmark/`](artifacts/mutation-benchmark/) for the canonical JSON
+and reviewer-facing Markdown report.
+
 ## Reproduce everything from a clean directory
 
 ```bash
@@ -126,7 +149,7 @@ uv run agent-eval-reproduce --verify
 
 The final command verifies the seven-file frozen v1 lock, rebuilds every legacy
 report and blind-review artifact, executes the advanced engine from an empty store,
-and byte-compares 15 committed canonical artifacts. It does not overwrite the
+and byte-compares 17 committed canonical artifacts. It does not overwrite the
 working tree.
 
 See [REPRODUCING.md](REPRODUCING.md) for interruption, resume, ledger inspection,

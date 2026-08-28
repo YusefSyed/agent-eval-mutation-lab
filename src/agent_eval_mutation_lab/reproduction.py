@@ -11,7 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from agent_eval_mutation_lab.baseline_lock import verify_lock
-from agent_eval_mutation_lab.benchmark import run_benchmark
+from agent_eval_mutation_lab.benchmark import run_benchmark as run_finite_benchmark
 from agent_eval_mutation_lab.engine.artifacts import ContentAddressedStore
 from agent_eval_mutation_lab.engine.equivalence import (
     assert_legacy_v2_equivalence,
@@ -28,11 +28,18 @@ from agent_eval_mutation_lab.family_sensitivity import (
     run_family_sensitivity,
     write_family_reports,
 )
+from agent_eval_mutation_lab.mutation_benchmark.benchmark import (
+    run_benchmark as run_mutation_benchmark,
+)
+from agent_eval_mutation_lab.mutation_benchmark.benchmark import (
+    write_reports as write_mutation_reports,
+)
+from agent_eval_mutation_lab.mutation_benchmark.catalog import load_manifest
 from agent_eval_mutation_lab.receipt_ablations import (
     run_receipt_ablations,
     write_ablation_reports,
 )
-from agent_eval_mutation_lab.report import write_reports
+from agent_eval_mutation_lab.report import write_reports as write_finite_reports
 from agent_eval_mutation_lab.review_packet import write_review_packet
 from agent_eval_mutation_lab.v2_evaluation import (
     run_v2_comparison,
@@ -48,6 +55,8 @@ CORE_ARTIFACTS = (
     Path("artifacts/v2/v1-v2-comparison.md"),
     Path("artifacts/v2/family-sensitivity.json"),
     Path("artifacts/v2/family-sensitivity.md"),
+    Path("artifacts/mutation-benchmark/semantic-mutations.json"),
+    Path("artifacts/mutation-benchmark/semantic-mutations.md"),
     Path("review/packet/blind-cases.json"),
     Path("review/packet/review-form.json"),
     Path("review/packet/MANIFEST.json"),
@@ -83,18 +92,27 @@ def build_core_artifacts(
 ) -> tuple[Path, ...]:
     """Regenerate every deterministic core artifact below ``output_root``."""
 
-    write_reports(run_benchmark(), output_root / "artifacts/latest")
-    write_ablation_reports(
-        run_receipt_ablations(), output_root / "artifacts/ablations"
-    )
-    write_v2_reports(run_v2_comparison(), output_root / "artifacts/v2")
-    write_family_reports(run_family_sensitivity(), output_root / "artifacts/v2")
-    write_review_packet(output_root / "review/packet")
     source_root = (
         Path(__file__).resolve().parents[2]
         if project_root is None
         else project_root.resolve()
     )
+    write_finite_reports(
+        run_finite_benchmark(), output_root / "artifacts/latest"
+    )
+    write_ablation_reports(
+        run_receipt_ablations(), output_root / "artifacts/ablations"
+    )
+    write_v2_reports(run_v2_comparison(), output_root / "artifacts/v2")
+    write_family_reports(run_family_sensitivity(), output_root / "artifacts/v2")
+    mutation_manifest = load_manifest(
+        source_root / "benchmarks/mutations-v2-development.json"
+    )
+    write_mutation_reports(
+        run_mutation_benchmark(source_root, mutation_manifest),
+        output_root / "artifacts/mutation-benchmark",
+    )
+    write_review_packet(output_root / "review/packet")
     engine_output = output_root / "artifacts/engine/latest"
     plugins = default_scorer_plugins()
     plan = plan_run(build_default_run_spec(source_root), plugins=plugins)
