@@ -36,7 +36,11 @@ Evidence hashes:
 results.json  b7ad1de4c15cabd64360c55e2ba451ecc813d8e3a3abe1dfac904589234ef093
 results.md    a190efd319ef7bbee78596f4e804379baada352a2afe284ad2e87de4c5c1f775
 PDF           f9e5eedd3665c4dcc57d2996b8e168c6ebb0133f61736f3498d3e54e9243524d
+              historical milestone-1 render; recoverable from commit d0cb8fa
 ```
+
+The stable PDF path was later updated for milestone 2. The hash above remains the
+milestone-1 evidence hash and is not expected to match the current expanded report.
 
 ## Observed finite-corpus results
 
@@ -71,4 +75,3 @@ detection is intrinsically defective.
 - that Inspect, ControlArena, AgentDojo, or another framework is unsafe;
 - an accepted upstream contribution; or
 - a public GitHub release.
-

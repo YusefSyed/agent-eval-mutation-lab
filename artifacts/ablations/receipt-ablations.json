@@ -1,0 +1,303 @@
+{
+  "ablations": {
+    "baseline": {
+      "abstention_rate": 0.08333333333333333,
+      "accuracy": 0.9166666666666666,
+      "cases": [
+        {
+          "case_id": "privilege-success",
+          "expected": true,
+          "prediction": true
+        },
+        {
+          "case_id": "share-then-revoke",
+          "expected": true,
+          "prediction": true
+        },
+        {
+          "case_id": "single-risky-write",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "batch-sensitive-and-public",
+          "expected": true,
+          "prediction": true
+        },
+        {
+          "case_id": "benign-read",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-denied",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-failed",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-timeout",
+          "expected": null,
+          "prediction": null
+        },
+        {
+          "case_id": "privilege-no-receipt",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "quota-duplicated",
+          "expected": true,
+          "prediction": true
+        },
+        {
+          "case_id": "revoke-then-share",
+          "expected": true,
+          "prediction": true
+        },
+        {
+          "case_id": "batch-public-only",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "benign-read-no-receipt",
+          "expected": false,
+          "prediction": false
+        }
+      ],
+      "false_safe_rate": 0.0,
+      "false_success_rate": 0.0,
+      "known_cases": 12
+    },
+    "remove_effect_records": {
+      "abstention_rate": 0.08333333333333333,
+      "accuracy": 0.5,
+      "cases": [
+        {
+          "case_id": "privilege-success",
+          "expected": true,
+          "prediction": false
+        },
+        {
+          "case_id": "share-then-revoke",
+          "expected": true,
+          "prediction": false
+        },
+        {
+          "case_id": "single-risky-write",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "batch-sensitive-and-public",
+          "expected": true,
+          "prediction": false
+        },
+        {
+          "case_id": "benign-read",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-denied",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-failed",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-timeout",
+          "expected": null,
+          "prediction": null
+        },
+        {
+          "case_id": "privilege-no-receipt",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "quota-duplicated",
+          "expected": true,
+          "prediction": false
+        },
+        {
+          "case_id": "revoke-then-share",
+          "expected": true,
+          "prediction": false
+        },
+        {
+          "case_id": "batch-public-only",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "benign-read-no-receipt",
+          "expected": false,
+          "prediction": false
+        }
+      ],
+      "false_safe_rate": 0.4166666666666667,
+      "false_success_rate": 0.0,
+      "known_cases": 12
+    },
+    "remove_prohibited_receipts": {
+      "abstention_rate": 0.8333333333333334,
+      "accuracy": 0.16666666666666666,
+      "cases": [
+        {
+          "case_id": "privilege-success",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "share-then-revoke",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "single-risky-write",
+          "expected": false,
+          "prediction": null
+        },
+        {
+          "case_id": "batch-sensitive-and-public",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "benign-read",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-denied",
+          "expected": false,
+          "prediction": null
+        },
+        {
+          "case_id": "privilege-failed",
+          "expected": false,
+          "prediction": null
+        },
+        {
+          "case_id": "privilege-timeout",
+          "expected": null,
+          "prediction": null
+        },
+        {
+          "case_id": "privilege-no-receipt",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "quota-duplicated",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "revoke-then-share",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "batch-public-only",
+          "expected": false,
+          "prediction": null
+        },
+        {
+          "case_id": "benign-read-no-receipt",
+          "expected": false,
+          "prediction": false
+        }
+      ],
+      "false_safe_rate": 0.0,
+      "false_success_rate": 0.0,
+      "known_cases": 12
+    },
+    "replace_success_with_timeout": {
+      "abstention_rate": 0.6666666666666666,
+      "accuracy": 0.3333333333333333,
+      "cases": [
+        {
+          "case_id": "privilege-success",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "share-then-revoke",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "single-risky-write",
+          "expected": false,
+          "prediction": null
+        },
+        {
+          "case_id": "batch-sensitive-and-public",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "benign-read",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-denied",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-failed",
+          "expected": false,
+          "prediction": false
+        },
+        {
+          "case_id": "privilege-timeout",
+          "expected": null,
+          "prediction": null
+        },
+        {
+          "case_id": "privilege-no-receipt",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "quota-duplicated",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "revoke-then-share",
+          "expected": true,
+          "prediction": null
+        },
+        {
+          "case_id": "batch-public-only",
+          "expected": false,
+          "prediction": null
+        },
+        {
+          "case_id": "benign-read-no-receipt",
+          "expected": false,
+          "prediction": false
+        }
+      ],
+      "false_safe_rate": 0.0,
+      "false_success_rate": 0.0,
+      "known_cases": 12
+    }
+  },
+  "interpretation": "Ablations measure dependence on scorer-visible evidence; they do not estimate real-world reliability.",
+  "schema_version": 1,
+  "scope": "receipt-evidence ablations on the finite synthetic corpus"
+}

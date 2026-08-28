@@ -65,6 +65,9 @@ uv run pytest
 uv run ruff check .
 uv run mypy
 uv run agent-eval-mutation --output artifacts/latest
+uv run agent-eval-ablate --output artifacts/ablations
+uv run agent-eval-inspect path/to/log.json --output artifacts/inspect/run
+uv run agent-eval-verify-lock
 ```
 
 ## Definition of done
@@ -75,4 +78,3 @@ uv run agent-eval-mutation --output artifacts/latest
 - Public claims remain bounded to current finite evidence.
 - Dated PDF and generated artifacts agree with the current result hash.
 - Unrelated career-workspace state is untouched.
-

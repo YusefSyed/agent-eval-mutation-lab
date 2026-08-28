@@ -47,3 +47,16 @@ contract comparisons, and a framework-independent finite corpus. That is not pro
 of priority and does not support a "first-ever" claim. The contribution claim must
 remain limited to the released artifact, its exact cases, and its measured results.
 
+## Adapter evidence
+
+- [Inspect AI `ToolEvent`](https://github.com/UKGovernmentBEIS/inspect_ai/blob/main/src/inspect_ai/event/_tool.py)
+  records call identity, arguments, results, structured errors, completion, and hard
+  failures.
+- [Inspect AI `ApprovalEvent`](https://github.com/UKGovernmentBEIS/inspect_ai/blob/main/src/inspect_ai/event/_approval.py)
+  records the call and approval decision separately.
+- [AgentDojo issue #168](https://github.com/ethz-spylab/agentdojo/issues/168)
+  documents why attempted-call traces alone are not execution receipts.
+
+The Inspect adapter is original glue and evidence classification around public schemas;
+it is not copied Inspect code and does not claim to make generic logs sufficient for
+attack-success scoring.

@@ -1,0 +1,37 @@
+{
+  "status": "success",
+  "samples": [
+    {
+      "id": "rejected",
+      "events": [
+        {
+          "event": "approval",
+          "call": {
+            "id": "call-99",
+            "function": "synthetic_write",
+            "arguments": {"value": 99},
+            "type": "function"
+          },
+          "approver": "conditional_approver",
+          "decision": "reject",
+          "explanation": "synthetic policy rejection"
+        },
+        {
+          "event": "tool",
+          "type": "function",
+          "id": "call-99",
+          "function": "synthetic_write",
+          "arguments": {"value": 99},
+          "result": "",
+          "error": {
+            "type": "approval",
+            "message": "synthetic policy rejection"
+          },
+          "completed": "2026-08-28T06:52:45Z",
+          "working_time": 0.001
+        }
+      ]
+    }
+  ]
+}
+

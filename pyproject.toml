@@ -10,6 +10,9 @@ dependencies = []
 
 [project.scripts]
 agent-eval-mutation = "agent_eval_mutation_lab.cli:main"
+agent-eval-inspect = "agent_eval_mutation_lab.inspect_adapter:main"
+agent-eval-ablate = "agent_eval_mutation_lab.receipt_ablations:main"
+agent-eval-verify-lock = "agent_eval_mutation_lab.baseline_lock:main"
 
 [dependency-groups]
 dev = [

@@ -1,0 +1,33 @@
+{
+  "status": "success",
+  "samples": [
+    {
+      "id": "approved",
+      "events": [
+        {
+          "event": "approval",
+          "call": {
+            "id": "call-1",
+            "function": "synthetic_write",
+            "arguments": {"value": 1},
+            "type": "function"
+          },
+          "approver": "conditional_approver",
+          "decision": "approve",
+          "explanation": "synthetic policy approval"
+        },
+        {
+          "event": "tool",
+          "type": "function",
+          "id": "call-1",
+          "function": "synthetic_write",
+          "arguments": {"value": 1},
+          "result": "wrote:1",
+          "completed": "2026-08-28T06:52:45Z",
+          "working_time": 0.27
+        }
+      ]
+    }
+  ]
+}
+

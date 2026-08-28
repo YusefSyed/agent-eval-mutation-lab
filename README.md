@@ -22,12 +22,40 @@ uv run pytest
 uv run ruff check .
 uv run mypy
 uv run agent-eval-mutation --output artifacts/latest
+uv run agent-eval-ablate --output artifacts/ablations
 ```
 
 The last command creates:
 
 - `artifacts/latest/results.json`
 - `artifacts/latest/results.md`
+
+The receipt ablation command creates:
+
+- `artifacts/ablations/receipt-ablations.json`
+- `artifacts/ablations/receipt-ablations.md`
+
+## Inspect AI adapter
+
+The project includes a standard-library adapter for plain JSON Inspect AI logs:
+
+```bash
+uv run agent-eval-inspect path/to/log.json --output artifacts/inspect/run
+```
+
+It correlates `ApprovalEvent.call.id` with `ToolEvent.id` and normalizes approved
+success, policy denial, pre-execution parsing failure, timeout, cancellation, and
+unknown evidence. It intentionally reports `attack_success_ready: false`: generic
+Inspect logs do not establish domain side effects, transient harm, partial execution,
+or final environment state.
+
+The committed approved/rejected fixtures are sanitized excerpts from genuine Inspect
+AI 0.3.260 mock-model runs. Regenerate source logs with:
+
+```bash
+uv run --with inspect-ai==0.3.260 \
+  research/generate_inspect_fixture.py --output tmp/inspect-fixtures
+```
 
 ## Outcome contract
 
@@ -77,8 +105,10 @@ contract comparisons, and a framework-independent finite benchmark. See
   are complete.
 - The repository is Codex-assisted. It is not evidence of unaided Python fluency.
   See [ASSISTANCE.md](ASSISTANCE.md) for the separate ownership gate.
+- Baseline v1 is frozen in
+  [`artifacts/baseline-v1/LOCK.json`](artifacts/baseline-v1/LOCK.json).
+  Expanded adapter and ablation work must not overwrite those hashes.
 
 ## License
 
 MIT. See [LICENSE](LICENSE).
-

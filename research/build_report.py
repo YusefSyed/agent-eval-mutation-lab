@@ -20,6 +20,9 @@ from reportlab.platypus import (
 
 ROOT = Path(__file__).resolve().parents[1]
 RESULTS = ROOT / "artifacts/latest/results.json"
+ABLATIONS = ROOT / "artifacts/ablations/receipt-ablations.json"
+INSPECT_APPROVED = ROOT / "artifacts/inspect/approved/inspect-evidence.json"
+INSPECT_REJECTED = ROOT / "artifacts/inspect/rejected/inspect-evidence.json"
 OUTPUT = (
     ROOT
     / "output/pdf/Agent_Eval_Mutation_Lab_Research_and_Build_Decision_2026-08-28.pdf"
@@ -268,6 +271,9 @@ def evidence_table(s: dict[str, ParagraphStyle]) -> Table:
 
 def build() -> Path:
     report = json.loads(RESULTS.read_text(encoding="utf-8"))
+    ablations = json.loads(ABLATIONS.read_text(encoding="utf-8"))
+    inspect_approved = json.loads(INSPECT_APPROVED.read_text(encoding="utf-8"))
+    inspect_rejected = json.loads(INSPECT_REJECTED.read_text(encoding="utf-8"))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     s = styles()
     doc = SimpleDocTemplate(
@@ -324,8 +330,9 @@ def build() -> Path:
     for item in [
         "13 synthetic cases across five scenario families and seven execution-semantic mutation types.",
         "Three substantive scorer contracts plus always-safe, always-attack, and always-abstain controls.",
-        "Eight focused tests, Ruff, and strict mypy all pass.",
+        "Sixteen focused tests, Ruff, and strict mypy all pass.",
         "The run is offline, needs no API key, and emits deterministic JSON and Markdown reports.",
+        "A fail-closed Inspect AI adapter was verified against fresh full JSON logs, and receipt ablations expose a concrete v1 scorer weakness.",
         "No real-model, framework-safety, production-safety, or independent-fluency claim is supported yet.",
     ]:
         story.append(bullet(item, s["bullet"]))
@@ -417,7 +424,155 @@ def build() -> Path:
         story.append(bullet(item, s["bullet"]))
 
     story.append(PageBreak())
-    story.append(para("4. Verified first milestone", s["h1"]))
+    story.append(para("4. Real-log adapter and evidence ablations", s["h1"]))
+    story.append(
+        para(
+            "Inspect AI 0.3.260 was selected as the first adapter target after official source review and a genuine offline mock-model run. Approval and tool events correlate on the call ID. Approved execution provides a result and completion timestamp; policy rejection produces a reject decision plus a correlated approval error.",
+            s["body"],
+        )
+    )
+    story.append(para("Fail-closed adapter boundary", s["h2"]))
+    coverage_rows = [
+        [
+            para("Evidence field", s["table_header"]),
+            para("Generic Inspect JSON", s["table_header"]),
+            para("Adapter treatment", s["table_header"]),
+        ],
+        [
+            para("Proposal and arguments", s["table"]),
+            para("Supported", s["table"]),
+            para("Normalized by tool-call ID", s["table"]),
+        ],
+        [
+            para("Approval decision", s["table"]),
+            para("Supported when approval events exist", s["table"]),
+            para("Correlated; contradictions become unknown", s["table"]),
+        ],
+        [
+            para("Coarse execution status", s["table"]),
+            para("Supported through result, error, and completion", s["table"]),
+            para("Success, denied, pre-exec failure, or unknown", s["table"]),
+        ],
+        [
+            para("Partial or transient side effects", s["table"]),
+            para("Not generic", s["table"]),
+            para("Never inferred", s["table"]),
+        ],
+        [
+            para("Final environment state", s["table"]),
+            para("Not generic", s["table"]),
+            para("Attack-success readiness remains false", s["table"]),
+        ],
+    ]
+    coverage_table = Table(
+        coverage_rows,
+        colWidths=[1.6 * inch, 2.4 * inch, 2.6 * inch],
+        repeatRows=1,
+    )
+    coverage_table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT]),
+                ("GRID", (0, 0), (-1, -1), 0.35, RULE),
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+            ]
+        )
+    )
+    story.append(coverage_table)
+    story.append(Spacer(1, 8))
+    approved_call = inspect_approved["calls"][0]
+    rejected_call = inspect_rejected["calls"][0]
+    story.append(para("Fresh full-log integration result", s["h2"]))
+    integration_rows = [
+        [
+            para("Fixture", s["table_header"]),
+            para("Approval", s["table_header"]),
+            para("Normalized status", s["table_header"]),
+            para("Error", s["table_header"]),
+            para("Result", s["table_header"]),
+        ],
+        [
+            para("Approved", s["table"]),
+            para(", ".join(approved_call["approval_decisions"]), s["table"]),
+            para(approved_call["execution_status"], s["table"]),
+            para(approved_call["error_type"] or "none", s["table"]),
+            para(str(approved_call["result_present"]).lower(), s["table"]),
+        ],
+        [
+            para("Rejected", s["table"]),
+            para(", ".join(rejected_call["approval_decisions"]), s["table"]),
+            para(rejected_call["execution_status"], s["table"]),
+            para(rejected_call["error_type"] or "none", s["table"]),
+            para(str(rejected_call["result_present"]).lower(), s["table"]),
+        ],
+    ]
+    integration_table = Table(
+        integration_rows,
+        colWidths=[1.1 * inch, 1.1 * inch, 1.45 * inch, 1.1 * inch, 0.9 * inch],
+        repeatRows=1,
+    )
+    integration_table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT]),
+                ("GRID", (0, 0), (-1, -1), 0.35, RULE),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+            ]
+        )
+    )
+    story.append(integration_table)
+    story.append(Spacer(1, 8))
+    story.append(para("Receipt-evidence ablations", s["h2"]))
+    ablation_rows = [
+        [
+            para("Condition", s["table_header"]),
+            para("Accuracy", s["table_header"]),
+            para("False safe", s["table_header"]),
+            para("Abstain", s["table_header"]),
+        ]
+    ]
+    for name, result in ablations["ablations"].items():
+        ablation_rows.append(
+            [
+                para(name.replace("_", " "), s["table"]),
+                f"{result['accuracy']:.3f}",
+                f"{result['false_safe_rate']:.3f}",
+                f"{result['abstention_rate']:.3f}",
+            ]
+        )
+    ablation_table = Table(
+        ablation_rows,
+        colWidths=[2.7 * inch, 0.9 * inch, 0.9 * inch, 0.9 * inch],
+        repeatRows=1,
+    )
+    ablation_table.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), NAVY),
+                ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, LIGHT]),
+                ("GRID", (0, 0), (-1, -1), 0.35, RULE),
+                ("ALIGN", (1, 1), (-1, -1), "RIGHT"),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+            ]
+        )
+    )
+    story.append(ablation_table)
+    story.append(
+        para(
+            "Critical finding: removing effect records while retaining success status creates a 0.417 false-safe rate. This is frozen evidence that the v1 receipt-aware scorer can mistake missing effect detail for no harm; v1 must remain unchanged while a separately versioned v2 is designed.",
+            s["callout"],
+        )
+    )
+
+    story.append(PageBreak())
+    story.append(para("5. Verified expanded milestone", s["h1"]))
     story.append(metric_table(report, s))
     story.append(Spacer(1, 8))
     story.append(para("What the finite results show", s["h2"]))
@@ -432,10 +587,12 @@ def build() -> Path:
     receipt = Table(
         [
             [para("Check", s["table_header"]), para("Observed outcome", s["table_header"])],
-            [para("pytest", s["table"]), para("8 passed", s["table"])],
+            [para("pytest", s["table"]), para("16 passed", s["table"])],
             [para("Ruff", s["table"]), para("All checks passed", s["table"])],
-            [para("mypy --strict", s["table"]), para("No issues in 10 source files", s["table"])],
+            [para("mypy --strict", s["table"]), para("No issues in 13 source files", s["table"])],
             [para("Offline report", s["table"]), para("Deterministic JSON and Markdown generated with no API key", s["table"])],
+            [para("Baseline lock", s["table"]), para("Seven frozen files verified", s["table"])],
+            [para("Inspect integration", s["table"]), para("Fresh approved and rejected full logs normalized correctly", s["table"])],
             [para("Results JSON SHA-256", s["table"]), para("b7ad1de4c15cabd64360c55e2ba451ecc813d8e3a3abe1dfac904589234ef093", s["small"])],
         ],
         colWidths=[1.55 * inch, 5.05 * inch],
@@ -452,22 +609,23 @@ def build() -> Path:
     story.append(receipt)
 
     story.append(PageBreak())
-    story.append(para("5. Limitations and next gates", s["h1"]))
+    story.append(para("6. Limitations and next gates", s["h1"]))
     for item in [
         "The cases are hand-authored synthetic fixtures. Exact finite-corpus results do not estimate real-world model or framework behavior.",
-        "The receipt-aware scorer is favored by the ontology and must survive non-circular receipt ablations and held-out mutations.",
+        "The receipt-aware scorer is favored by the ontology; effect-record ablation now proves a v1 false-safe weakness that requires a separately versioned v2.",
         "Mutants derived from one base case are correlated. Any later bootstrap must resample scenario families and be described only as corpus-sensitivity analysis.",
-        "One real-log adapter is required before claiming framework relevance, and only if public logs expose the necessary execution evidence.",
+        "The Inspect adapter proves proposal, approval, and coarse execution coverage only; domain side effects and attack success remain unsupported.",
         "Independent label review and a protected no-AI ownership gate remain uncompleted.",
     ]:
         story.append(bullet(item, s["bullet"]))
     story.append(para("Required next milestone", s["h2"]))
     for item in [
-        "Freeze the current corpus and scorers.",
+        "Preserve the verified baseline-v1 lock and do not rewrite its scorer results.",
         "Add one held-out or separately authored mutation family.",
-        "Predeclare receipt-field ablations and leave-one-family-out sensitivity.",
+        "Design a v2 scorer that abstains on successful prohibited calls with missing effect evidence.",
+        "Run leave-one-family-out sensitivity without treating correlated mutants as independent samples.",
         "Obtain independent case-label review.",
-        "Add one thin Inspect or AgentDojo adapter without changing the core.",
+        "Add a domain-specific Inspect extension only if it can supply validated side-effect and final-state evidence.",
         "Complete the separate changed-contract, seeded-debugging, explanation, and clean-reproduction ownership gate.",
     ]:
         story.append(bullet(item, s["bullet"]))
@@ -476,7 +634,7 @@ def build() -> Path:
             [
                 para("Claim boundary", s["h2"]),
                 para(
-                    "Truthful current phrasing: Codex-assisted offline Python benchmark kernel with deterministic synthetic results. Unsupported phrasing: independently built proof of Python fluency, first-ever mutation benchmark, proof that a framework is unsafe, or completed empirical research study.",
+                    "Truthful current phrasing: Codex-assisted offline Python benchmark with frozen synthetic results, verified evidence ablations, and a fail-closed Inspect execution-evidence adapter. Unsupported phrasing: independently built proof of Python fluency, first-ever mutation benchmark, generic Inspect attack-success scoring, proof that a framework is unsafe, or completed empirical research study.",
                     s["callout"],
                 ),
             ]
@@ -490,6 +648,8 @@ def build() -> Path:
         ("Scale AI", "AI Builder Intern", "https://scale.com/careers/4703343005"),
         ("Quadrillion", "Software Engineering Intern", "https://jobs.ashbyhq.com/quadrillion-labs/601e105d-2f0f-4482-9bae-3a825a1b97fd"),
         ("UK AI Security Institute", "Inspect AI tasks and log documentation", "https://inspect.aisi.org.uk/tasks.html"),
+        ("UK AI Security Institute", "Inspect AI ToolEvent source", "https://github.com/UKGovernmentBEIS/inspect_ai/blob/main/src/inspect_ai/event/_tool.py"),
+        ("UK AI Security Institute", "Inspect AI ApprovalEvent source", "https://github.com/UKGovernmentBEIS/inspect_ai/blob/main/src/inspect_ai/event/_approval.py"),
         ("UK AI Security Institute and Redwood Research", "ControlArena", "https://github.com/UKGovernmentBEIS/control-arena"),
         ("ETH Zurich SPY Lab and collaborators", "AgentDojo repository and NeurIPS 2024 paper", "https://github.com/ethz-spylab/agentdojo"),
         ("AgentDojo public tracker", "Issue #168: attempted-but-blocked calls scored as attack success", "https://github.com/ethz-spylab/agentdojo/issues/168"),

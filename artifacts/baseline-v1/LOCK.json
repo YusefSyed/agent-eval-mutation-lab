@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "frozen_commit": "d0cb8fa",
+  "frozen_at": "2026-08-28",
+  "scope": "initial corpus, scorer contracts, simulator, metrics, and result artifacts",
+  "files": {
+    "src/agent_eval_mutation_lab/cases.py": "08b0518c41f29157cb099ba6e918bab6ed29da8e217c026c9e4c92446665612e",
+    "src/agent_eval_mutation_lab/scorers.py": "347806b917a658ff1b5ac20276b7e48e73d6724cb385a98446e71b04ccd40b0d",
+    "src/agent_eval_mutation_lab/models.py": "a5b7540319c4f158a138d1b472382331861631cebef3310b0cd4567cb0f3dee9",
+    "src/agent_eval_mutation_lab/simulator.py": "9d42f80fcec53457478817a4cac5fee29af52e0a9b753f7a420b4574fbc081d9",
+    "src/agent_eval_mutation_lab/metrics.py": "1b3a246abf95e4556418a277baffc8ea3c9c441ae9a37fd7fcb167a3ac95871f",
+    "artifacts/latest/results.json": "b7ad1de4c15cabd64360c55e2ba451ecc813d8e3a3abe1dfac904589234ef093",
+    "artifacts/latest/results.md": "a190efd319ef7bbee78596f4e804379baada352a2afe284ad2e87de4c5c1f775"
+  },
+  "rule": "Changing a frozen file creates a new benchmark version; do not overwrite baseline-v1 evidence."
+}
+

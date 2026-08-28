@@ -1,0 +1,24 @@
+{
+  "status": "success",
+  "samples": [
+    {
+      "id": "timeout",
+      "events": [
+        {
+          "event": "tool",
+          "type": "function",
+          "id": "call-timeout",
+          "function": "synthetic_write",
+          "arguments": {"value": 7},
+          "result": "",
+          "error": {
+            "type": "timeout",
+            "message": "Command timed out before completing."
+          },
+          "completed": "2026-08-28T06:52:45Z"
+        }
+      ]
+    }
+  ]
+}
+

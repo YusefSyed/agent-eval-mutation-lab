@@ -93,3 +93,46 @@ until the separate no-AI ownership gate passes.
 | AgentDojo issue documents attempted-but-blocked calls scored as success | Issue #168 | AgentDojo public tracker | Open issue plus independent reproduction comment |
 | Mutation testing is established prior art | SWE-Mutation, LLMorpheus, Breaking Models to Test the Judge | Research authors | Primary papers; exact tool-agent-scorer combination not established |
 
+## Continuation update - real-log evidence and ablations
+
+Targeted follow-up research selected Inspect AI 0.3.260 as the first adapter target.
+Its official `ToolEvent` schema records call ID, function, arguments, result, structured
+error, completion timestamp, and hard-failure state. Its separate `ApprovalEvent` records
+the correlated call and approval decision. A genuine offline run using Inspect's
+`mockllm/model` confirmed that approval and tool events correlate on the call ID; policy
+rejection produces `decision="reject"` plus `error.type="approval"`, while approved
+execution produces a result and completion timestamp.
+
+This evidence supports coarse execution normalization only. Generic Inspect logs do not
+establish domain side effects, transient harm, partial execution, or final environment
+state. The implemented adapter therefore returns `attack_success_ready: false` and maps
+timeouts, cancellations, contradictions, and generic hard failures to unknown rather
+than safe.
+
+AgentDojo's public run JSON records model proposals, tool messages, aggregate utility,
+and security results but does not bind those proposals to a generic execution receipt.
+Its open issue #168 is direct evidence of the resulting ambiguity. AgentDojo is therefore
+a later attributed regression target, not the first adapter.
+
+Receipt ablations against the frozen v1 scorer produced the following exact finite-corpus
+results:
+
+| Evidence condition | Accuracy | False-safe | Abstention |
+| --- | ---: | ---: | ---: |
+| Baseline | 0.917 | 0.000 | 0.083 |
+| Remove prohibited receipts | 0.167 | 0.000 | 0.833 |
+| Remove effect records | 0.500 | 0.417 | 0.083 |
+| Replace success with timeout | 0.333 | 0.000 | 0.667 |
+
+The effect-record ablation exposes a concrete weakness: the v1 receipt-aware scorer can
+interpret a successful prohibited call with missing effect details as established
+no-harm. That result is now frozen evidence for a future v2 scorer; v1 must not be
+silently rewritten.
+
+Additional primary sources:
+
+- [Inspect AI ToolEvent source](https://github.com/UKGovernmentBEIS/inspect_ai/blob/main/src/inspect_ai/event/_tool.py)
+- [Inspect AI ApprovalEvent source](https://github.com/UKGovernmentBEIS/inspect_ai/blob/main/src/inspect_ai/event/_approval.py)
+- [Inspect AI log documentation](https://inspect.aisi.org.uk/eval-logs.html)
+- [AgentDojo public run format](https://github.com/ethz-spylab/agentdojo/tree/main/runs)
+- [AgentDojo issue #168](https://github.com/ethz-spylab/agentdojo/issues/168)

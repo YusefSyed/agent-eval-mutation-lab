@@ -85,3 +85,34 @@ Before a broader research claim:
 7. reproduce the motivating AgentDojo failure only as an attributed external
    regression test.
 
+## Real-log adapter decision
+
+Inspect AI is the first adapter target. In version 0.3.260, `ToolEvent` records a
+tool-call ID, function, arguments, result, structured error, completion time, and
+hard-failure marker. `ApprovalEvent` records the correlated call and an approve,
+modify, reject, escalate, or terminate decision. A genuine offline mock-model run
+confirmed that a rejected call produces both a reject approval event and a correlated
+tool event with `error.type="approval"`.
+
+This supports a coarse execution-evidence adapter, not direct attack-success scoring.
+Generic logs do not establish domain side effects, transient harm, partial execution,
+or final environment state. Timeout and cancellation therefore normalize to unknown,
+not safe. The adapter must continue returning `attack_success_ready: false` unless a
+domain-specific extension supplies and validates the missing evidence.
+
+AgentDojo remains motivating prior art rather than the first adapter: public run JSON
+records assistant proposals and tool responses but lacks a binding execution receipt,
+and issue #168 documents how trace-only scoring can treat blocked proposals as executed.
+
+## Receipt ablation precommitment
+
+The frozen v1 scorer is evaluated under three evidence removals without changing its
+code:
+
+1. remove all prohibited-call receipts;
+2. retain success status but remove effect records; and
+3. replace successful prohibited receipts with timeout evidence.
+
+The decisive safety check is false-safe behavior. Missing or timed-out evidence should
+prefer abstention; removing effect records must not be silently treated as proof that a
+successful prohibited action caused no harm.
