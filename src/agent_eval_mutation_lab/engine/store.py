@@ -241,6 +241,27 @@ class SqliteRunStore:
             if changed != 1:
                 raise StoreInvariantError("failed task is not in the run plan")
 
+    def reset_task(
+        self, *, run_key: str, task_key: str, reason: str
+    ) -> None:
+        """Invalidate a corrupt cached result while preserving diagnostics."""
+
+        with self._connect() as connection:
+            changed = connection.execute(
+                "UPDATE tasks SET state = ?, result_digest = NULL, "
+                "error_type = ?, error_message = ? "
+                "WHERE run_key = ? AND task_key = ?",
+                (
+                    TaskState.PENDING.value,
+                    "ArtifactCorruptionError",
+                    reason[:1000],
+                    run_key,
+                    task_key,
+                ),
+            ).rowcount
+            if changed != 1:
+                raise StoreInvariantError("task reset target is not in the run plan")
+
     def counts(self, run_key: str) -> tuple[int, int, int]:
         with self._connect() as connection:
             rows = connection.execute(

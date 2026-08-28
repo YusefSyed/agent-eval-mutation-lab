@@ -92,6 +92,27 @@ def test_content_addressed_store_detects_corruption(tmp_path: Path) -> None:
         artifacts.load_task_record(stored)
 
 
+def test_corrupt_cached_object_is_quarantined_and_recomputed(
+    tmp_path: Path,
+) -> None:
+    plan = plan_run(build_default_run_spec(PROJECT_ROOT))
+    store, artifacts = _runtime(tmp_path)
+    first = run_resumable(plan, store=store, artifacts=artifacts)
+    cached = store.completed_artifact(
+        plan.run_key, plan.tasks[0].worker.context.task_key
+    )
+    assert cached is not None
+    path = artifacts.root / cached.relative_path
+    path.write_bytes(b"corrupt\n")
+
+    repaired = run_resumable(plan, store=store, artifacts=artifacts)
+    assert repaired.state is RunState.COMPLETE
+    assert repaired.executed_tasks == 1
+    assert repaired.resumed_tasks == 103
+    assert repaired.records == first.records
+    assert list((artifacts.root / "quarantine").glob("*.corrupt"))
+
+
 def test_duplicate_task_key_cannot_change_result_digest(tmp_path: Path) -> None:
     plan = plan_run(build_default_run_spec(PROJECT_ROOT))
     store, artifacts = _runtime(tmp_path)

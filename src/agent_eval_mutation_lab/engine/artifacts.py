@@ -82,3 +82,21 @@ class ContentAddressedStore:
             raise ArtifactCorruptionError(
                 f"artifact {artifact.digest} is not a valid task record"
             ) from error
+
+    def quarantine(self, artifact: StoredArtifact) -> Path | None:
+        """Move a corrupt object aside so deterministic recomputation can proceed."""
+
+        source = self.root / artifact.relative_path
+        if not source.exists():
+            return None
+        destination_dir = self.root / "quarantine"
+        destination_dir.mkdir(parents=True, exist_ok=True)
+        destination = destination_dir / f"{artifact.digest}.corrupt"
+        suffix = 1
+        while destination.exists():
+            destination = destination_dir / (
+                f"{artifact.digest}.{suffix}.corrupt"
+            )
+            suffix += 1
+        os.replace(source, destination)
+        return destination

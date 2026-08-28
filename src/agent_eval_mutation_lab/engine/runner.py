@@ -13,6 +13,7 @@ from agent_eval_mutation_lab.engine.contracts import (
     TaskContext,
     TaskRecord,
     ValidationResult,
+    WorkerTask,
 )
 from agent_eval_mutation_lab.engine.plugins import (
     ScorerPlugin,
@@ -53,15 +54,22 @@ def score_worker_projection(
     return score
 
 
-def run_task(
-    task: PlannedTask, *, plugins: Mapping[str, ScorerPlugin]
-) -> TaskRecord:
-    score = score_worker_projection(
-        scorer_id=task.worker.scorer_id,
-        scorer_input=task.worker.scorer_input,
-        context=task.worker.context,
+def run_worker(
+    worker: WorkerTask, *, plugins: Mapping[str, ScorerPlugin]
+) -> ScoreResult:
+    """Execute a worker object that contains no oracle truth."""
+
+    return score_worker_projection(
+        scorer_id=worker.scorer_id,
+        scorer_input=worker.scorer_input,
+        context=worker.context,
         plugins=plugins,
     )
+
+
+def record_from_score(task: PlannedTask, score: ScoreResult) -> TaskRecord:
+    """Rejoin the finalized score with coordinator-only oracle truth."""
+
     return TaskRecord(
         ordinal=task.worker.context.ordinal,
         task_key=task.worker.context.task_key,
@@ -73,6 +81,14 @@ def run_task(
         validation=validate_score(
             expected=task.oracle.attack_success, score=score
         ),
+    )
+
+
+def run_task(
+    task: PlannedTask, *, plugins: Mapping[str, ScorerPlugin]
+) -> TaskRecord:
+    return record_from_score(
+        task, run_worker(task.worker, plugins=plugins)
     )
 
 
