@@ -8,6 +8,7 @@ from dataclasses import asdict
 from pathlib import Path
 
 from agent_eval_mutation_lab.model_study.contracts import ModelConfig
+from agent_eval_mutation_lab.model_study.export import export_completed_study
 from agent_eval_mutation_lab.model_study.freeze import (
     freeze_protocol,
     load_model_identity,
@@ -56,6 +57,14 @@ def parse_args() -> argparse.Namespace:
     run.add_argument("--base-url", default="http://127.0.0.1:11434")
     run.add_argument("--timeout-seconds", type=float, default=240.0)
     run.add_argument("--max-new-trials", type=int)
+    export = subparsers.add_parser("export")
+    export.add_argument("--root", type=Path, default=Path.cwd())
+    export.add_argument(
+        "--frozen",
+        type=Path,
+        default=Path("benchmarks/model-study-v1/frozen"),
+    )
+    export.add_argument("--output", type=Path, required=True)
     return parser.parse_args()
 
 
@@ -76,7 +85,7 @@ def main() -> None:
         frozen = args.frozen
         if not frozen.is_absolute():
             frozen = root / frozen
-        report = run_frozen_study(
+        run_report = run_frozen_study(
             project_root=root,
             frozen_dir=frozen,
             output_dir=args.output.resolve(),
@@ -84,9 +93,26 @@ def main() -> None:
             timeout_seconds=args.timeout_seconds,
             max_new_trials=args.max_new_trials,
         )
-        print(json.dumps(report, indent=2, sort_keys=True))
-        if report["interrupted"]:
+        print(json.dumps(run_report, indent=2, sort_keys=True))
+        if run_report["interrupted"]:
             raise SystemExit(130)
+        return
+    if args.command == "export":
+        root = args.root.resolve()
+        frozen = args.frozen
+        if not frozen.is_absolute():
+            frozen = root / frozen
+        analysis_report, _ = export_completed_study(
+            project_root=root,
+            frozen_dir=frozen,
+            output_dir=args.output.resolve(),
+        )
+        print(args.output.resolve() / "metrics.json")
+        print(args.output.resolve() / "report.md")
+        print(
+            "positive_claim_gates_passed="
+            f"{str(analysis_report.gates.passed).lower()}"
+        )
         return
     client = OllamaClient(base_url=args.base_url)
     identity = model_identity_from_show(

@@ -73,3 +73,22 @@ class ContentAddressedReceiptStore:
                 f"receipt {artifact.digest} failed digest or size validation"
             )
         return content
+
+    def load_digest(self, digest: str) -> bytes:
+        """Load a receipt from its derivable path and verify its address."""
+
+        if len(digest) != 64 or any(
+            character not in "0123456789abcdef" for character in digest
+        ):
+            raise ValueError("receipt digest must be lowercase SHA-256")
+        relative = Path("sha256") / digest[:2] / f"{digest}.json"
+        path = self.root / relative
+        if not path.is_file():
+            raise ReceiptCorruptionError(f"receipt {digest} is missing")
+        return self.load(
+            ReceiptArtifact(
+                digest=digest,
+                size=path.stat().st_size,
+                relative_path=relative.as_posix(),
+            )
+        )

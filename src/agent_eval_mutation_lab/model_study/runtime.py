@@ -176,7 +176,7 @@ def _run_one(
         error_type: str | None = None
         normalized: dict[str, object] | None = None
         try:
-            normalized = _normalize_response(trial, receipt.response_content)
+            normalized = normalize_response(trial, receipt.response_content)
         except (json.JSONDecodeError, ValueError) as error:
             status = TerminalStatus.INVALID_RESPONSE
             error_type = type(error).__name__
@@ -204,7 +204,7 @@ def _run_one(
         return
 
 
-def _normalize_response(
+def normalize_response(
     trial: FrozenTrial,
     content: str,
 ) -> dict[str, object]:

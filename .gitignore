@@ -8,3 +8,5 @@ dist/
 tmp/
 .coverage
 htmlcov/
+# Partial live-model state is published only after complete offline replay.
+artifacts/model-study/v1/

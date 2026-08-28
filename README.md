@@ -161,6 +161,11 @@ and response bytes by SHA-256, permits one retry only after a response-free tran
 failure, and resumes pending trials in frozen order. It does not export aggregate
 evidence from a partial run.
 
+After all 624 trials finalize, the offline exporter replays every content-addressed
+request and response, revalidates structured outputs and evidence citations, joins
+the separately frozen oracle ledger, computes the preregistered metrics and
+composition sensitivities, and writes canonical JSONL/JSON/Markdown with checksums.
+
 ## Reproduce everything from a clean directory
 
 ```bash

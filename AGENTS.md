@@ -91,6 +91,7 @@ uv run agent-eval-mutate-v2
 uv run agent-eval-model-study preflight --tag MODEL --output tmp/preflight
 uv run agent-eval-model-study pilot --tag MODEL --output tmp/pilot
 uv run agent-eval-model-study run --output artifacts/model-study/v1
+uv run agent-eval-model-study export --output artifacts/model-study/v1
 ```
 
 ## Definition of done
