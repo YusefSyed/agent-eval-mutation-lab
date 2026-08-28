@@ -12,6 +12,18 @@ from typing import Any
 
 from agent_eval_mutation_lab.baseline_lock import verify_lock
 from agent_eval_mutation_lab.benchmark import run_benchmark
+from agent_eval_mutation_lab.engine.artifacts import ContentAddressedStore
+from agent_eval_mutation_lab.engine.equivalence import (
+    assert_legacy_v2_equivalence,
+)
+from agent_eval_mutation_lab.engine.export import write_run_artifacts
+from agent_eval_mutation_lab.engine.planner import (
+    build_default_run_spec,
+    plan_run,
+)
+from agent_eval_mutation_lab.engine.plugins import default_scorer_plugins
+from agent_eval_mutation_lab.engine.runtime import run_resumable
+from agent_eval_mutation_lab.engine.store import SqliteRunStore
 from agent_eval_mutation_lab.family_sensitivity import (
     run_family_sensitivity,
     write_family_reports,
@@ -39,6 +51,10 @@ CORE_ARTIFACTS = (
     Path("review/packet/blind-cases.json"),
     Path("review/packet/review-form.json"),
     Path("review/packet/MANIFEST.json"),
+    Path("artifacts/engine/latest/results.jsonl"),
+    Path("artifacts/engine/latest/run-manifest.json"),
+    Path("artifacts/engine/latest/report.html"),
+    Path("artifacts/engine/latest/SHA256SUMS"),
 )
 
 
@@ -62,7 +78,9 @@ def _sha256(path: Path) -> str | None:
     return digest.hexdigest()
 
 
-def build_core_artifacts(output_root: Path) -> tuple[Path, ...]:
+def build_core_artifacts(
+    output_root: Path, *, project_root: Path | None = None
+) -> tuple[Path, ...]:
     """Regenerate every deterministic core artifact below ``output_root``."""
 
     write_reports(run_benchmark(), output_root / "artifacts/latest")
@@ -72,6 +90,22 @@ def build_core_artifacts(output_root: Path) -> tuple[Path, ...]:
     write_v2_reports(run_v2_comparison(), output_root / "artifacts/v2")
     write_family_reports(run_family_sensitivity(), output_root / "artifacts/v2")
     write_review_packet(output_root / "review/packet")
+    source_root = (
+        Path(__file__).resolve().parents[2]
+        if project_root is None
+        else project_root.resolve()
+    )
+    engine_output = output_root / "artifacts/engine/latest"
+    plugins = default_scorer_plugins()
+    plan = plan_run(build_default_run_spec(source_root), plugins=plugins)
+    summary = run_resumable(
+        plan,
+        store=SqliteRunStore(engine_output / "run.sqlite3"),
+        artifacts=ContentAddressedStore(engine_output / "objects"),
+        plugins=plugins,
+    )
+    assert_legacy_v2_equivalence(summary.records, run_v2_comparison())
+    write_run_artifacts(plan, summary, engine_output, plugins=plugins)
     return tuple(output_root / relative for relative in CORE_ARTIFACTS)
 
 
@@ -104,7 +138,7 @@ def verify_reproduction(project_root: Path) -> dict[str, Any]:
     )
     with tempfile.TemporaryDirectory(prefix="agent-eval-reproduce-") as raw_dir:
         generated_root = Path(raw_dir)
-        build_core_artifacts(generated_root)
+        build_core_artifacts(generated_root, project_root=project_root)
         checks = compare_core_artifacts(project_root, generated_root)
 
     verified = bool(lock["verified"]) and all(check.matches for check in checks)

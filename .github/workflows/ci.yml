@@ -37,8 +37,10 @@ jobs:
       - name: Type-check
         run: uv run --frozen mypy
 
-      - name: Test
-        run: uv run --frozen pytest
+      - name: Test with package branch coverage
+        run: |
+          uv run --frozen coverage run -m pytest
+          uv run --frozen coverage report
 
       - name: Verify frozen and regenerated evidence
         run: uv run --frozen agent-eval-reproduce --verify

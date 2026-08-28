@@ -32,6 +32,10 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Scorers | `scorers.py` | Each scorer has an explicit target contract |
 | Metrics | `metrics.py` | Evidence-withholding cases are not invariance pairs |
 | Reports | `benchmark.py`, `report.py` | Same inputs must emit byte-identical JSON/Markdown |
+| Engine contracts | `engine/contracts.py`, `engine/planner.py` | WorkerTask never contains oracle truth |
+| Engine execution | `engine/runner.py`, `engine/scheduler.py` | Workers score; coordinator validates and commits |
+| Durable state | `engine/store.py`, `engine/artifacts.py` | SQLite is derived; JSON object digests are verified |
+| Engine evidence | `engine/export.py`, `engine/aggregation.py` | Canonical order excludes operational noise |
 | Research | `DESIGN.md`, `PRIOR_ART.md`, `ASSISTANCE.md` | No first-ever, framework-safety, or unaided-fluency claim |
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
@@ -46,6 +50,10 @@ scorer-safe observation, each scorer, and the generated case result.
 | Receipt scorer appears oracle-like | `ObservedTrajectory`, `receipt_aware_scorer` | scorer-view negative test |
 | Results changed unexpectedly | `cases.py`, scorers, metrics | two clean runs plus `cmp` |
 | PDF disagrees with results | `artifacts/latest/results.json`, report builder | regenerate, render all pages |
+| Engine result changes by worker count | `engine/scheduler.py`, task keys | scheduler equivalence tests |
+| Resume repeats completed work | `engine/runtime.py`, `engine/store.py` | persistence and scheduler tests |
+| Cached object fails hash | `engine/artifacts.py`, task ledger | corruption quarantine test |
+| HTML differs from JSONL | `engine/export.py`, `engine/aggregation.py` | export consistency tests |
 
 ## Working safely
 
@@ -74,6 +82,7 @@ uv run agent-eval-build-review --output review/packet
 uv run agent-eval-validate-holdout holdout-submission.json
 uv run agent-eval-ownership-preflight
 uv run agent-eval-reproduce --verify
+uv run agent-eval-engine --workers 1 --output artifacts/engine/latest
 ```
 
 ## Definition of done
@@ -81,6 +90,10 @@ uv run agent-eval-reproduce --verify
 - Targeted and negative contract tests pass.
 - Ruff and strict mypy pass.
 - Two clean runs produce byte-identical JSON and Markdown.
+- Sequential, parallel, interrupted/resumed, cold-cache, and warm-cache engine runs
+  preserve the same canonical task records and semantic run identity.
+- `agent-eval-reproduce --verify` matches all 15 committed canonical artifacts.
+- Package-only branch coverage remains at or above the configured 80% floor.
 - Public claims remain bounded to current finite evidence.
 - Dated PDF and generated artifacts agree with the current result hash.
 - Unrelated career-workspace state is untouched.

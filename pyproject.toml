@@ -1,11 +1,29 @@
 [project]
 name = "agent-eval-mutation-lab"
-version = "0.1.0"
-description = "Offline mutation benchmark for execution-semantic agent scorers"
+version = "0.2.0"
+description = "Typed deterministic mutation engine for execution-semantic agent scorers"
 readme = "README.md"
 requires-python = ">=3.12"
 license = { text = "MIT" }
 authors = [{ name = "Yusef Syed" }]
+keywords = [
+  "agent-evaluation",
+  "ai-safety",
+  "mutation-testing",
+  "reliability",
+  "reproducible-research",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Typing :: Typed",
+]
 dependencies = []
 
 [project.scripts]
@@ -20,9 +38,11 @@ agent-eval-family-sensitivity = "agent_eval_mutation_lab.family_sensitivity:main
 agent-eval-validate-holdout = "agent_eval_mutation_lab.holdout_intake:main"
 agent-eval-ownership-preflight = "agent_eval_mutation_lab.ownership_readiness:main"
 agent-eval-reproduce = "agent_eval_mutation_lab.reproduction:main"
+agent-eval-engine = "agent_eval_mutation_lab.engine.cli:main"
 
 [dependency-groups]
 dev = [
+  "coverage>=7.15.4",
   "mypy>=1.18.0",
   "pytest>=8.4.0",
   "ruff>=0.12.0",
@@ -53,3 +73,12 @@ select = ["E", "F", "I", "UP", "B", "SIM"]
 python_version = "3.12"
 strict = true
 packages = ["agent_eval_mutation_lab"]
+
+[tool.coverage.run]
+branch = true
+source = ["agent_eval_mutation_lab"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_covered = true

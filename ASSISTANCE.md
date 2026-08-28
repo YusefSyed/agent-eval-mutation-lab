@@ -19,6 +19,12 @@ another AI assistant, to:
 Until then, truthful phrasing is "Codex-assisted benchmark under active ownership
 validation," not "independently built" or "proof of Python fluency."
 
+This boundary does not erase the repository's verified engineering evidence. A
+portfolio or résumé may accurately describe the typed deterministic engine,
+transactional resume, content-addressed artifacts, schedule-independence tests, and
+finite-corpus results when the public repository retains this assistance disclosure.
+It must not convert those facts into an unaided-authorship or general-safety claim.
+
 The blind review packet under `review/packet/` is for an external human label audit.
 Preparing the packet and verifier does not count as completing the review. The reviewer
 must receive only the blind cases and an unfilled copy of the form, and the returned

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Agent Eval Mutation Lab — Evidence Report</title>
+  <style>
+    :root {
+      --bg: #071014;
+      --panel: #0e1b21;
+      --panel-2: #13262d;
+      --text: #eef8f6;
+      --muted: #9db7b3;
+      --accent: #65e6c4;
+      --accent-2: #80aaff;
+      --warning: #ffc46b;
+      --line: #29434a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 10% 0%, #123a3a 0, transparent 32rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.6 ui-sans-serif, system-ui, sans-serif;
+    }
+    a { color: var(--accent); }
+    code { font-family: ui-monospace, SFMono-Regular, monospace; }
+    .skip { position: absolute; left: -9999px; }
+    .skip:focus { left: 1rem; top: 1rem; z-index: 3; }
+    .wrap { width: min(1160px, calc(100% - 2rem)); margin: auto; }
+    header { padding: 5rem 0 2rem; }
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 750;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 900px;
+      margin: .5rem 0 1rem;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+    .lede { max-width: 760px; color: var(--muted); font-size: 1.15rem; }
+    .status {
+      display: inline-flex;
+      gap: .5rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding: .45rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      font-weight: 750;
+    }
+    .status.ok { color: var(--accent); }
+    .status.warn { color: var(--warning); }
+    main { padding-bottom: 5rem; }
+    section { margin-top: 1.25rem; padding: 1.5rem; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      background: linear-gradient(145deg, var(--panel), var(--panel-2));
+      box-shadow: 0 24px 60px #0005;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+      gap: .8rem;
+    }
+    .stat { padding: 1rem; border-left: 3px solid var(--accent-2); }
+    .stat strong { display: block; font-size: 2rem; line-height: 1.1; }
+    .stat span { color: var(--muted); }
+    h2 { margin-top: 0; font-size: 1.6rem; }
+    h3 { margin-bottom: .3rem; color: var(--accent); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 850px; }
+    caption { text-align: left; color: var(--muted); padding-bottom: .8rem; }
+    th, td { padding: .7rem; border-bottom: 1px solid var(--line); }
+    th { text-align: left; color: var(--muted); font-size: .85rem; }
+    td:not(:first-child):not(:nth-child(2)) { font-variant-numeric: tabular-nums; }
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+      gap: .65rem;
+      list-style: none;
+      padding: 0;
+    }
+    .pipeline li {
+      min-height: 7rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: .8rem;
+      background: #07101499;
+    }
+    .pipeline b { display: block; color: var(--accent-2); }
+    .hash {
+      overflow-wrap: anywhere;
+      padding: .8rem;
+      background: #050b0e;
+      border-radius: .6rem;
+      color: var(--muted);
+    }
+    .warning { border-left: 4px solid var(--warning); }
+    details { margin-top: .8rem; }
+    summary { cursor: pointer; color: var(--accent); font-weight: 700; }
+    footer { padding: 2rem 0 4rem; color: var(--muted); }
+    @media (max-width: 620px) {
+      header { padding-top: 3rem; }
+      section { padding: 1rem; }
+      table { min-width: 0; }
+      thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+      }
+      tbody, tr, td { display: block; }
+      tbody tr {
+        margin-top: .85rem;
+        padding: .7rem;
+        border: 1px solid var(--line);
+        border-radius: .75rem;
+        background: #07101499;
+      }
+      td {
+        display: grid;
+        grid-template-columns: minmax(7.5rem, .8fr) minmax(0, 1.2fr);
+        gap: .75rem;
+        padding: .35rem;
+        border: 0;
+        overflow-wrap: anywhere;
+      }
+      td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-size: .8rem;
+        font-weight: 700;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#results">Skip to results</a>
+  <header class="wrap">
+    <div class="eyebrow">Execution-semantic scorer evaluation</div>
+    <h1>Did the attack execute—or was it only attempted?</h1>
+    <p class="lede">
+      A typed, deterministic, resumable Python engine tests whether tool-agent
+      scorers preserve the boundary between proposals, execution evidence,
+      realized harm, and justified uncertainty.
+    </p>
+    <div class="status ok">COMPLETE · Complete canonical run. No production-safety or population claim.</div>
+  </header>
+  <main class="wrap">
+    <section class="grid" aria-label="Run summary">
+      <div class="panel stat">
+        <strong>104</strong><span>canonical tasks</span>
+      </div>
+      <div class="panel stat">
+        <strong>13</strong><span>synthetic cases</span>
+      </div>
+      <div class="panel stat">
+        <strong>5</strong><span>scenario families</span>
+      </div>
+      <div class="panel stat">
+        <strong>4</strong><span>evidence conditions</span>
+      </div>
+    </section>
+
+    <section class="panel" id="results">
+      <h2>Finite-corpus results</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>
+            Exact descriptive metrics. These are not confidence intervals or
+            population estimates.
+          </caption>
+          <thead>
+            <tr>
+              <th>Evidence condition</th><th>Scorer</th>
+              <th>Tri-state accuracy</th><th>Coverage</th>
+              <th>False safe</th><th>False success</th><th>Unknown overclaims</th>
+            </tr>
+          </thead>
+          <tbody><tr><td data-label="Evidence condition">baseline</td><td data-label="Scorer"><code>receipt_aware_v1_frozen</code></td><td data-label="Tri-state accuracy">92.3%</td><td data-label="Coverage">84.6%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">baseline</td><td data-label="Scorer"><code>evidence_dominance_v2_experimental</code></td><td data-label="Tri-state accuracy">100.0%</td><td data-label="Coverage">92.3%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">remove prohibited receipts</td><td data-label="Scorer"><code>receipt_aware_v1_frozen</code></td><td data-label="Tri-state accuracy">23.1%</td><td data-label="Coverage">15.4%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">remove prohibited receipts</td><td data-label="Scorer"><code>evidence_dominance_v2_experimental</code></td><td data-label="Tri-state accuracy">61.5%</td><td data-label="Coverage">53.8%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">remove effect records</td><td data-label="Scorer"><code>receipt_aware_v1_frozen</code></td><td data-label="Tri-state accuracy">53.8%</td><td data-label="Coverage">84.6%</td><td data-label="False safe">5</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">remove effect records</td><td data-label="Scorer"><code>evidence_dominance_v2_experimental</code></td><td data-label="Tri-state accuracy">76.9%</td><td data-label="Coverage">69.2%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">replace success with timeout</td><td data-label="Scorer"><code>receipt_aware_v1_frozen</code></td><td data-label="Tri-state accuracy">38.5%</td><td data-label="Coverage">30.8%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr>
+<tr><td data-label="Evidence condition">replace success with timeout</td><td data-label="Scorer"><code>evidence_dominance_v2_experimental</code></td><td data-label="Tri-state accuracy">76.9%</td><td data-label="Coverage">69.2%</td><td data-label="False safe">0</td><td data-label="False success">0</td><td data-label="Unknown overclaims">0</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Information-flow architecture</h2>
+      <ol class="pipeline">
+        <li><b>1 · Plan</b>Immutable RunSpec creates 104 content-keyed tasks.</li>
+        <li><b>2 · Project</b>Oracle-only fields are removed before scoring.</li>
+        <li><b>3 · Score</b>Explicit typed plugins return true, false, or unknown.</li>
+        <li><b>4 · Validate</b>The coordinator rejoins finalized scores with truth.</li>
+        <li><b>5 · Commit</b>One writer records immutable results transactionally.</li>
+        <li><b>6 · Export</b>Canonical order erases worker scheduling noise.</li>
+      </ol>
+      <details>
+        <summary>Why no async service or distributed scheduler?</summary>
+        <p>
+          The benchmark is offline and the measured 104-task workload is tiny.
+          Bounded threads exist to test schedule independence, not to claim speed.
+          A network service, generic event sourcing, or mandatory async API would
+          add surface area without stronger evidence.
+        </p>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2>Reproducibility identity</h2>
+      <h3>Run key</h3><div class="hash"><code>e85542f262b8446188c6463526c7aa4c191b62bb694f08a63b746adedb8e239b</code></div>
+      <h3>Semantic run digest</h3>
+      <div class="hash"><code>ea10f4fe5e9603379ae7e7ca568cadb89e1d6d01b278fd30265077f70fbd9de9</code></div>
+      <h3>Canonical results SHA-256</h3>
+      <div class="hash"><code>2f3788d689cf1796c442c5193a67e03e63279c3c525ac184ca8fc3d64a8951cd</code></div>
+      <p>
+        Worker count, completion order, cache timing, absolute paths, timestamps,
+        and SQLite page layout are deliberately excluded from semantic identity.
+      </p>
+    </section>
+
+    <section class="panel warning">
+      <h2>Claim boundary</h2>
+      <p>
+        This report covers a hand-authored finite synthetic corpus. It does not
+        estimate real-world model behavior, validate a production framework,
+        establish general safety, or prove unaided Python authorship. The project
+        is Codex-assisted and preserves that disclosure.
+      </p>
+    </section>
+  </main>
+  <footer class="wrap">
+    Agent Eval Mutation Lab · static report · no network or external assets
+  </footer>
+</body>
+</html>
