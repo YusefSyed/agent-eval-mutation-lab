@@ -29,9 +29,15 @@ uv run agent-eval-build-review --output review/packet
 uv run agent-eval-verify-lock
 uv run agent-eval-validate-holdout holdout-submission.json
 uv run agent-eval-ownership-preflight
+uv run agent-eval-reproduce --verify
 ```
 
-The last command creates:
+The final command is the clean-room evidence gate: it verifies the frozen v1 lock,
+regenerates 11 deterministic benchmark and review artifacts under a temporary
+directory, and byte-compares every result with the committed evidence. It does not
+overwrite the working tree.
+
+The benchmark command creates:
 
 - `artifacts/latest/results.json`
 - `artifacts/latest/results.md`
