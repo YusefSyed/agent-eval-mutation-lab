@@ -12,6 +12,23 @@ jobs:
   quality:
     name: Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
+    env:
+      AGENT_EVAL_TEST_POSTGRES_DSN: postgresql://postgres:agent_eval_local@127.0.0.1:5432/agent_eval
+    services:
+      postgres:
+        image: postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+        env:
+          POSTGRES_DB: agent_eval
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: agent_eval_local
+          POSTGRES_INITDB_ARGS: --data-checksums
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d agent_eval"
+          --health-interval 1s
+          --health-timeout 3s
+          --health-retries 30
     strategy:
       fail-fast: false
       matrix:
