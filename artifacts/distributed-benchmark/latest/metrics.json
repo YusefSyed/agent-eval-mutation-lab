@@ -1,0 +1,45 @@
+{
+  "database": {
+    "attempts_complete": 1000,
+    "attempts_expired": 0,
+    "attempts_total": 1000,
+    "maximum_attempts_per_task": 1,
+    "postgres_version": "17.11"
+  },
+  "database_image": "postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73",
+  "duplicate_execution_attempts": 0,
+  "elapsed_seconds": 3.607433791,
+  "idempotent_recommits": 0,
+  "lease_seconds": 5.0,
+  "plan_digest": "750827a629a61e2761ca319aa2d027413e9bfea72e9a44c6de08d8ec8961364e",
+  "queue_counts": {
+    "complete": 1000,
+    "failed": 0,
+    "leased": 0,
+    "pending": 0
+  },
+  "run_key": "distributed-load-d0af850a9b194b31a1209fe197557c5c",
+  "runtime": {
+    "implementation": "CPython",
+    "machine": "arm64",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "process_start_method": "spawn",
+    "python": "3.13.14"
+  },
+  "schema": "distributed-load-benchmark-v1",
+  "source_revision": "69b9430ce1dd92d38238696f0c74b063a386f8b8",
+  "task_count": 1000,
+  "task_latency_ms": {
+    "maximum": 162.328792,
+    "p50": 10.461542,
+    "p95": 20.155167
+  },
+  "throughput_tasks_per_second": 277.2053647927921,
+  "worker_completed_counts": {
+    "worker-00": 247,
+    "worker-01": 252,
+    "worker-02": 251,
+    "worker-03": 250
+  },
+  "worker_count": 4
+}
