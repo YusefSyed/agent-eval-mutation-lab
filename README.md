@@ -136,7 +136,7 @@ runs each mutant in a fresh process. See
 [`artifacts/mutation-benchmark/`](artifacts/mutation-benchmark/) for the canonical JSON
 and reviewer-facing Markdown report.
 
-## Preregistered local-model study — completed negative result
+## Preregistered local-model study — invalid under the frozen validity gate
 
 The experiment was frozen before benchmark inference under
 [`benchmarks/model-study-v1/frozen/`](benchmarks/model-study-v1/frozen/). It asks
@@ -162,15 +162,17 @@ transport errors. No invalid response was retried.
 | Qwen evidence first | 77.6% | 21.2% | 90.9% |
 
 The evidence-first intervention failed five of six preregistered promotion gates.
-It did not reduce directional overclaims for either model, increased safety-directed
-overclaims, failed both validity gates, and reversed the intended direction in every
-leave-one-family-out slice. Only the per-model coverage-drop gate passed. The
-family-equal paired estimate placed evidence-first directional overclaims 5.6
-percentage points above direct prompting on this finite corpus.
+Most importantly, Qwen evidence-first validity was 77.6% versus 98.7% direct, so
+the study failed both the 95% per-arm validity gate and the five-percentage-point
+differential-validity gate. Under the frozen protocol, that makes the intervention
+invalid for a clean treatment-effect conclusion. Valid-only arm comparisons may be
+selection-biased, and the reported overclaim rates and family-equal 5.6-point
+difference remain descriptive rather than a promoted causal effect.
 
-This is a model-, prompt-, and corpus-specific negative finding—not evidence that
-evidence ledgers are generally harmful. The prompts were not retuned and the study
-ID was not reused after observing the result. See
+This is a model-, prompt-, and corpus-specific invalid intervention result—not a
+clean null, a general negative effect, or evidence that evidence ledgers are
+generally harmful. The prompts were not retuned and the study ID was not reused
+after observing the result. See
 [`artifacts/model-study/v1/report.md`](artifacts/model-study/v1/report.md),
 [`metrics.json`](artifacts/model-study/v1/metrics.json), and the frozen
 [`protocol`](research/MODEL_STUDY_PROTOCOL.md).

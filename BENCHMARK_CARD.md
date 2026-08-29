@@ -73,11 +73,13 @@ removed effect records, it replaced frozen v1's five false-safe classifications 
 three known-case abstentions. This is an exact coverage-for-risk result on this
 corpus only.
 
-The preregistered model study produced a negative result. Mistral was 100% valid in
-both arms, with 1.3% direct and 1.9% evidence-first overclaim rates. Qwen direct was
-98.7% valid with 5.1% overclaims; Qwen evidence-first was 77.6% valid with 21.2%
-overclaims. Five of six promotion gates failed, so the intervention is not promoted
-as an improvement and was not retuned under the same study ID.
+The preregistered model study is invalid under its output-validity gates. Mistral
+was 100% valid in both arms. Qwen direct was 98.7% valid, while Qwen evidence-first
+was 77.6% valid; this failed both the per-arm and differential-validity gates. Five
+of six promotion gates failed. The reported 5.1% direct and 21.2% evidence-first
+overclaim rates are descriptive, not a clean treatment-effect estimate, because
+differential invalidity can bias arm comparisons. The intervention is not promoted,
+and the prompts were not retuned under the same study ID.
 
 ## Reproducibility and engineering controls
 

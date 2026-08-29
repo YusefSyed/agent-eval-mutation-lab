@@ -19,15 +19,18 @@ population evidence, a held-out benchmark, or a general model-safety claim.
 ## Result disposition
 
 The evidence-ledger intervention failed five of six frozen promotion gates. Qwen
-evidence-first validity was 77.6% and its directional-overclaim rate was 21.2%,
-compared with 98.7% validity and 5.1% overclaims for Qwen direct. Mistral remained
-100% valid, but evidence-first overclaims were 1.9% versus 1.3% direct. Only the
-coverage-drop gate passed.
+evidence-first validity was 77.6%, compared with 98.7% for Qwen direct; this failed
+both the 95% per-arm validity gate and the five-percentage-point differential-
+validity gate. Mistral remained 100% valid in both arms. Only the coverage-drop gate
+passed.
 
-The result is published as a negative finding. The prompts were not tuned on
-completed benchmark outputs, the same study ID was not rerun, and no general claim
-is made beyond the frozen model, prompt, and corpus versions. Canonical evidence is
-under `artifacts/model-study/v1/`.
+The intervention is therefore published as invalid under the preregistered output-
+validity gate, not as a clean null or substantive negative treatment effect.
+Valid-only arm estimates may be selection-biased, so the descriptive 21.2% Qwen
+evidence-first and 5.1% direct overclaim rates do not establish a causal prompting
+effect. The prompts were not tuned on completed benchmark outputs, the same study ID
+was not rerun, and no general claim is made beyond the frozen model, prompt, and
+corpus versions. Canonical evidence is under `artifacts/model-study/v1/`.
 
 ## Isolation boundary
 
