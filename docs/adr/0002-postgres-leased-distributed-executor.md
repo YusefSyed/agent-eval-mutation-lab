@@ -67,3 +67,7 @@ rejects a run key reused with different plan bytes or cardinality.
 6. A finite load benchmark reports throughput, p50/p95 latency, lease-recovery
    time, duplicate attempts, duplicate terminal commits, queue depth, and exact
    machine/runtime configuration.
+
+The healthy-load command writes a DSN-free JSON report and uses independent
+spawned Python processes. Forced termination remains a separate acceptance test
+so healthy throughput is not conflated with recovery latency.

@@ -99,6 +99,7 @@ uv run agent-eval-model-study pilot --tag MODEL --output tmp/pilot
 uv run agent-eval-model-study run --output artifacts/model-study/v1
 uv run agent-eval-model-study export --output artifacts/model-study/v1
 AGENT_EVAL_TEST_POSTGRES_DSN=postgresql://postgres:agent_eval_local@127.0.0.1:55432/agent_eval uv run pytest tests/test_postgres_lease_store.py
+AGENT_EVAL_POSTGRES_DSN=postgresql://postgres:agent_eval_local@127.0.0.1:55432/agent_eval uv run agent-eval-distributed-benchmark --tasks 1000 --workers 4
 ```
 
 ## Definition of done

@@ -46,6 +46,7 @@ agent-eval-reproduce = "agent_eval_mutation_lab.reproduction:main"
 agent-eval-engine = "agent_eval_mutation_lab.engine.cli:main"
 agent-eval-mutate-v2 = "agent_eval_mutation_lab.mutation_benchmark.cli:main"
 agent-eval-model-study = "agent_eval_mutation_lab.model_study.cli:main"
+agent-eval-distributed-benchmark = "agent_eval_distributed.benchmark:main"
 
 [dependency-groups]
 dev = [
