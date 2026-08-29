@@ -1,0 +1,18 @@
+services:
+  postgres:
+    image: postgres@sha256:18cfe3ef5e6815560c98237d6216d1e5119702fb0f3894c8785dd58b8bbe5d73
+    environment:
+      POSTGRES_DB: agent_eval
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: agent_eval_local
+      POSTGRES_INITDB_ARGS: --data-checksums
+    ports:
+      - "55432:5432"
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d agent_eval"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    stop_grace_period: 5s
