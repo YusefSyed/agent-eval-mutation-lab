@@ -136,35 +136,51 @@ runs each mutant in a fresh process. See
 [`artifacts/mutation-benchmark/`](artifacts/mutation-benchmark/) for the canonical JSON
 and reviewer-facing Markdown report.
 
-## Preregistered local-model study — no benchmark result yet
+## Preregistered local-model study — completed negative result
 
-The next experiment is frozen before benchmark inference under
+The experiment was frozen before benchmark inference under
 [`benchmarks/model-study-v1/frozen/`](benchmarks/model-study-v1/frozen/). It asks
 whether a cited evidence ledger reduces unsupported directional claims relative to
 direct tri-state classification on the same finite corpus.
 
 The frozen plan contains 52 model-safe inputs, two content-pinned local models whose
-upstream licenses are Apache-2.0, two prompt arms, and three seeds: 624 planned
-terminal trials. Model-visible records use opaque scenario/action references and exclude case IDs, families,
-evidence-condition names, oracle labels, and expected metrics. Oracle truth lives in
-a separate analysis ledger that is never sent to the model.
+upstream licenses are Apache-2.0, two prompt arms, and three seeds: 624 terminal
+trials. Model-visible records use opaque scenario/action references and exclude case
+IDs, families, evidence-condition names, oracle labels, and expected metrics. Oracle
+truth lives in a separate analysis ledger that is never sent to the model.
 
 Live inference is an optional, dependency-free Ollama workflow. It is excluded from
-the deterministic engine's source identity, default dependencies, tests, and CI. The
-full study has not started and this repository makes no model-comparison or prompting-
-effect claim yet. See [`research/MODEL_STUDY_PROTOCOL.md`](research/MODEL_STUDY_PROTOCOL.md)
-for retry rules, analysis, promotion gates, and required null-result reporting.
+the deterministic engine's source identity, default dependencies, tests, and CI.
+The frozen run ended with 587 valid and 37 invalid responses, no timeouts, and no
+transport errors. No invalid response was retried.
 
-The committed runner verifies every frozen checksum and local model blob before use,
-registers all 624 identities in a transactional SQLite ledger, stores exact request
-and response bytes by SHA-256, permits one retry only after a response-free transport
-failure, and resumes pending trials in frozen order. It does not export aggregate
-evidence from a partial run.
+| Model and arm | Validity | Directional overclaim | Coverage |
+| --- | ---: | ---: | ---: |
+| Mistral direct | 100.0% | 1.3% | 14.1% |
+| Mistral evidence first | 100.0% | 1.9% | 11.5% |
+| Qwen direct | 98.7% | 5.1% | 39.0% |
+| Qwen evidence first | 77.6% | 21.2% | 90.9% |
 
-After all 624 trials finalize, the offline exporter replays every content-addressed
-request and response, revalidates structured outputs and evidence citations, joins
-the separately frozen oracle ledger, computes the preregistered metrics and
-composition sensitivities, and writes canonical JSONL/JSON/Markdown with checksums.
+The evidence-first intervention failed five of six preregistered promotion gates.
+It did not reduce directional overclaims for either model, increased safety-directed
+overclaims, failed both validity gates, and reversed the intended direction in every
+leave-one-family-out slice. Only the per-model coverage-drop gate passed. The
+family-equal paired estimate placed evidence-first directional overclaims 5.6
+percentage points above direct prompting on this finite corpus.
+
+This is a model-, prompt-, and corpus-specific negative finding—not evidence that
+evidence ledgers are generally harmful. The prompts were not retuned and the study
+ID was not reused after observing the result. See
+[`artifacts/model-study/v1/report.md`](artifacts/model-study/v1/report.md),
+[`metrics.json`](artifacts/model-study/v1/metrics.json), and the frozen
+[`protocol`](research/MODEL_STUDY_PROTOCOL.md).
+
+The runner verified every frozen checksum and local model blob, registered all 624
+identities in a transactional SQLite ledger, stored exact request and response bytes
+by SHA-256, and resumed in frozen order. The offline exporter replayed 1,068 unique
+content-addressed objects, revalidated structured outputs and citations, joined the
+separately frozen oracle ledger, and produced byte-identical canonical exports on a
+second run. The manifest tree and all ten canonical file checksums verify.
 
 ## Reproduce everything from a clean directory
 

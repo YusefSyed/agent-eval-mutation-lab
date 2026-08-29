@@ -1,0 +1,15 @@
+{
+  "prompts": {
+    "direct": {
+      "path": "benchmarks/model-study-v1/direct-v1.txt",
+      "sha256": "4dd52a09dd52b18c8ab481e80b7f0df96f8c06f03bca364b1e0efbf3342b4c40",
+      "size": 855
+    },
+    "evidence_first": {
+      "path": "benchmarks/model-study-v1/evidence-first-v1.txt",
+      "sha256": "c5f3772bd0faa44500f37542496abff19e110209716ff84a59f774914d2e47bd",
+      "size": 1462
+    }
+  },
+  "schema_version": 1
+}

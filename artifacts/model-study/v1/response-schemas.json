@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "schemas": {
+    "direct": {
+      "additionalProperties": false,
+      "properties": {
+        "conclusion": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "probabilities": {
+          "additionalProperties": false,
+          "properties": {
+            "harm_established": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "insufficient_evidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "no_harm_established": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "required": [
+            "harm_established",
+            "no_harm_established",
+            "insufficient_evidence"
+          ],
+          "type": "object"
+        },
+        "verdict": {
+          "enum": [
+            "harm_established",
+            "no_harm_established",
+            "insufficient_evidence"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "verdict",
+        "probabilities",
+        "conclusion"
+      ],
+      "type": "object"
+    },
+    "evidence_first": {
+      "additionalProperties": false,
+      "properties": {
+        "action_evidence": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "action_ref": {
+                "description": "Literal opaque action_ref value copied from the input; not a JSON pointer",
+                "minLength": 1,
+                "type": "string"
+              },
+              "citations": {
+                "items": {
+                  "description": "Absolute RFC 6901 JSON pointer, for example /actions/0/receipt/status",
+                  "pattern": "^/",
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "execution": {
+                "enum": [
+                  "executed",
+                  "not_executed",
+                  "unresolved"
+                ],
+                "type": "string"
+              },
+              "harm": {
+                "enum": [
+                  "caused_harm",
+                  "no_harm_observed",
+                  "unresolved"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_ref",
+              "execution",
+              "harm",
+              "citations"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "conclusion": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "final_state_attribution": {
+          "enum": [
+            "attributable",
+            "not_attributable",
+            "unresolved"
+          ],
+          "type": "string"
+        },
+        "final_state_citations": {
+          "items": {
+            "description": "Absolute RFC 6901 JSON pointer beginning with /",
+            "pattern": "^/",
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "probabilities": {
+          "additionalProperties": false,
+          "properties": {
+            "harm_established": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "insufficient_evidence": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            },
+            "no_harm_established": {
+              "maximum": 1,
+              "minimum": 0,
+              "type": "number"
+            }
+          },
+          "required": [
+            "harm_established",
+            "no_harm_established",
+            "insufficient_evidence"
+          ],
+          "type": "object"
+        },
+        "verdict": {
+          "enum": [
+            "harm_established",
+            "no_harm_established",
+            "insufficient_evidence"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "action_evidence",
+        "final_state_attribution",
+        "final_state_citations",
+        "verdict",
+        "probabilities",
+        "conclusion"
+      ],
+      "type": "object"
+    }
+  }
+}

@@ -1,8 +1,10 @@
 # Model scorer study protocol
 
-**Status:** Draft preflight protocol. No benchmark model responses have been
-generated under this study ID. Freeze the protocol, prompt bytes, schemas, model
-blob digests, and seed set in a commit before the full run.
+**Status:** Completed frozen study. Protocol digest
+`ca7cb4ccd51bdf172a29fa91f447dda1b45fbe191260ec90a11b9b8ece722667`.
+All 624 trials reached terminal states: 587 complete and 37 invalid responses, with
+no timeout or transport-error terminals. The canonical exporter replayed every
+receipt and produced byte-identical outputs on a second run.
 
 ## Research question
 
@@ -13,6 +15,19 @@ unacceptable loss of coverage or protocol validity?
 
 This is a finite, model-version-specific, prompt-version-specific study. It is not
 population evidence, a held-out benchmark, or a general model-safety claim.
+
+## Result disposition
+
+The evidence-ledger intervention failed five of six frozen promotion gates. Qwen
+evidence-first validity was 77.6% and its directional-overclaim rate was 21.2%,
+compared with 98.7% validity and 5.1% overclaims for Qwen direct. Mistral remained
+100% valid, but evidence-first overclaims were 1.9% versus 1.3% direct. Only the
+coverage-drop gate passed.
+
+The result is published as a negative finding. The prompts were not tuned on
+completed benchmark outputs, the same study ID was not rerun, and no general claim
+is made beyond the frozen model, prompt, and corpus versions. Canonical evidence is
+under `artifacts/model-study/v1/`.
 
 ## Isolation boundary
 
