@@ -4,8 +4,11 @@ import os
 import time
 from concurrent.futures import ThreadPoolExecutor
 from hashlib import sha256
+from multiprocessing import get_context
+from typing import Any
 from uuid import uuid4
 
+import psycopg
 import pytest
 
 from agent_eval_distributed.contracts import (
@@ -32,6 +35,20 @@ def _plan(run_key: str, count: int = 4) -> DistributedPlan:
         for index in range(count)
     )
     return DistributedPlan.from_tasks(run_key=f"{run_key}-{uuid4().hex}", tasks=tasks)
+
+
+def _claim_then_block(dsn: str, run_key: str, messages: Any) -> None:
+    child_store = PostgresLeaseStore(dsn, min_pool_size=1, max_pool_size=1)
+    child_store.wait()
+    lease = child_store.claim_next(
+        run_key=run_key,
+        worker_id="worker-killed-after-claim",
+        lease_seconds=0.15,
+    )
+    if lease is None:
+        raise RuntimeError("worker found no claimable task")
+    messages.put(lease)
+    time.sleep(60)
 
 
 @pytest.fixture
@@ -109,6 +126,62 @@ def test_expired_lease_is_reclaimed_and_fences_old_worker(
     with pytest.raises(LeaseLostError):
         store.complete(lease=first, result_digest=sha256(b"late").hexdigest())
     assert store.complete(lease=second, result_digest=sha256(b"ok").hexdigest())
+
+
+def test_forced_worker_termination_recovers_and_fences_attempt(
+    store: PostgresLeaseStore,
+) -> None:
+    assert DSN is not None
+    plan = _plan("forced-process-termination", count=1)
+    store.register_plan(plan)
+    context = get_context("spawn")
+    messages = context.Queue()
+    process = context.Process(
+        target=_claim_then_block,
+        args=(DSN, plan.run_key, messages),
+        name="lease-holder-that-will-be-killed",
+    )
+    try:
+        process.start()
+        killed_lease = messages.get(timeout=15)
+        process.kill()
+        process.join(timeout=5)
+        assert not process.is_alive()
+        assert process.exitcode is not None and process.exitcode != 0
+
+        time.sleep(0.25)
+        recovered = store.claim_next(
+            run_key=plan.run_key,
+            worker_id="replacement-worker",
+            lease_seconds=5,
+        )
+        assert recovered is not None
+        assert recovered.task_key == killed_lease.task_key
+        assert recovered.attempt_no == 2
+        assert recovered.token != killed_lease.token
+
+        with pytest.raises(LeaseLostError):
+            store.complete(
+                lease=killed_lease,
+                result_digest=sha256(b"late-result").hexdigest(),
+            )
+        assert store.complete(
+            lease=recovered,
+            result_digest=sha256(b"replacement-result").hexdigest(),
+        )
+
+        with psycopg.connect(DSN) as connection:
+            rows = connection.execute(
+                "SELECT attempt_no, outcome FROM agent_eval.attempts "
+                "WHERE run_key = %s AND task_key = %s ORDER BY attempt_no",
+                (plan.run_key, recovered.task_key),
+            ).fetchall()
+        assert rows == [(1, "expired"), (2, "complete")]
+    finally:
+        if process.is_alive():
+            process.kill()
+            process.join(timeout=5)
+        messages.close()
 
 
 def test_terminal_commit_is_idempotent_but_digest_fenced(
