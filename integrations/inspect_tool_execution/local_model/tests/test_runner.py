@@ -14,11 +14,17 @@ import runner
 
 def test_draft_manifest_cannot_execute_and_endpoint_changes_fail(tmp_path):
     manifest = json.loads((runner.HERE / "manifest.json").read_text())
+    manifest["approval_status"] = "draft"
     path = tmp_path / "manifest.json"
     path.write_text(json.dumps(manifest))
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     with pytest.raises(ValueError, match="reviewed approved manifest"):
         runner.load_manifest(path, digest, execute=True)
+    manifest["approval_status"] = "approved"
+    path.write_text(json.dumps(manifest))
+    digest = hashlib.sha256(path.read_bytes()).hexdigest()
+    approved = runner.load_manifest(path, digest, execute=True)
+    assert approved["approval_status"] == "approved"
     manifest["base_url"] = "https://api.openai.com/v1"
     path.write_text(json.dumps(manifest))
     with pytest.raises(ValueError, match="fixed execution boundary"):
