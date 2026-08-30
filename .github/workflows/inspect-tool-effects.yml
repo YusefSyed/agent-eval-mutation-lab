@@ -1,0 +1,51 @@
+name: Inspect persisted tool effects
+
+on:
+  push:
+    paths:
+      - "integrations/inspect_tool_execution/**"
+      - "artifacts/inspect-tool-execution/**"
+      - ".github/workflows/inspect-tool-effects.yml"
+  pull_request:
+    paths:
+      - "integrations/inspect_tool_execution/**"
+      - "artifacts/inspect-tool-execution/**"
+      - ".github/workflows/inspect-tool-effects.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-tools:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: integrations/inspect_tool_execution
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d
+        with:
+          version: "0.11.29"
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen --dev
+      - run: uv run --frozen ruff check .
+      - run: uv run --frozen pytest
+      - run: uv run --frozen inspect-tool-execution --output tmp/run-one
+      - run: uv run --frozen inspect-tool-execution --output tmp/run-two
+      - run: uv run --frozen python -m inspect_tool_execution.verify tmp/run-one --compare tmp/run-two
+      - run: uv run --frozen python -m inspect_tool_execution.verify tmp/run-one --compare ../../artifacts/inspect-tool-execution/v1
+      - name: Local-model runner offline contracts
+        working-directory: integrations/inspect_tool_execution/local_model
+        run: |
+          uv sync --frozen --dev
+          uv run --frozen ruff check .
+          uv run --frozen pytest
+          RUN_DOCKER_SMOKE=1 uv run --frozen pytest tests/test_mock_smoke.py
+      - name: Verify published local-model evidence without inference
+        working-directory: integrations/inspect_tool_execution/local_model
+        run: |
+          (cd ../../../artifacts/inspect-tool-execution/local-v1 && sha256sum --check SHA256SUMS)
+          uv run --frozen python rescore.py ../../../artifacts/inspect-tool-execution/local-v1

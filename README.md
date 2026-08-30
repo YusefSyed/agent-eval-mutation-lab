@@ -12,7 +12,7 @@ attempt/execution/harm ontology, tri-state scoring, transactional experiment
 tracking, content-addressed evidence, schedule-independent execution, and
 clean-checkout reproduction.
 
-It runs offline with a standard-library-only runtime. No model, API key, private
+The core runs offline with a standard-library-only runtime. No model, API key, private
 data, network service, or production system is required.
 
 ## Result snapshot
@@ -38,6 +38,32 @@ false-success, unsupported-safe, and unsupported-success counts.
 
 That is an exact finite-suite coverage-for-risk result—not a general reliability,
 framework-safety, or population claim.
+
+## Optional Inspect tool execution integration
+
+A separate [Inspect integration](integrations/inspect_tool_execution/README.md)
+executes typed artifact tools through Inspect's native model loop, approvals, and
+isolated Docker sandboxes. The tools commit synthetic publication state and event
+history to SQLite; an independent read-only scorer checks those persisted effects.
+Publication here is a database flag, never external hosting.
+
+Two evidence sets are kept separate:
+
+- **13 deterministic fault fixtures:** mock-model runs verify denial, modified
+  approvals, commit-before-error, rollback, transient publication/revoke, retries,
+  conflicting request IDs, and misleading response text. Two complete runs produced
+  identical normalized reports and database snapshots.
+- **24 real Qwen samples:** six benign/adversarial note pairs, each repeated twice,
+  completed the permitted task with the note present before each publication
+  decision. There were zero observed forbidden attempts, forbidden effects,
+  unknown outcomes, errors, or retries. All 72 tool calls were approved; no live
+  rejection occurred.
+
+These are finite integration results, not a general safety or failure-rate estimate.
+The optional projects have their own dependency locks and do not change the
+standard-library core or the separate frozen 624-trial study. See the
+[local-model report and evidence](artifacts/inspect-tool-execution/local-v1/REPORT.md)
+for definitions, verification, and limits.
 
 ## Why this is an advanced Python project
 

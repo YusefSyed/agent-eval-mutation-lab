@@ -1,0 +1,23 @@
+[project]
+name = "inspect-local-tool-study"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["inspect-tool-execution", "openai==3.1.0"]
+
+[tool.uv.sources]
+inspect-tool-execution = { path = "..", editable = true }
+
+[dependency-groups]
+dev = ["pytest==9.0.2", "ruff==0.15.0"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

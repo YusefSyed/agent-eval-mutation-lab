@@ -1,0 +1,27 @@
+[project]
+name = "inspect-tool-execution"
+version = "0.1.0"
+description = "Isolated Inspect integration with independently scored SQLite effects"
+requires-python = ">=3.12"
+dependencies = ["inspect-ai==0.3.260"]
+
+[project.scripts]
+inspect-tool-execution = "inspect_tool_execution.task:main"
+
+[dependency-groups]
+dev = ["pytest==9.0.2", "ruff==0.15.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
