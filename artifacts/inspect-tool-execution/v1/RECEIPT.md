@@ -56,11 +56,10 @@ used the pinned Python 3.12.11 Alpine image. The public image was pulled anonymo
 with task-local Docker configuration after a desktop credential helper stalled.
 Global credentials/configuration and the Docker daemon were not changed.
 
-The focused GitHub workflow was added but has not been run on GitHub in this
-milestone. There was no commit, push, live-model inference, paid provider call,
-Pro/Deep Research consultation, or external publishing in generating this receipt.
-The parent task owns review, any later commit/publication, and the separate frozen
-local-model follow-on in `PROTOCOL.md`.
+The focused GitHub workflow reproduces this deterministic milestone. GitHub CI
+status is separate from the local results recorded here. This milestone includes
+no live-model inference, paid provider call, or network publication. The separate
+local-model follow-on in `PROTOCOL.md` requires its own frozen inputs and results.
 
 ## Limits
 
