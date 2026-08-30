@@ -184,6 +184,27 @@ content-addressed objects, revalidated structured outputs and citations, joined 
 separately frozen oracle ledger, and produced byte-identical canonical exports on a
 second run. The manifest tree and all ten canonical file checksums verify.
 
+## Exact missing-output sensitivity diagnostics
+
+A separate offline auditor makes the outcome policy explicit: pipeline success
+(invalid output is failure), valid-only descriptive accuracy, or hypothetical
+binary semantic-correctness completions. It computes exact rational bounds and
+attaining endpoint certificates, verifies the complete frozen artifact/receipt
+manifests, and retains the failed output-validity verdict in every study report.
+
+```bash
+uv run agent-eval-sensitivity --frozen-study . --estimand all --weighting both --output tmp/sensitivity-study
+uv run agent-eval-sensitivity --input research/fixtures/missing-output-selection-reversal.json --estimand all --output tmp/sensitivity-reversal
+```
+
+Outputs must go to a new directory. The study diagnostic compares pooled and
+equal-family weighting per model without changing the frozen scores, retries,
+prompts, gates, or canonical artifacts. Bounds are post-hoc finite sensitivity
+results, not confidence intervals, causal effects, or repaired study scores.
+See the [method and assumptions](research/missing-output-sensitivity.md),
+[frozen-study diagnostic](artifacts/sensitivity/model-study-v1-posthoc/diagnostic.md),
+and [selection-reversal example](artifacts/sensitivity/selection-reversal/diagnostic.md).
+
 ## Reproduce everything from a clean directory
 
 ```bash

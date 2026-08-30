@@ -1,0 +1,403 @@
+{
+  "comparisons": [
+    {
+      "contract_sha256": "aff95e9ea32347c9e15f666643b061e70270f3766ddfd68c548ef0120082332d",
+      "label": "declared_comparison",
+      "report": {
+        "cells": [
+          {
+            "arm": "left",
+            "denominator": 10,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 5,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 1
+              }
+            },
+            "missing": 8,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                8
+              ]
+            ],
+            "observed": 2,
+            "planned": 10,
+            "successes": 2,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "right",
+            "denominator": 10,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 5,
+                "numerator": 4
+              },
+              "upper": {
+                "denominator": 5,
+                "numerator": 4
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 10,
+            "planned": 10,
+            "successes": 8,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 5,
+            "numerator": -3
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": 1
+          }
+        },
+        "estimand": "latent_semantic_correctness",
+        "left_arm": "left",
+        "left_mean": {
+          "lower": {
+            "denominator": 5,
+            "numerator": 1
+          },
+          "upper": {
+            "denominator": 1,
+            "numerator": 1
+          }
+        },
+        "lower_witness": {
+          "assignments": [
+            [
+              "left-02",
+              0
+            ],
+            [
+              "left-03",
+              0
+            ],
+            [
+              "left-04",
+              0
+            ],
+            [
+              "left-05",
+              0
+            ],
+            [
+              "left-06",
+              0
+            ],
+            [
+              "left-07",
+              0
+            ],
+            [
+              "left-08",
+              0
+            ],
+            [
+              "left-09",
+              0
+            ]
+          ],
+          "difference": {
+            "denominator": 5,
+            "numerator": -3
+          },
+          "left_mean": {
+            "denominator": 5,
+            "numerator": 1
+          },
+          "right_mean": {
+            "denominator": 5,
+            "numerator": 4
+          }
+        },
+        "right_arm": "right",
+        "right_mean": {
+          "lower": {
+            "denominator": 5,
+            "numerator": 4
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": 4
+          }
+        },
+        "upper_witness": {
+          "assignments": [
+            [
+              "left-02",
+              1
+            ],
+            [
+              "left-03",
+              1
+            ],
+            [
+              "left-04",
+              1
+            ],
+            [
+              "left-05",
+              1
+            ],
+            [
+              "left-06",
+              1
+            ],
+            [
+              "left-07",
+              1
+            ],
+            [
+              "left-08",
+              1
+            ],
+            [
+              "left-09",
+              1
+            ]
+          ],
+          "difference": {
+            "denominator": 5,
+            "numerator": 1
+          },
+          "left_mean": {
+            "denominator": 1,
+            "numerator": 1
+          },
+          "right_mean": {
+            "denominator": 5,
+            "numerator": 4
+          }
+        },
+        "warnings": [
+          "Hypothetical unrestricted binary completions; sharp interval hull only, not a repaired score, confidence interval, or causal effect."
+        ]
+      },
+      "weighting": "declared_group_weights"
+    },
+    {
+      "contract_sha256": "aff95e9ea32347c9e15f666643b061e70270f3766ddfd68c548ef0120082332d",
+      "label": "declared_comparison",
+      "report": {
+        "cells": [
+          {
+            "arm": "left",
+            "denominator": 10,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 5,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 5,
+                "numerator": 1
+              }
+            },
+            "missing": 8,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                8
+              ]
+            ],
+            "observed": 2,
+            "planned": 10,
+            "successes": 2,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "right",
+            "denominator": 10,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 5,
+                "numerator": 4
+              },
+              "upper": {
+                "denominator": 5,
+                "numerator": 4
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 10,
+            "planned": 10,
+            "successes": 8,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 5,
+            "numerator": -3
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": -3
+          }
+        },
+        "estimand": "pipeline_success_accuracy",
+        "left_arm": "left",
+        "left_mean": {
+          "lower": {
+            "denominator": 5,
+            "numerator": 1
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": 1
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "right",
+        "right_mean": {
+          "lower": {
+            "denominator": 5,
+            "numerator": 4
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": 4
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Invalid/missing output is failure by policy; this is pipeline success, not latent semantic correctness."
+        ]
+      },
+      "weighting": "declared_group_weights"
+    },
+    {
+      "contract_sha256": "aff95e9ea32347c9e15f666643b061e70270f3766ddfd68c548ef0120082332d",
+      "label": "declared_comparison",
+      "report": {
+        "cells": [
+          {
+            "arm": "left",
+            "denominator": 2,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 1
+              }
+            },
+            "missing": 8,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                8
+              ]
+            ],
+            "observed": 2,
+            "planned": 10,
+            "successes": 2,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "right",
+            "denominator": 10,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 5,
+                "numerator": 4
+              },
+              "upper": {
+                "denominator": 5,
+                "numerator": 4
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 10,
+            "planned": 10,
+            "successes": 8,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 5,
+            "numerator": 1
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": 1
+          }
+        },
+        "estimand": "valid_only_accuracy",
+        "left_arm": "left",
+        "left_mean": {
+          "lower": {
+            "denominator": 1,
+            "numerator": 1
+          },
+          "upper": {
+            "denominator": 1,
+            "numerator": 1
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "right",
+        "right_mean": {
+          "lower": {
+            "denominator": 5,
+            "numerator": 4
+          },
+          "upper": {
+            "denominator": 5,
+            "numerator": 4
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Conditional on valid outputs; differential selection can reverse comparisons. No missing group is dropped or reweighted."
+        ]
+      },
+      "weighting": "declared_group_weights"
+    }
+  ],
+  "provenance": {
+    "input_sha256": "aff95e9ea32347c9e15f666643b061e70270f3766ddfd68c548ef0120082332d",
+    "scope": "explicit_finite_binary_contract"
+  },
+  "schema_version": 1
+}

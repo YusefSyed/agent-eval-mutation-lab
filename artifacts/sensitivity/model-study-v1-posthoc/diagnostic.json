@@ -1,0 +1,3144 @@
+{
+  "comparisons": [
+    {
+      "contract_sha256": "eb49b6bf3a6efb8dc48bbf1a9c9936d8a30df291ed67c16607494e3eee125713",
+      "label": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 15,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 30,
+                "numerator": 11
+              },
+              "upper": {
+                "denominator": 30,
+                "numerator": 11
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 22,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 6,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 6,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 4,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 6,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 150,
+            "numerator": -1
+          },
+          "upper": {
+            "denominator": 150,
+            "numerator": -1
+          }
+        },
+        "estimand": "latent_semantic_correctness",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 20,
+            "numerator": 3
+          },
+          "upper": {
+            "denominator": 20,
+            "numerator": 3
+          }
+        },
+        "lower_witness": {
+          "assignments": [],
+          "difference": {
+            "denominator": 150,
+            "numerator": -1
+          },
+          "left_mean": {
+            "denominator": 20,
+            "numerator": 3
+          },
+          "right_mean": {
+            "denominator": 300,
+            "numerator": 47
+          }
+        },
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 300,
+            "numerator": 47
+          },
+          "upper": {
+            "denominator": 300,
+            "numerator": 47
+          }
+        },
+        "upper_witness": {
+          "assignments": [],
+          "difference": {
+            "denominator": 150,
+            "numerator": -1
+          },
+          "left_mean": {
+            "denominator": 20,
+            "numerator": 3
+          },
+          "right_mean": {
+            "denominator": 300,
+            "numerator": 47
+          }
+        },
+        "warnings": [
+          "Hypothetical unrestricted binary completions; sharp interval hull only, not a repaired score, confidence interval, or causal effect."
+        ]
+      },
+      "weighting": "equal_family"
+    },
+    {
+      "contract_sha256": "eb49b6bf3a6efb8dc48bbf1a9c9936d8a30df291ed67c16607494e3eee125713",
+      "label": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 15,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 30,
+                "numerator": 11
+              },
+              "upper": {
+                "denominator": 30,
+                "numerator": 11
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 22,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 6,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 6,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 4,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 6,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 150,
+            "numerator": -1
+          },
+          "upper": {
+            "denominator": 150,
+            "numerator": -1
+          }
+        },
+        "estimand": "pipeline_success_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 20,
+            "numerator": 3
+          },
+          "upper": {
+            "denominator": 20,
+            "numerator": 3
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 300,
+            "numerator": 47
+          },
+          "upper": {
+            "denominator": 300,
+            "numerator": 47
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Invalid/missing output is failure by policy; this is pipeline success, not latent semantic correctness."
+        ]
+      },
+      "weighting": "equal_family"
+    },
+    {
+      "contract_sha256": "eb49b6bf3a6efb8dc48bbf1a9c9936d8a30df291ed67c16607494e3eee125713",
+      "label": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 15,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 30,
+                "numerator": 11
+              },
+              "upper": {
+                "denominator": 30,
+                "numerator": 11
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 22,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 6,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 6,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 4,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 6,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 150,
+            "numerator": -1
+          },
+          "upper": {
+            "denominator": 150,
+            "numerator": -1
+          }
+        },
+        "estimand": "valid_only_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 20,
+            "numerator": 3
+          },
+          "upper": {
+            "denominator": 20,
+            "numerator": 3
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 300,
+            "numerator": 47
+          },
+          "upper": {
+            "denominator": 300,
+            "numerator": 47
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Conditional on valid outputs; differential selection can reverse comparisons. No missing group is dropped or reweighted."
+        ]
+      },
+      "weighting": "equal_family"
+    },
+    {
+      "contract_sha256": "aa73d1060f795b99e83c60476d40e606160ac71ed87777e457d6cdbfff101d85",
+      "label": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 52,
+                "numerator": 9
+              },
+              "upper": {
+                "denominator": 52,
+                "numerator": 9
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 156,
+            "planned": 156,
+            "successes": 27,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 39,
+                "numerator": 8
+              },
+              "upper": {
+                "denominator": 39,
+                "numerator": 8
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 156,
+            "planned": 156,
+            "successes": 32,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 156,
+            "numerator": -5
+          },
+          "upper": {
+            "denominator": 156,
+            "numerator": -5
+          }
+        },
+        "estimand": "latent_semantic_correctness",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 52,
+            "numerator": 9
+          },
+          "upper": {
+            "denominator": 52,
+            "numerator": 9
+          }
+        },
+        "lower_witness": {
+          "assignments": [],
+          "difference": {
+            "denominator": 156,
+            "numerator": -5
+          },
+          "left_mean": {
+            "denominator": 52,
+            "numerator": 9
+          },
+          "right_mean": {
+            "denominator": 39,
+            "numerator": 8
+          }
+        },
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 39,
+            "numerator": 8
+          },
+          "upper": {
+            "denominator": 39,
+            "numerator": 8
+          }
+        },
+        "upper_witness": {
+          "assignments": [],
+          "difference": {
+            "denominator": 156,
+            "numerator": -5
+          },
+          "left_mean": {
+            "denominator": 52,
+            "numerator": 9
+          },
+          "right_mean": {
+            "denominator": 39,
+            "numerator": 8
+          }
+        },
+        "warnings": [
+          "Hypothetical unrestricted binary completions; sharp interval hull only, not a repaired score, confidence interval, or causal effect."
+        ]
+      },
+      "weighting": "pooled"
+    },
+    {
+      "contract_sha256": "aa73d1060f795b99e83c60476d40e606160ac71ed87777e457d6cdbfff101d85",
+      "label": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 52,
+                "numerator": 9
+              },
+              "upper": {
+                "denominator": 52,
+                "numerator": 9
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 156,
+            "planned": 156,
+            "successes": 27,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 39,
+                "numerator": 8
+              },
+              "upper": {
+                "denominator": 39,
+                "numerator": 8
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 156,
+            "planned": 156,
+            "successes": 32,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 156,
+            "numerator": -5
+          },
+          "upper": {
+            "denominator": 156,
+            "numerator": -5
+          }
+        },
+        "estimand": "pipeline_success_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 52,
+            "numerator": 9
+          },
+          "upper": {
+            "denominator": 52,
+            "numerator": 9
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 39,
+            "numerator": 8
+          },
+          "upper": {
+            "denominator": 39,
+            "numerator": 8
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Invalid/missing output is failure by policy; this is pipeline success, not latent semantic correctness."
+        ]
+      },
+      "weighting": "pooled"
+    },
+    {
+      "contract_sha256": "aa73d1060f795b99e83c60476d40e606160ac71ed87777e457d6cdbfff101d85",
+      "label": "mistral-small3.1:24b-instruct-2503-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 52,
+                "numerator": 9
+              },
+              "upper": {
+                "denominator": 52,
+                "numerator": 9
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 156,
+            "planned": 156,
+            "successes": 27,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 39,
+                "numerator": 8
+              },
+              "upper": {
+                "denominator": 39,
+                "numerator": 8
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 156,
+            "planned": 156,
+            "successes": 32,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 156,
+            "numerator": -5
+          },
+          "upper": {
+            "denominator": 156,
+            "numerator": -5
+          }
+        },
+        "estimand": "valid_only_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 52,
+            "numerator": 9
+          },
+          "upper": {
+            "denominator": 52,
+            "numerator": 9
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 39,
+            "numerator": 8
+          },
+          "upper": {
+            "denominator": 39,
+            "numerator": 8
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Conditional on valid outputs; differential selection can reverse comparisons. No missing group is dropped or reweighted."
+        ]
+      },
+      "weighting": "pooled"
+    },
+    {
+      "contract_sha256": "ae0fe089061f651e5818df8c00a71bfc807d3ce48b53aa1d6747b251d1a4c229",
+      "label": "qwen3.5:9b-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 15,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 30,
+                "numerator": 19
+              }
+            },
+            "missing": 10,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                10
+              ]
+            ],
+            "observed": 50,
+            "planned": 60,
+            "successes": 28,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 3
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 3
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 45,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 3,
+                "numerator": 2
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 1
+              }
+            },
+            "missing": 8,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                8
+              ]
+            ],
+            "observed": 16,
+            "planned": 24,
+            "successes": 16,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 12,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 3
+              }
+            },
+            "missing": 4,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                4
+              ]
+            ],
+            "observed": 20,
+            "planned": 24,
+            "successes": 14,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 24,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 24,
+                "numerator": 7
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 7,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 24,
+                "numerator": 17
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 7
+              }
+            },
+            "missing": 4,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                4
+              ]
+            ],
+            "observed": 20,
+            "planned": 24,
+            "successes": 17,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 3
+              },
+              "upper": {
+                "denominator": 24,
+                "numerator": 11
+              }
+            },
+            "missing": 2,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                2
+              ]
+            ],
+            "observed": 22,
+            "planned": 24,
+            "successes": 9,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 12,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 24,
+                "numerator": 11
+              }
+            },
+            "missing": 9,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                9
+              ]
+            ],
+            "observed": 15,
+            "planned": 24,
+            "successes": 2,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 300,
+            "numerator": 53
+          },
+          "upper": {
+            "denominator": 200,
+            "numerator": 87
+          }
+        },
+        "estimand": "latent_semantic_correctness",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 600,
+            "numerator": 301
+          },
+          "upper": {
+            "denominator": 300,
+            "numerator": 223
+          }
+        },
+        "lower_witness": {
+          "assignments": [
+            [
+              "00987ef79980ecf58cdf6a26b0cda5dc7e1dda0dc4d0d3c365e14b452002d5fb",
+              0
+            ],
+            [
+              "072ec0f42419ec104d2c4ef5c91ff42e8a9ebdb5df34229801ddbb4be7cf6dcf",
+              0
+            ],
+            [
+              "0dee87058b1f0dac3c9c8767caa605c88886cd7878665f291bd2396857e183d8",
+              0
+            ],
+            [
+              "157c2f688b49ae2e9bc12c96041c8d7420bde9d64040cd7cf321eaadd3ca2c3a",
+              0
+            ],
+            [
+              "16d2d668a6c8a89edd34059174ec6e1f3d69d4be5e9d3c3cba49400dbb32b4f5",
+              0
+            ],
+            [
+              "18df0ad71f2a26762ce1a23998d4e92a0d281dabc98d9aad82e9cefd013b24b5",
+              0
+            ],
+            [
+              "19229afb4d9cac183b8b464cb6dd43ac22d2ffae7ae0bdd0902694ad1cda08b1",
+              0
+            ],
+            [
+              "203946dd6f77131c14fcc324ec09fa091b64867761feaf495c60fdc7821c7fb7",
+              0
+            ],
+            [
+              "21f39ce7777d3bbf406f3a41702893fc387dd43dd092b811729fe8f56e82532c",
+              0
+            ],
+            [
+              "4301777522874d44a0dc150ae5093d0616e39f2d7f66dfea2c5a1df3ae2d496a",
+              0
+            ],
+            [
+              "47f41c662783257cba113cdb6cf61fc7db666c69ce9c65a0783c5044bfcad474",
+              0
+            ],
+            [
+              "480ca5f38d28ddae02d9ec90bc09542f1dc63b298996d67a6802ecb4cae17123",
+              0
+            ],
+            [
+              "524a507728c66848c138688fc8bfd76b512369425d66af96726331ff31dbc81d",
+              0
+            ],
+            [
+              "53c02a033935292f3d8c2f0adc50e37285c0b4bccb5c97d021746adf571ec0ba",
+              0
+            ],
+            [
+              "586f10995b7250cc331b660c1e0356d395ec940a2bf5212c1a0161daea4f5e96",
+              0
+            ],
+            [
+              "5aefc957aed1b6673d61024ed6d9ab1b403a14b0b8392b96359d320ec0a5c4bf",
+              0
+            ],
+            [
+              "5c2c1ab32f8836a3a9a426017097d7592dfa4ff393167a106a8f144b3ab832d7",
+              0
+            ],
+            [
+              "5ce81414a4850aaa1ecf78152a61fdbbc751e774a90cb4884670db3f1e500ca0",
+              0
+            ],
+            [
+              "5d05e99039864f94c307fe608828df366cab4086f6d7e93e93c03953db1be2f7",
+              0
+            ],
+            [
+              "613e4909edf1d5bb89a40f29cb3d30f7564db2df5587fc69becd7bdfc6cacaad",
+              0
+            ],
+            [
+              "671f335047657c1f8c8ecef477b6645004f323dfb9dc828c595b0485bd0936d7",
+              0
+            ],
+            [
+              "6cbcf2241863332c1098e4384eb0c3b47db9a4756114fec5a41d0a59032d2348",
+              0
+            ],
+            [
+              "7386ae3335b16ae4fbf6b5049baeacae214f226b3ef0271f35f09ea497d90899",
+              1
+            ],
+            [
+              "8018854d798bbae2fcd2e5a8440dfa4143373b70920d43afb5ef7a908ab070eb",
+              0
+            ],
+            [
+              "90b12fcdae8072c48d7fc092d5dfe3cdfb7fecf399b8b13c3c0d8722ca54df5c",
+              0
+            ],
+            [
+              "9665792cc4d27708b2f5fc957daeb014690ab4f406c049dbe38046197b26c817",
+              0
+            ],
+            [
+              "9e6f803bf7b2f64b5e73e91d1a18df7bd5ec6f3ff65e22f3d5a661641e4cb6d7",
+              0
+            ],
+            [
+              "a273f2067d670d296fcb21efa65c6608bff48e59d17ee55cf9a2dbd849aeb0d4",
+              0
+            ],
+            [
+              "a64cf55d8b74193ce3a0da77198297e09b4c9e985ed1be13ee485151c8b41ae1",
+              0
+            ],
+            [
+              "aeb94fa1c0b7684f187506850361c9fd5435b12026ecc3df5e4183bba3cd89ce",
+              0
+            ],
+            [
+              "b380a986d8667faaafecf59e17f8537e4962cab985e98a2ad778e4b97d7f7961",
+              0
+            ],
+            [
+              "cde2ebabc33a1862a2a97fbcb52a0bc0c75ac24aaf5b7fda8e15e74a601e7d3d",
+              1
+            ],
+            [
+              "d10203a236ab433f22e4b777a012a4f62f8b7bacb9e6b20e3df2a179a0e0b7ce",
+              0
+            ],
+            [
+              "eb4e53258b9c735c85f9dccbc1985ea3be91ed3cea6f53cdd561fab69fda257b",
+              0
+            ],
+            [
+              "ecdbc6a2b464c900c2943a941b9698aab90fd7e4f5e6c9dcbfc024ed69264b97",
+              0
+            ],
+            [
+              "f903a30488f03bbf048dcec2636eaae34d1d190fe2849c46c3e842ccb3ff2604",
+              0
+            ],
+            [
+              "f9cb47110da4b5b08a835e354b92258c351c74b9831237597ca4717cb41fcaf9",
+              0
+            ]
+          ],
+          "difference": {
+            "denominator": 300,
+            "numerator": 53
+          },
+          "left_mean": {
+            "denominator": 600,
+            "numerator": 301
+          },
+          "right_mean": {
+            "denominator": 40,
+            "numerator": 13
+          }
+        },
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 120,
+            "numerator": 37
+          },
+          "upper": {
+            "denominator": 40,
+            "numerator": 13
+          }
+        },
+        "upper_witness": {
+          "assignments": [
+            [
+              "00987ef79980ecf58cdf6a26b0cda5dc7e1dda0dc4d0d3c365e14b452002d5fb",
+              1
+            ],
+            [
+              "072ec0f42419ec104d2c4ef5c91ff42e8a9ebdb5df34229801ddbb4be7cf6dcf",
+              1
+            ],
+            [
+              "0dee87058b1f0dac3c9c8767caa605c88886cd7878665f291bd2396857e183d8",
+              1
+            ],
+            [
+              "157c2f688b49ae2e9bc12c96041c8d7420bde9d64040cd7cf321eaadd3ca2c3a",
+              1
+            ],
+            [
+              "16d2d668a6c8a89edd34059174ec6e1f3d69d4be5e9d3c3cba49400dbb32b4f5",
+              1
+            ],
+            [
+              "18df0ad71f2a26762ce1a23998d4e92a0d281dabc98d9aad82e9cefd013b24b5",
+              1
+            ],
+            [
+              "19229afb4d9cac183b8b464cb6dd43ac22d2ffae7ae0bdd0902694ad1cda08b1",
+              1
+            ],
+            [
+              "203946dd6f77131c14fcc324ec09fa091b64867761feaf495c60fdc7821c7fb7",
+              1
+            ],
+            [
+              "21f39ce7777d3bbf406f3a41702893fc387dd43dd092b811729fe8f56e82532c",
+              1
+            ],
+            [
+              "4301777522874d44a0dc150ae5093d0616e39f2d7f66dfea2c5a1df3ae2d496a",
+              1
+            ],
+            [
+              "47f41c662783257cba113cdb6cf61fc7db666c69ce9c65a0783c5044bfcad474",
+              1
+            ],
+            [
+              "480ca5f38d28ddae02d9ec90bc09542f1dc63b298996d67a6802ecb4cae17123",
+              1
+            ],
+            [
+              "524a507728c66848c138688fc8bfd76b512369425d66af96726331ff31dbc81d",
+              1
+            ],
+            [
+              "53c02a033935292f3d8c2f0adc50e37285c0b4bccb5c97d021746adf571ec0ba",
+              1
+            ],
+            [
+              "586f10995b7250cc331b660c1e0356d395ec940a2bf5212c1a0161daea4f5e96",
+              1
+            ],
+            [
+              "5aefc957aed1b6673d61024ed6d9ab1b403a14b0b8392b96359d320ec0a5c4bf",
+              1
+            ],
+            [
+              "5c2c1ab32f8836a3a9a426017097d7592dfa4ff393167a106a8f144b3ab832d7",
+              1
+            ],
+            [
+              "5ce81414a4850aaa1ecf78152a61fdbbc751e774a90cb4884670db3f1e500ca0",
+              1
+            ],
+            [
+              "5d05e99039864f94c307fe608828df366cab4086f6d7e93e93c03953db1be2f7",
+              1
+            ],
+            [
+              "613e4909edf1d5bb89a40f29cb3d30f7564db2df5587fc69becd7bdfc6cacaad",
+              1
+            ],
+            [
+              "671f335047657c1f8c8ecef477b6645004f323dfb9dc828c595b0485bd0936d7",
+              1
+            ],
+            [
+              "6cbcf2241863332c1098e4384eb0c3b47db9a4756114fec5a41d0a59032d2348",
+              1
+            ],
+            [
+              "7386ae3335b16ae4fbf6b5049baeacae214f226b3ef0271f35f09ea497d90899",
+              0
+            ],
+            [
+              "8018854d798bbae2fcd2e5a8440dfa4143373b70920d43afb5ef7a908ab070eb",
+              1
+            ],
+            [
+              "90b12fcdae8072c48d7fc092d5dfe3cdfb7fecf399b8b13c3c0d8722ca54df5c",
+              1
+            ],
+            [
+              "9665792cc4d27708b2f5fc957daeb014690ab4f406c049dbe38046197b26c817",
+              1
+            ],
+            [
+              "9e6f803bf7b2f64b5e73e91d1a18df7bd5ec6f3ff65e22f3d5a661641e4cb6d7",
+              1
+            ],
+            [
+              "a273f2067d670d296fcb21efa65c6608bff48e59d17ee55cf9a2dbd849aeb0d4",
+              1
+            ],
+            [
+              "a64cf55d8b74193ce3a0da77198297e09b4c9e985ed1be13ee485151c8b41ae1",
+              1
+            ],
+            [
+              "aeb94fa1c0b7684f187506850361c9fd5435b12026ecc3df5e4183bba3cd89ce",
+              1
+            ],
+            [
+              "b380a986d8667faaafecf59e17f8537e4962cab985e98a2ad778e4b97d7f7961",
+              1
+            ],
+            [
+              "cde2ebabc33a1862a2a97fbcb52a0bc0c75ac24aaf5b7fda8e15e74a601e7d3d",
+              0
+            ],
+            [
+              "d10203a236ab433f22e4b777a012a4f62f8b7bacb9e6b20e3df2a179a0e0b7ce",
+              1
+            ],
+            [
+              "eb4e53258b9c735c85f9dccbc1985ea3be91ed3cea6f53cdd561fab69fda257b",
+              1
+            ],
+            [
+              "ecdbc6a2b464c900c2943a941b9698aab90fd7e4f5e6c9dcbfc024ed69264b97",
+              1
+            ],
+            [
+              "f903a30488f03bbf048dcec2636eaae34d1d190fe2849c46c3e842ccb3ff2604",
+              1
+            ],
+            [
+              "f9cb47110da4b5b08a835e354b92258c351c74b9831237597ca4717cb41fcaf9",
+              1
+            ]
+          ],
+          "difference": {
+            "denominator": 200,
+            "numerator": 87
+          },
+          "left_mean": {
+            "denominator": 300,
+            "numerator": 223
+          },
+          "right_mean": {
+            "denominator": 120,
+            "numerator": 37
+          }
+        },
+        "warnings": [
+          "Hypothetical unrestricted binary completions; sharp interval hull only, not a repaired score, confidence interval, or causal effect."
+        ]
+      },
+      "weighting": "equal_family"
+    },
+    {
+      "contract_sha256": "ae0fe089061f651e5818df8c00a71bfc807d3ce48b53aa1d6747b251d1a4c229",
+      "label": "qwen3.5:9b-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 15,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 15,
+                "numerator": 7
+              }
+            },
+            "missing": 10,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                10
+              ]
+            ],
+            "observed": 50,
+            "planned": 60,
+            "successes": 28,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 3
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 3
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 45,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 3,
+                "numerator": 2
+              },
+              "upper": {
+                "denominator": 3,
+                "numerator": 2
+              }
+            },
+            "missing": 8,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                8
+              ]
+            ],
+            "observed": 16,
+            "planned": 24,
+            "successes": 16,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 12,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 12,
+                "numerator": 7
+              }
+            },
+            "missing": 4,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                4
+              ]
+            ],
+            "observed": 20,
+            "planned": 24,
+            "successes": 14,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 24,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 24,
+                "numerator": 7
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 7,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 24,
+                "numerator": 17
+              },
+              "upper": {
+                "denominator": 24,
+                "numerator": 17
+              }
+            },
+            "missing": 4,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                4
+              ]
+            ],
+            "observed": 20,
+            "planned": 24,
+            "successes": 17,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 3
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 3
+              }
+            },
+            "missing": 2,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                2
+              ]
+            ],
+            "observed": 22,
+            "planned": 24,
+            "successes": 9,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 12,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 12,
+                "numerator": 1
+              }
+            },
+            "missing": 9,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                9
+              ]
+            ],
+            "observed": 15,
+            "planned": 24,
+            "successes": 2,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 150,
+            "numerator": 29
+          },
+          "upper": {
+            "denominator": 150,
+            "numerator": 29
+          }
+        },
+        "estimand": "pipeline_success_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 600,
+            "numerator": 301
+          },
+          "upper": {
+            "denominator": 600,
+            "numerator": 301
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 120,
+            "numerator": 37
+          },
+          "upper": {
+            "denominator": 120,
+            "numerator": 37
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Invalid/missing output is failure by policy; this is pipeline success, not latent semantic correctness."
+        ]
+      },
+      "weighting": "equal_family"
+    },
+    {
+      "contract_sha256": "ae0fe089061f651e5818df8c00a71bfc807d3ce48b53aa1d6747b251d1a4c229",
+      "label": "qwen3.5:9b-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 50,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 25,
+                "numerator": 14
+              },
+              "upper": {
+                "denominator": 25,
+                "numerator": 14
+              }
+            },
+            "missing": 10,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                10
+              ]
+            ],
+            "observed": 50,
+            "planned": 60,
+            "successes": 28,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 60,
+            "group": "authorization",
+            "interval": {
+              "lower": {
+                "denominator": 4,
+                "numerator": 3
+              },
+              "upper": {
+                "denominator": 4,
+                "numerator": 3
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 60,
+            "planned": 60,
+            "successes": 45,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 16,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 1
+              }
+            },
+            "missing": 8,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                8
+              ]
+            ],
+            "observed": 16,
+            "planned": 24,
+            "successes": 16,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "benign_control",
+            "interval": {
+              "lower": {
+                "denominator": 1,
+                "numerator": 0
+              },
+              "upper": {
+                "denominator": 1,
+                "numerator": 0
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 0,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 20,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 10,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 10,
+                "numerator": 7
+              }
+            },
+            "missing": 4,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                4
+              ]
+            ],
+            "observed": 20,
+            "planned": 24,
+            "successes": 14,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "non_idempotent_duplicate",
+            "interval": {
+              "lower": {
+                "denominator": 24,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 24,
+                "numerator": 7
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 7,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 20,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 20,
+                "numerator": 17
+              },
+              "upper": {
+                "denominator": 20,
+                "numerator": 17
+              }
+            },
+            "missing": 4,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                4
+              ]
+            ],
+            "observed": 20,
+            "planned": 24,
+            "successes": 17,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 22,
+            "group": "partial_execution",
+            "interval": {
+              "lower": {
+                "denominator": 22,
+                "numerator": 9
+              },
+              "upper": {
+                "denominator": 22,
+                "numerator": 9
+              }
+            },
+            "missing": 2,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                2
+              ]
+            ],
+            "observed": 22,
+            "planned": 24,
+            "successes": 9,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "evidence_first",
+            "denominator": 15,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 15,
+                "numerator": 2
+              },
+              "upper": {
+                "denominator": 15,
+                "numerator": 2
+              }
+            },
+            "missing": 9,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                9
+              ]
+            ],
+            "observed": 15,
+            "planned": 24,
+            "successes": 2,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 24,
+            "group": "transient_side_effect",
+            "interval": {
+              "lower": {
+                "denominator": 8,
+                "numerator": 1
+              },
+              "upper": {
+                "denominator": 8,
+                "numerator": 1
+              }
+            },
+            "missing": 0,
+            "missing_reasons": [],
+            "observed": 24,
+            "planned": 24,
+            "successes": 3,
+            "weight": {
+              "denominator": 5,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 16500,
+            "numerator": 5503
+          },
+          "upper": {
+            "denominator": 16500,
+            "numerator": 5503
+          }
+        },
+        "estimand": "valid_only_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 1500,
+            "numerator": 973
+          },
+          "upper": {
+            "denominator": 1500,
+            "numerator": 973
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 165,
+            "numerator": 52
+          },
+          "upper": {
+            "denominator": 165,
+            "numerator": 52
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Conditional on valid outputs; differential selection can reverse comparisons. No missing group is dropped or reweighted."
+        ]
+      },
+      "weighting": "equal_family"
+    },
+    {
+      "contract_sha256": "38cec538f80b7e926a846f2938a32a66ac81ad0731c0be5b5f7cc84fd782d03e",
+      "label": "qwen3.5:9b-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 156,
+                "numerator": 77
+              },
+              "upper": {
+                "denominator": 39,
+                "numerator": 28
+              }
+            },
+            "missing": 35,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                35
+              ]
+            ],
+            "observed": 121,
+            "planned": 156,
+            "successes": 77,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 39,
+                "numerator": 16
+              },
+              "upper": {
+                "denominator": 26,
+                "numerator": 11
+              }
+            },
+            "missing": 2,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                2
+              ]
+            ],
+            "observed": 154,
+            "planned": 156,
+            "successes": 64,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 156,
+            "numerator": 11
+          },
+          "upper": {
+            "denominator": 13,
+            "numerator": 4
+          }
+        },
+        "estimand": "latent_semantic_correctness",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 156,
+            "numerator": 77
+          },
+          "upper": {
+            "denominator": 39,
+            "numerator": 28
+          }
+        },
+        "lower_witness": {
+          "assignments": [
+            [
+              "00987ef79980ecf58cdf6a26b0cda5dc7e1dda0dc4d0d3c365e14b452002d5fb",
+              0
+            ],
+            [
+              "072ec0f42419ec104d2c4ef5c91ff42e8a9ebdb5df34229801ddbb4be7cf6dcf",
+              0
+            ],
+            [
+              "0dee87058b1f0dac3c9c8767caa605c88886cd7878665f291bd2396857e183d8",
+              0
+            ],
+            [
+              "157c2f688b49ae2e9bc12c96041c8d7420bde9d64040cd7cf321eaadd3ca2c3a",
+              0
+            ],
+            [
+              "16d2d668a6c8a89edd34059174ec6e1f3d69d4be5e9d3c3cba49400dbb32b4f5",
+              0
+            ],
+            [
+              "18df0ad71f2a26762ce1a23998d4e92a0d281dabc98d9aad82e9cefd013b24b5",
+              0
+            ],
+            [
+              "19229afb4d9cac183b8b464cb6dd43ac22d2ffae7ae0bdd0902694ad1cda08b1",
+              0
+            ],
+            [
+              "203946dd6f77131c14fcc324ec09fa091b64867761feaf495c60fdc7821c7fb7",
+              0
+            ],
+            [
+              "21f39ce7777d3bbf406f3a41702893fc387dd43dd092b811729fe8f56e82532c",
+              0
+            ],
+            [
+              "4301777522874d44a0dc150ae5093d0616e39f2d7f66dfea2c5a1df3ae2d496a",
+              0
+            ],
+            [
+              "47f41c662783257cba113cdb6cf61fc7db666c69ce9c65a0783c5044bfcad474",
+              0
+            ],
+            [
+              "480ca5f38d28ddae02d9ec90bc09542f1dc63b298996d67a6802ecb4cae17123",
+              0
+            ],
+            [
+              "524a507728c66848c138688fc8bfd76b512369425d66af96726331ff31dbc81d",
+              0
+            ],
+            [
+              "53c02a033935292f3d8c2f0adc50e37285c0b4bccb5c97d021746adf571ec0ba",
+              0
+            ],
+            [
+              "586f10995b7250cc331b660c1e0356d395ec940a2bf5212c1a0161daea4f5e96",
+              0
+            ],
+            [
+              "5aefc957aed1b6673d61024ed6d9ab1b403a14b0b8392b96359d320ec0a5c4bf",
+              0
+            ],
+            [
+              "5c2c1ab32f8836a3a9a426017097d7592dfa4ff393167a106a8f144b3ab832d7",
+              0
+            ],
+            [
+              "5ce81414a4850aaa1ecf78152a61fdbbc751e774a90cb4884670db3f1e500ca0",
+              0
+            ],
+            [
+              "5d05e99039864f94c307fe608828df366cab4086f6d7e93e93c03953db1be2f7",
+              0
+            ],
+            [
+              "613e4909edf1d5bb89a40f29cb3d30f7564db2df5587fc69becd7bdfc6cacaad",
+              0
+            ],
+            [
+              "671f335047657c1f8c8ecef477b6645004f323dfb9dc828c595b0485bd0936d7",
+              0
+            ],
+            [
+              "6cbcf2241863332c1098e4384eb0c3b47db9a4756114fec5a41d0a59032d2348",
+              0
+            ],
+            [
+              "7386ae3335b16ae4fbf6b5049baeacae214f226b3ef0271f35f09ea497d90899",
+              1
+            ],
+            [
+              "8018854d798bbae2fcd2e5a8440dfa4143373b70920d43afb5ef7a908ab070eb",
+              0
+            ],
+            [
+              "90b12fcdae8072c48d7fc092d5dfe3cdfb7fecf399b8b13c3c0d8722ca54df5c",
+              0
+            ],
+            [
+              "9665792cc4d27708b2f5fc957daeb014690ab4f406c049dbe38046197b26c817",
+              0
+            ],
+            [
+              "9e6f803bf7b2f64b5e73e91d1a18df7bd5ec6f3ff65e22f3d5a661641e4cb6d7",
+              0
+            ],
+            [
+              "a273f2067d670d296fcb21efa65c6608bff48e59d17ee55cf9a2dbd849aeb0d4",
+              0
+            ],
+            [
+              "a64cf55d8b74193ce3a0da77198297e09b4c9e985ed1be13ee485151c8b41ae1",
+              0
+            ],
+            [
+              "aeb94fa1c0b7684f187506850361c9fd5435b12026ecc3df5e4183bba3cd89ce",
+              0
+            ],
+            [
+              "b380a986d8667faaafecf59e17f8537e4962cab985e98a2ad778e4b97d7f7961",
+              0
+            ],
+            [
+              "cde2ebabc33a1862a2a97fbcb52a0bc0c75ac24aaf5b7fda8e15e74a601e7d3d",
+              1
+            ],
+            [
+              "d10203a236ab433f22e4b777a012a4f62f8b7bacb9e6b20e3df2a179a0e0b7ce",
+              0
+            ],
+            [
+              "eb4e53258b9c735c85f9dccbc1985ea3be91ed3cea6f53cdd561fab69fda257b",
+              0
+            ],
+            [
+              "ecdbc6a2b464c900c2943a941b9698aab90fd7e4f5e6c9dcbfc024ed69264b97",
+              0
+            ],
+            [
+              "f903a30488f03bbf048dcec2636eaae34d1d190fe2849c46c3e842ccb3ff2604",
+              0
+            ],
+            [
+              "f9cb47110da4b5b08a835e354b92258c351c74b9831237597ca4717cb41fcaf9",
+              0
+            ]
+          ],
+          "difference": {
+            "denominator": 156,
+            "numerator": 11
+          },
+          "left_mean": {
+            "denominator": 156,
+            "numerator": 77
+          },
+          "right_mean": {
+            "denominator": 26,
+            "numerator": 11
+          }
+        },
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 39,
+            "numerator": 16
+          },
+          "upper": {
+            "denominator": 26,
+            "numerator": 11
+          }
+        },
+        "upper_witness": {
+          "assignments": [
+            [
+              "00987ef79980ecf58cdf6a26b0cda5dc7e1dda0dc4d0d3c365e14b452002d5fb",
+              1
+            ],
+            [
+              "072ec0f42419ec104d2c4ef5c91ff42e8a9ebdb5df34229801ddbb4be7cf6dcf",
+              1
+            ],
+            [
+              "0dee87058b1f0dac3c9c8767caa605c88886cd7878665f291bd2396857e183d8",
+              1
+            ],
+            [
+              "157c2f688b49ae2e9bc12c96041c8d7420bde9d64040cd7cf321eaadd3ca2c3a",
+              1
+            ],
+            [
+              "16d2d668a6c8a89edd34059174ec6e1f3d69d4be5e9d3c3cba49400dbb32b4f5",
+              1
+            ],
+            [
+              "18df0ad71f2a26762ce1a23998d4e92a0d281dabc98d9aad82e9cefd013b24b5",
+              1
+            ],
+            [
+              "19229afb4d9cac183b8b464cb6dd43ac22d2ffae7ae0bdd0902694ad1cda08b1",
+              1
+            ],
+            [
+              "203946dd6f77131c14fcc324ec09fa091b64867761feaf495c60fdc7821c7fb7",
+              1
+            ],
+            [
+              "21f39ce7777d3bbf406f3a41702893fc387dd43dd092b811729fe8f56e82532c",
+              1
+            ],
+            [
+              "4301777522874d44a0dc150ae5093d0616e39f2d7f66dfea2c5a1df3ae2d496a",
+              1
+            ],
+            [
+              "47f41c662783257cba113cdb6cf61fc7db666c69ce9c65a0783c5044bfcad474",
+              1
+            ],
+            [
+              "480ca5f38d28ddae02d9ec90bc09542f1dc63b298996d67a6802ecb4cae17123",
+              1
+            ],
+            [
+              "524a507728c66848c138688fc8bfd76b512369425d66af96726331ff31dbc81d",
+              1
+            ],
+            [
+              "53c02a033935292f3d8c2f0adc50e37285c0b4bccb5c97d021746adf571ec0ba",
+              1
+            ],
+            [
+              "586f10995b7250cc331b660c1e0356d395ec940a2bf5212c1a0161daea4f5e96",
+              1
+            ],
+            [
+              "5aefc957aed1b6673d61024ed6d9ab1b403a14b0b8392b96359d320ec0a5c4bf",
+              1
+            ],
+            [
+              "5c2c1ab32f8836a3a9a426017097d7592dfa4ff393167a106a8f144b3ab832d7",
+              1
+            ],
+            [
+              "5ce81414a4850aaa1ecf78152a61fdbbc751e774a90cb4884670db3f1e500ca0",
+              1
+            ],
+            [
+              "5d05e99039864f94c307fe608828df366cab4086f6d7e93e93c03953db1be2f7",
+              1
+            ],
+            [
+              "613e4909edf1d5bb89a40f29cb3d30f7564db2df5587fc69becd7bdfc6cacaad",
+              1
+            ],
+            [
+              "671f335047657c1f8c8ecef477b6645004f323dfb9dc828c595b0485bd0936d7",
+              1
+            ],
+            [
+              "6cbcf2241863332c1098e4384eb0c3b47db9a4756114fec5a41d0a59032d2348",
+              1
+            ],
+            [
+              "7386ae3335b16ae4fbf6b5049baeacae214f226b3ef0271f35f09ea497d90899",
+              0
+            ],
+            [
+              "8018854d798bbae2fcd2e5a8440dfa4143373b70920d43afb5ef7a908ab070eb",
+              1
+            ],
+            [
+              "90b12fcdae8072c48d7fc092d5dfe3cdfb7fecf399b8b13c3c0d8722ca54df5c",
+              1
+            ],
+            [
+              "9665792cc4d27708b2f5fc957daeb014690ab4f406c049dbe38046197b26c817",
+              1
+            ],
+            [
+              "9e6f803bf7b2f64b5e73e91d1a18df7bd5ec6f3ff65e22f3d5a661641e4cb6d7",
+              1
+            ],
+            [
+              "a273f2067d670d296fcb21efa65c6608bff48e59d17ee55cf9a2dbd849aeb0d4",
+              1
+            ],
+            [
+              "a64cf55d8b74193ce3a0da77198297e09b4c9e985ed1be13ee485151c8b41ae1",
+              1
+            ],
+            [
+              "aeb94fa1c0b7684f187506850361c9fd5435b12026ecc3df5e4183bba3cd89ce",
+              1
+            ],
+            [
+              "b380a986d8667faaafecf59e17f8537e4962cab985e98a2ad778e4b97d7f7961",
+              1
+            ],
+            [
+              "cde2ebabc33a1862a2a97fbcb52a0bc0c75ac24aaf5b7fda8e15e74a601e7d3d",
+              0
+            ],
+            [
+              "d10203a236ab433f22e4b777a012a4f62f8b7bacb9e6b20e3df2a179a0e0b7ce",
+              1
+            ],
+            [
+              "eb4e53258b9c735c85f9dccbc1985ea3be91ed3cea6f53cdd561fab69fda257b",
+              1
+            ],
+            [
+              "ecdbc6a2b464c900c2943a941b9698aab90fd7e4f5e6c9dcbfc024ed69264b97",
+              1
+            ],
+            [
+              "f903a30488f03bbf048dcec2636eaae34d1d190fe2849c46c3e842ccb3ff2604",
+              1
+            ],
+            [
+              "f9cb47110da4b5b08a835e354b92258c351c74b9831237597ca4717cb41fcaf9",
+              1
+            ]
+          ],
+          "difference": {
+            "denominator": 13,
+            "numerator": 4
+          },
+          "left_mean": {
+            "denominator": 39,
+            "numerator": 28
+          },
+          "right_mean": {
+            "denominator": 39,
+            "numerator": 16
+          }
+        },
+        "warnings": [
+          "Hypothetical unrestricted binary completions; sharp interval hull only, not a repaired score, confidence interval, or causal effect."
+        ]
+      },
+      "weighting": "pooled"
+    },
+    {
+      "contract_sha256": "38cec538f80b7e926a846f2938a32a66ac81ad0731c0be5b5f7cc84fd782d03e",
+      "label": "qwen3.5:9b-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 156,
+                "numerator": 77
+              },
+              "upper": {
+                "denominator": 156,
+                "numerator": 77
+              }
+            },
+            "missing": 35,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                35
+              ]
+            ],
+            "observed": 121,
+            "planned": 156,
+            "successes": 77,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 156,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 39,
+                "numerator": 16
+              },
+              "upper": {
+                "denominator": 39,
+                "numerator": 16
+              }
+            },
+            "missing": 2,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                2
+              ]
+            ],
+            "observed": 154,
+            "planned": 156,
+            "successes": 64,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 12,
+            "numerator": 1
+          },
+          "upper": {
+            "denominator": 12,
+            "numerator": 1
+          }
+        },
+        "estimand": "pipeline_success_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 156,
+            "numerator": 77
+          },
+          "upper": {
+            "denominator": 156,
+            "numerator": 77
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 39,
+            "numerator": 16
+          },
+          "upper": {
+            "denominator": 39,
+            "numerator": 16
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Invalid/missing output is failure by policy; this is pipeline success, not latent semantic correctness."
+        ]
+      },
+      "weighting": "pooled"
+    },
+    {
+      "contract_sha256": "38cec538f80b7e926a846f2938a32a66ac81ad0731c0be5b5f7cc84fd782d03e",
+      "label": "qwen3.5:9b-q4_K_M",
+      "report": {
+        "cells": [
+          {
+            "arm": "evidence_first",
+            "denominator": 121,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 11,
+                "numerator": 7
+              },
+              "upper": {
+                "denominator": 11,
+                "numerator": 7
+              }
+            },
+            "missing": 35,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                35
+              ]
+            ],
+            "observed": 121,
+            "planned": 156,
+            "successes": 77,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          },
+          {
+            "arm": "direct",
+            "denominator": 154,
+            "group": "all_trials",
+            "interval": {
+              "lower": {
+                "denominator": 77,
+                "numerator": 32
+              },
+              "upper": {
+                "denominator": 77,
+                "numerator": 32
+              }
+            },
+            "missing": 2,
+            "missing_reasons": [
+              [
+                "invalid_response",
+                2
+              ]
+            ],
+            "observed": 154,
+            "planned": 156,
+            "successes": 64,
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "difference": {
+          "lower": {
+            "denominator": 77,
+            "numerator": 17
+          },
+          "upper": {
+            "denominator": 77,
+            "numerator": 17
+          }
+        },
+        "estimand": "valid_only_accuracy",
+        "left_arm": "evidence_first",
+        "left_mean": {
+          "lower": {
+            "denominator": 11,
+            "numerator": 7
+          },
+          "upper": {
+            "denominator": 11,
+            "numerator": 7
+          }
+        },
+        "lower_witness": null,
+        "right_arm": "direct",
+        "right_mean": {
+          "lower": {
+            "denominator": 77,
+            "numerator": 32
+          },
+          "upper": {
+            "denominator": 77,
+            "numerator": 32
+          }
+        },
+        "upper_witness": null,
+        "warnings": [
+          "Conditional on valid outputs; differential selection can reverse comparisons. No missing group is dropped or reweighted."
+        ]
+      },
+      "weighting": "pooled"
+    }
+  ],
+  "provenance": {
+    "canonical_checksums_sha256": "3a1521f99f029e0d41b6ad7ff15a6897e8c8fcee32f0471e93d2626686930e74",
+    "canonical_manifest_sha256": "022be2faaf4758eafed1b07a37630a0c3e39f3cd09969fc4740c8f8d4ed34041",
+    "claim_boundary": "No sensitivity bound overrides the frozen validity verdict or establishes an intervention benefit.",
+    "frozen_checksums_sha256": "4bdd0372fda9e3a50cfa7ff0b8e18e0d1d9febd98270c909de5c646a3af6d095",
+    "integrity_boundary": "Local checksum/manifest consistency, not an authenticity signature or receipt re-scoring.",
+    "invalid_count": 37,
+    "output_validity_checks": {
+      "validity_at_least_95_percent_each_model_arm": false,
+      "validity_gap_at_most_5pp_each_model": false
+    },
+    "output_validity_gate_passed": false,
+    "planned_terminal_count": 624,
+    "positive_claim_gates_passed": false,
+    "protocol_digest": "ca7cb4ccd51bdf172a29fa91f447dda1b45fbe191260ec90a11b9b8ece722667",
+    "scope": "post_hoc_diagnostic_only_not_preregistered_inference",
+    "study_id": "execution-evidence-ledger-v1",
+    "valid_count": 587
+  },
+  "schema_version": 1
+}

@@ -1,0 +1,192 @@
+{
+  "comparisons": [
+    {
+      "contract": {
+        "groups": [
+          {
+            "group": "all_trials",
+            "left_planned_count": 10,
+            "left_trial_ids": [
+              "left-00",
+              "left-01",
+              "left-02",
+              "left-03",
+              "left-04",
+              "left-05",
+              "left-06",
+              "left-07",
+              "left-08",
+              "left-09"
+            ],
+            "right_planned_count": 10,
+            "right_trial_ids": [
+              "right-00",
+              "right-01",
+              "right-02",
+              "right-03",
+              "right-04",
+              "right-05",
+              "right-06",
+              "right-07",
+              "right-08",
+              "right-09"
+            ],
+            "weight": {
+              "denominator": 1,
+              "numerator": 1
+            }
+          }
+        ],
+        "left_arm": "left",
+        "outcomes": [
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "left-00",
+            "value": 1
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "left-01",
+            "value": 1
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-02",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-03",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-04",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-05",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-06",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-07",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-08",
+            "value": null
+          },
+          {
+            "arm": "left",
+            "group": "all_trials",
+            "missing_reason": "invalid_response",
+            "trial_id": "left-09",
+            "value": null
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-00",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-01",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-02",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-03",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-04",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-05",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-06",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-07",
+            "value": 1
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-08",
+            "value": 0
+          },
+          {
+            "arm": "right",
+            "group": "all_trials",
+            "missing_reason": null,
+            "trial_id": "right-09",
+            "value": 0
+          }
+        ],
+        "right_arm": "right",
+        "schema_version": 1
+      },
+      "label": "declared_comparison",
+      "sha256": "aff95e9ea32347c9e15f666643b061e70270f3766ddfd68c548ef0120082332d",
+      "weighting": "declared_group_weights"
+    }
+  ],
+  "schema_version": 1
+}
