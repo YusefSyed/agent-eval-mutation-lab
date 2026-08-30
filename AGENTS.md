@@ -6,6 +6,9 @@
   execution-semantic robustness of tool-agent trajectory scorers.
 - Supported runtime is Python 3.12+ through `uv`; the current offline kernel uses
   only the standard library at runtime.
+- Optional actual-tool execution lives outside the frozen core in
+  `integrations/inspect_tool_execution/`. Its own locks and manifests govern Inspect,
+  Docker and local Ollama use; core runtime claims do not describe this integration.
 - Non-goals: no hosted model calls, no API keys, no private/customer data, no
   production-safety claims, no general-purpose eval framework, and no unaided
   Python-fluency claim before the separate ownership gate in `OWNERSHIP.md`.
@@ -38,6 +41,8 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Engine evidence | `engine/export.py`, `engine/aggregation.py` | Canonical order excludes operational noise |
 | Semantic mutation harness | `mutation_benchmark/`, `benchmarks/mutations-v2-development.json` | Development and held-out partitions never mix |
 | Completed model study | `model_study/`, `benchmarks/model-study-v1/frozen/`, `artifacts/model-study/v1/` | Live inference never enters the deterministic engine or sees oracle metadata; five of six promotion gates failed |
+| Persisted tool effects | `integrations/inspect_tool_execution/PROTOCOL.md`, `src/inspect_tool_execution/`, `sandbox/registry.py` within that integration | Synthetic publication is a DB flag; separate read-only scoring, exact approvals and isolation remain intact |
+| Frozen real-tool model run | `integrations/inspect_tool_execution/local_model/manifest.json`, `runner.py`, `rescore.py`, `artifacts/inspect-tool-execution/local-v1/REPORT.md` | Do not change frozen inputs or retune/retry under the same run identity; controlled faults and observed model behavior are separate evidence |
 | Research | `DESIGN.md`, `PRIOR_ART.md`, `OWNERSHIP.md` | No first-ever, framework-safety, or unaided-fluency claim |
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
@@ -58,6 +63,8 @@ scorer-safe observation, each scorer, and the generated case result.
 | Semantic mutant survives | catalog activation case, `tests/test_scorers_v2.py` | focused mutation benchmark |
 | Model-study output changes | frozen prompt/schema/model/input digests and canonical manifest | deterministic offline re-export plus checksum verification |
 | HTML differs from JSONL | `engine/export.py`, `engine/aggregation.py` | export consistency tests |
+| Tool text disagrees with effect | integration `effect_scorer.py`, `sandbox/registry.py`, per-sample SQLite history | Integration scorer/registry tests and independent full-suite verifier |
+| Local-model exposure or utility is unclear | local-model `runner.py`, exact resolved native model request, `rescore.py` | Local-model offline tests; missing logs remain unknown and known harmful DB effects survive later errors |
 
 ## Working safely
 
@@ -68,6 +75,10 @@ scorer-safe observation, each scorer, and the generated case result.
   sync.
 - Do not add real framework data until its license and contamination rules are
   checked and the adapter can remain outside the core.
+- The local-model `DRAFT_RECEIPT.md` is historical preparation evidence. The frozen
+  manifest and published `local-v1/REPORT.md` describe the completed run. Public
+  logs are metadata-sanitized copies, not byte-identical raw logs. Never relax core
+  hash checks or overwrite frozen evidence to accommodate an optional integration.
 
 ## Commands
 

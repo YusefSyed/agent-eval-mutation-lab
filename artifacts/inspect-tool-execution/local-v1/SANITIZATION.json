@@ -1,0 +1,251 @@
+{
+  "limits": "Published logs are sanitized copies, not byte-identical originals. Raw originals remain local; use SHA256SUMS for the published bundle.",
+  "metadata_changes": [
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-33-29-00-00_local-effects-direct-benign-r1_7KykbG9hfjrCT8GkPmJ7Hm.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-34-26-00-00_local-effects-direct-adversarial-r1_6HwFVQ9CTe6vhguHYbipJS.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-35-18-00-00_local-effects-authority-benign-r1_gXb9iH3fdzvLdYQene2Upn.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-36-04-00-00_local-effects-authority-adversarial-r1_bLZN9P2HkGJ5D298Tzgbdu.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-36-53-00-00_local-effects-revoke-benign-r1_CBUCnCMS3BE5Dp5B7SRhFJ.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-37-41-00-00_local-effects-revoke-adversarial-r1_iNPTf2uFvU9kJ4cwYuNYF8.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-38-30-00-00_local-effects-failed-write-benign-r1_ZfpC2f9yRDwSn5tMzYQ3kz.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-39-21-00-00_local-effects-failed-write-adversarial-r1_aLV2srffoJEmHdR7XgJDKm.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-40-12-00-00_local-effects-retry-benign-r1_dCp4u7iqZHmNsNSjW3ZjqL.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-41-02-00-00_local-effects-retry-adversarial-r1_fnfkYxeMpUeqkvbj2rbB2W.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-41-57-00-00_local-effects-safe-assertion-benign-r1_eF9UpRQVcWeNufYasK4vMq.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-42-49-00-00_local-effects-safe-assertion-adversarial-r1_e6hWkZyDHEZc9knzsZ26fx.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-43-39-00-00_local-effects-direct-adversarial-r2_XJKFEmJYKiTW24xaqbzZF2.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-44-33-00-00_local-effects-direct-benign-r2_MQuouTZQZRJvy2M7tS3cb4.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-45-23-00-00_local-effects-authority-adversarial-r2_4mDRwSsM2ugUfhV5KAPHCF.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-46-12-00-00_local-effects-authority-benign-r2_ES9KbWpmvxsSPDi6j9rYxo.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-47-01-00-00_local-effects-revoke-adversarial-r2_efZxnY8gEAPXkzkZdS4Pgt.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-47-52-00-00_local-effects-revoke-benign-r2_HjR24TLSgtvyNaUCtqjzfp.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-48-41-00-00_local-effects-failed-write-adversarial-r2_3zQHeuVMN2Pta8WBfwJACa.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-49-32-00-00_local-effects-failed-write-benign-r2_T4jbVbSUy7pEZqRcerVFxv.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-50-21-00-00_local-effects-retry-adversarial-r2_gjMkvzf5jBQWL89dLqLSor.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-51-16-00-00_local-effects-retry-benign-r2_CNBckSwV3snqp8N5zSNwfV.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-52-06-00-00_local-effects-safe-assertion-adversarial-r2_NDhEuTYAadA39aE9AZkGyx.json",
+      "model_tool_content_unchanged": true
+    },
+    {
+      "changed_metadata_fields": [
+        "eval/sandbox/config",
+        "eval/scorers/0/options/output",
+        "samples/0/events/42/scorer_args/output"
+      ],
+      "file": "inspect-logs/2026-08-30T11-52-55-00-00_local-effects-safe-assertion-benign-r2_MS5sgRGFXtSHyeunesmg5J.json",
+      "model_tool_content_unchanged": true
+    }
+  ],
+  "method": "Only three operational workspace-path metadata values per native log replaced with <WORKTREE>; prompts, responses, tool calls, pools, attachments, observations and scores unchanged. All database/manifest/sample/summary bytes copied unchanged.",
+  "original_evidence_files": 51,
+  "original_inventory_sha256": "8da5e877974fb4837e7dc3cd43d080617f789455e9c402ea97a8a734c549deb8",
+  "raw_log_sha256": {
+    "inspect-logs/2026-08-30T11-33-29-00-00_local-effects-direct-benign-r1_7KykbG9hfjrCT8GkPmJ7Hm.json": "39870adad75b588fd590dbe2ed375ee9cec2264bee91d709912d6045ae5826f4",
+    "inspect-logs/2026-08-30T11-34-26-00-00_local-effects-direct-adversarial-r1_6HwFVQ9CTe6vhguHYbipJS.json": "870031c6a5873ad0cff429da8dde3fba04f84fa48520120ed929fc070cfa8dff",
+    "inspect-logs/2026-08-30T11-35-18-00-00_local-effects-authority-benign-r1_gXb9iH3fdzvLdYQene2Upn.json": "d3d421ee30230ad8e35764a00ff46076a33b619bbe107914d7779d370d05d5e8",
+    "inspect-logs/2026-08-30T11-36-04-00-00_local-effects-authority-adversarial-r1_bLZN9P2HkGJ5D298Tzgbdu.json": "de512df0d44e7ee2f4af61a6d37dd5eb5c25545a97c5a5700e2bb5b0f99dda2b",
+    "inspect-logs/2026-08-30T11-36-53-00-00_local-effects-revoke-benign-r1_CBUCnCMS3BE5Dp5B7SRhFJ.json": "ab620a340c97e593b24f629e12bbef215909089dd579833cb508805db2db6131",
+    "inspect-logs/2026-08-30T11-37-41-00-00_local-effects-revoke-adversarial-r1_iNPTf2uFvU9kJ4cwYuNYF8.json": "e984d01df36b010857f7f01cda2517d1649368baf0e04d7ccf75bc3b004f7c00",
+    "inspect-logs/2026-08-30T11-38-30-00-00_local-effects-failed-write-benign-r1_ZfpC2f9yRDwSn5tMzYQ3kz.json": "253d7ea72c271de80d78b80294b2ddccf89ecc547ed579c5dbf8767a852fbf0f",
+    "inspect-logs/2026-08-30T11-39-21-00-00_local-effects-failed-write-adversarial-r1_aLV2srffoJEmHdR7XgJDKm.json": "d9e3e43ba60f1564c69ff7098c383278337b40907826c281a0c75e09a6d9074e",
+    "inspect-logs/2026-08-30T11-40-12-00-00_local-effects-retry-benign-r1_dCp4u7iqZHmNsNSjW3ZjqL.json": "0ddb41619dba2eaaf367d58a678d20550039ec65fd406f70524131d6347fff9b",
+    "inspect-logs/2026-08-30T11-41-02-00-00_local-effects-retry-adversarial-r1_fnfkYxeMpUeqkvbj2rbB2W.json": "2bf81b0482721f4baa858531822d31d002f9831d37b0faf32777c82d4d5945ba",
+    "inspect-logs/2026-08-30T11-41-57-00-00_local-effects-safe-assertion-benign-r1_eF9UpRQVcWeNufYasK4vMq.json": "55d3df05dcfb0926a9b03322c24592dc54f094a95928ca7d74a86ef2d3b07d04",
+    "inspect-logs/2026-08-30T11-42-49-00-00_local-effects-safe-assertion-adversarial-r1_e6hWkZyDHEZc9knzsZ26fx.json": "9a3764d956da0eed09fd9c73d5e4d4f66f7711df52d3a43b1d2453fe692afed4",
+    "inspect-logs/2026-08-30T11-43-39-00-00_local-effects-direct-adversarial-r2_XJKFEmJYKiTW24xaqbzZF2.json": "69221f449acf6890cd1401bc6c04c3947aa0900259baafad41206b87685ff259",
+    "inspect-logs/2026-08-30T11-44-33-00-00_local-effects-direct-benign-r2_MQuouTZQZRJvy2M7tS3cb4.json": "2d88d06141d4f0d9f21bbcf22428d08db16542c5700909cea79c8108cf49d6c2",
+    "inspect-logs/2026-08-30T11-45-23-00-00_local-effects-authority-adversarial-r2_4mDRwSsM2ugUfhV5KAPHCF.json": "d12f31838144186e0cdd3f7e99f4514e4e9cecfc464a8e91c419866a9f18eee2",
+    "inspect-logs/2026-08-30T11-46-12-00-00_local-effects-authority-benign-r2_ES9KbWpmvxsSPDi6j9rYxo.json": "a03bfcf4683dc102d1179f962b42b8b7b2c553854c6244f1f1847c8242806596",
+    "inspect-logs/2026-08-30T11-47-01-00-00_local-effects-revoke-adversarial-r2_efZxnY8gEAPXkzkZdS4Pgt.json": "669a5499baea54521f3c5cde17cbd4b9980f668b38a650317657c4da0195d956",
+    "inspect-logs/2026-08-30T11-47-52-00-00_local-effects-revoke-benign-r2_HjR24TLSgtvyNaUCtqjzfp.json": "a5a82799ece198843ba2b34721d7033a12060e8c95fa1548bc2c54c88153557f",
+    "inspect-logs/2026-08-30T11-48-41-00-00_local-effects-failed-write-adversarial-r2_3zQHeuVMN2Pta8WBfwJACa.json": "4252e3dec54cb0da903bf9a4ead816f32eae5caf45fc578050728b22b5a53616",
+    "inspect-logs/2026-08-30T11-49-32-00-00_local-effects-failed-write-benign-r2_T4jbVbSUy7pEZqRcerVFxv.json": "7f75a3a404e7c249548f05fc8f2d8627306c6b5ffbdadbf136965170e0d6ecdf",
+    "inspect-logs/2026-08-30T11-50-21-00-00_local-effects-retry-adversarial-r2_gjMkvzf5jBQWL89dLqLSor.json": "f7926a33527fee133aed6dcfd3a87364b7ca2fc5d01b70142979ea2593d74aa7",
+    "inspect-logs/2026-08-30T11-51-16-00-00_local-effects-retry-benign-r2_CNBckSwV3snqp8N5zSNwfV.json": "64f78ec5e47e322f4ac38ba2723c607ea1d37fddf2c2453fb5ba0a7cd0a8aa8c",
+    "inspect-logs/2026-08-30T11-52-06-00-00_local-effects-safe-assertion-adversarial-r2_NDhEuTYAadA39aE9AZkGyx.json": "1bbf63c72d62cf4c8217861217e4cf9d2cd8676f1a98e05136d67ef5f46b34e9",
+    "inspect-logs/2026-08-30T11-52-55-00-00_local-effects-safe-assertion-benign-r2_MS5sgRGFXtSHyeunesmg5J.json": "f0b9d09279c05ebefc2aa692c5a5ac57dca6c4af566d3ff7949760137e0e83fb"
+  },
+  "source_commit": "b6c829e146126f740592abf1e3cb3d5fbe265608"
+}

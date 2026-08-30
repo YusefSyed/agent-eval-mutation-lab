@@ -44,3 +44,8 @@ jobs:
           uv run --frozen ruff check .
           uv run --frozen pytest
           RUN_DOCKER_SMOKE=1 uv run --frozen pytest tests/test_mock_smoke.py
+      - name: Verify published local-model evidence without inference
+        working-directory: integrations/inspect_tool_execution/local_model
+        run: |
+          (cd ../../../artifacts/inspect-tool-execution/local-v1 && sha256sum --check SHA256SUMS)
+          uv run --frozen python rescore.py ../../../artifacts/inspect-tool-execution/local-v1
