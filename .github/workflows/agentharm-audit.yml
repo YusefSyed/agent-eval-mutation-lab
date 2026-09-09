@@ -26,7 +26,7 @@ jobs:
     env:
       HF_HUB_OFFLINE: "1"
       HF_DATASETS_OFFLINE: "1"
-      TIKTOKEN_CACHE_DIR: ${{ runner.temp }}/agentharm-tiktoken
+      TIKTOKEN_CACHE_DIR: ${{ github.workspace }}/.cache/agentharm-tiktoken
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
