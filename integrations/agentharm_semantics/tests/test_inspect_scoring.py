@@ -72,7 +72,7 @@ def test_actual_inspect_pipeline_preserves_observed_grader_values(
     [log] = eval(
         task, model="mockllm/model", display="none", log_dir=str(tmp_path / "logs")
     )
-    assert log.status == "success"
+    assert log.status == "success", log.error
     assert log.error is None
     assert log.samples is not None and len(log.samples) == 1
     assert log.samples[0].scores is not None

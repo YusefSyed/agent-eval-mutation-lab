@@ -4,11 +4,12 @@ This optional integration runs pinned AgentHarm grading code on controlled benig
 
 ## Reproduce
 
-Use Python 3.12 and the repository's pinned uv version. Dependency installation needs network access. The audit and tests use a mock model and block runtime socket connections; no model API key, GPU or benchmark dataset download is needed.
+Use Python 3.12 and the repository's pinned uv version. Dependency installation and tokenizer preparation need network access. Inspect's mock model counts tokens with `o200k_base`, whose vocabulary must be cached before the offline run; tiktoken verifies the downloaded vocabulary's expected hash. The audit and tests use a mock model and block runtime socket connections; no model API key, GPU or benchmark dataset download is needed.
 
 ```sh
 cd integrations/agentharm_semantics
 uv tool run --from uv==0.12.5 uv sync --frozen --group dev --python 3.12
+.venv/bin/python -c 'import tiktoken; tiktoken.get_encoding("o200k_base")'
 .venv/bin/python -m pytest
 .venv/bin/ruff check src tests
 .venv/bin/mypy src tests
