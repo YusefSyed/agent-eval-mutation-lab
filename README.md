@@ -65,6 +65,20 @@ standard-library core or the separate frozen 624-trial study. See the
 [local-model report and evidence](artifacts/inspect-tool-execution/local-v1/REPORT.md)
 for definitions, verification, and limits.
 
+## AgentHarm transcript semantics audit
+
+The optional [AgentHarm audit](integrations/agentharm_semantics/README.md) runs pinned
+upstream grading code on controlled benign histories. It records call-response
+association and a benign email-link criterion alongside separately observed fixture
+files. The packet supports the maintainers' evaluation-validity review and keeps
+attempts, error labels, missing responses and effects distinct.
+
+The [observation report](artifacts/agentharm-semantics/v1/REPORT.md) contains 14 helper
+fixtures, three pairs with identical transcripts and different fixture effects,
+and seven grader fixtures. These are development cases with mocked semantic
+judgments. They do not measure model safety or change AgentHarm's scoring policy.
+The integration has its own pinned dependencies and retains AgentHarm's license.
+
 ## Why this is an advanced Python project
 
 The project is deliberately more than a collection of scorer functions:
