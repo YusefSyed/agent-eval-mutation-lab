@@ -1,0 +1,17 @@
+{
+  "inspect_evals_commit": "4bd4bb9bc62830be9684ae2ab3804e7cd818af7a",
+  "inspect_ai_commit": "ce5617d35a19a2f4ed0e30f00110126fe0be8f3e",
+  "task_version": "8-B",
+  "files": {
+    "agentharm/benchmark/grading_utils.py": "8b396de11e60d3cf4e4c07d037a1acfb410ac78a058747d52edb8d8e95ef4a24",
+    "agentharm/benchmark/benign_grading_functions.py": "dc6550c33ad2457e7fcd747e91e2f150916a97aa09ca83c3b198e7c679b0ed35",
+    "agentharm/scorer.py": "ec4210bbffbdf7a4d6a9fa88e56edb4f151fd9f8f910af5955afd028d65aefa4",
+    "agentharm/LICENSE": "04bc888d42b38203bff65c3fedda56fe623d2176422a12fa96d302ab57b1d82b",
+    "agentharm/eval.yaml": "8267d87f682b41b8ddad655fbcafd929494a3d2144a392361d26761fa4843e7f"
+  },
+  "inspect_ai_files": {
+    "model/_call_tools.py": "962ab2f81f13cc0919a11521290559064df9e8184561069d3d128076a98a9e01",
+    "solver/_basic_agent.py": "c57ec0d3c7fd2359250c451130a559dc8fe83554a4b634c787edd4f63e67b99f"
+  },
+  "audit_lock_sha256": "a0913e51869614779400dc7da439fa530fc4e862a7219280afc698f5822878fb"
+}
