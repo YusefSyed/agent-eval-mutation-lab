@@ -10,8 +10,7 @@
   `integrations/inspect_tool_execution/`. Its own locks and manifests govern Inspect,
   Docker and local Ollama use; core runtime claims do not describe this integration.
 - Non-goals: no hosted model calls, no API keys, no private/customer data, no
-  production-safety claims, no general-purpose eval framework, and no unaided
-  Python-fluency claim before the separate ownership gate in `OWNERSHIP.md`.
+  production-safety claims, and no general-purpose eval framework.
 
 ## Authority order
 
@@ -43,7 +42,7 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Completed model study | `model_study/`, `benchmarks/model-study-v1/frozen/`, `artifacts/model-study/v1/` | Live inference never enters the deterministic engine or sees oracle metadata; five of six promotion gates failed |
 | Persisted tool effects | `integrations/inspect_tool_execution/PROTOCOL.md`, `src/inspect_tool_execution/`, `sandbox/registry.py` within that integration | Synthetic publication is a DB flag; separate read-only scoring, exact approvals and isolation remain intact |
 | Frozen real-tool model run | `integrations/inspect_tool_execution/local_model/manifest.json`, `runner.py`, `rescore.py`, `artifacts/inspect-tool-execution/local-v1/REPORT.md` | Do not change frozen inputs or retune/retry under the same run identity; controlled faults and observed model behavior are separate evidence |
-| Research | `DESIGN.md`, `PRIOR_ART.md`, `OWNERSHIP.md` | No first-ever, framework-safety, or unaided-fluency claim |
+| Research | `DESIGN.md`, `PRIOR_ART.md` | No first-ever, framework-safety
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
 scorer-safe observation, each scorer, and the generated case result.
