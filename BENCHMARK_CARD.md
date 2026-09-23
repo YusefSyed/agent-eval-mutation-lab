@@ -107,12 +107,6 @@ exist. No external reviewer has completed the packet, and no separately authored
 holdout submission has been imported. Disagreements must be preserved rather than
 edited away.
 
-## Provenance and ownership
-
-The corpus is synthetic and contains no private or customer data. The repository
-demonstrates a verified engineering artifact; it does not by itself prove unaided
-Python fluency. See `OWNERSHIP.md`.
-
 ## License
 
 Code and committed synthetic artifacts are released under the repository's MIT
