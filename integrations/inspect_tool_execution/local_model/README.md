@@ -98,3 +98,13 @@ prompt-injection-resistance conclusion follows.
 This optional project has its own dependency lock. It does not change the
 standard-library core, deterministic integration identity, generic log adapter, or
 separate frozen 624-trial model study.
+
+
+## Dependency security update (September 25, 2026)
+
+The development environment now uses pytest 9.0.3. The archived local-model
+manifest and published results retain their original hashes; they have not been
+regenerated under the new environment. The runner rejects that archived manifest
+against the changed dependency locks. A new inference run requires a separately
+reviewed manifest and run identity. Offline unit tests use temporary manifest
+fixtures and do not run inference.

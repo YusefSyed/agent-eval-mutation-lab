@@ -57,3 +57,12 @@ If Docker's desktop credential helper stalls on a public pull, an optional
 explicitly selected. Preserve Compose plugin discovery in that config if needed.
 Do not edit global Docker auth settings, copy credentials, or change the daemon.
 This workaround is not required on ordinary Docker/Compose installations.
+
+
+## Current dependency security baseline
+
+The [v2 security baseline](../../artifacts/inspect-tool-execution/v2-security/RECEIPT.md)
+records the same 13 mock-model fixtures under the pytest 9.0.3 development lock.
+Two fresh runs were byte-identical. Its outcomes and database bytes match v1;
+only the dependency-file source identities changed. CI compares against this
+new baseline without relaxing the verifier or changing the archived v1 evidence.
