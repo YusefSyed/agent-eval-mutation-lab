@@ -14,6 +14,10 @@ import runner
 
 def test_draft_manifest_cannot_execute_and_endpoint_changes_fail(tmp_path):
     manifest = json.loads((runner.HERE / "manifest.json").read_text())
+    # The archived manifest stays bound to its original dependency lock. Use an
+    # isolated current-source fixture to exercise approval validation.
+    manifest["deterministic_source_sha256"] = runner.source_hashes()
+    manifest["local_source_sha256"] = runner.local_hashes()
     manifest["approval_status"] = "draft"
     path = tmp_path / "manifest.json"
     path.write_text(json.dumps(manifest))
@@ -29,6 +33,11 @@ def test_draft_manifest_cannot_execute_and_endpoint_changes_fail(tmp_path):
     path.write_text(json.dumps(manifest))
     with pytest.raises(ValueError, match="fixed execution boundary"):
         runner.load_manifest(path)
+
+
+def test_archived_manifest_rejects_updated_dependency_environment():
+    with pytest.raises(ValueError, match="deterministic integration source changed"):
+        runner.load_manifest(runner.HERE / "manifest.json")
 
 
 @pytest.mark.parametrize(
