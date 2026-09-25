@@ -44,8 +44,17 @@ jobs:
           uv run --frozen ruff check .
           uv run --frozen pytest
           RUN_DOCKER_SMOKE=1 uv run --frozen pytest tests/test_mock_smoke.py
+      - name: Check out the frozen study source for historical verification
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: f54f5827f0d62f207ef17adf7bfc83c594492f6c
+          path: archived-study-source
+          persist-credentials: false
       - name: Verify published local-model evidence without inference
-        working-directory: integrations/inspect_tool_execution/local_model
+        working-directory: archived-study-source/integrations/inspect_tool_execution/local_model
+        env:
+          PYTHONPATH: ${{ github.workspace }}/archived-study-source/integrations/inspect_tool_execution/src
         run: |
+          diff -qr ../../../artifacts/inspect-tool-execution/local-v1 "$GITHUB_WORKSPACE/artifacts/inspect-tool-execution/local-v1"
           (cd ../../../artifacts/inspect-tool-execution/local-v1 && sha256sum --check SHA256SUMS)
-          uv run --frozen python rescore.py ../../../artifacts/inspect-tool-execution/local-v1
+          "$GITHUB_WORKSPACE/integrations/inspect_tool_execution/local_model/.venv/bin/python" rescore.py ../../../artifacts/inspect-tool-execution/local-v1
