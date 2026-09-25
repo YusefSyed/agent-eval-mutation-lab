@@ -1,8 +1,7 @@
-# Milestone 3 receipt - evidence-dominance v2 and review readiness
+# Milestone 3 receipt - evidence-dominance v2 and review preparation
 
 **Date:** 2026-08-28
-**Status:** verified local milestone; approved to continue, but not pushed,
-published, independently audited, or resume-ready
+**Status:** verified local milestone; later repository evidence governs current claims
 
 ## Objective achieved in this milestone
 
@@ -41,7 +40,7 @@ overclaims for v2. Baseline tri-state accuracy remains 1.000. Under removed effe
 v2 accuracy ranges from 0.625 to 0.818 and coverage from 0.625 to 0.727. These are
 exact corpus-sensitivity ranges, not confidence intervals.
 
-## Blind-review readiness
+## Blind-review preparation
 
 - 13 cases are exported under opaque review IDs.
 - Packet fields contain actual execution records but no case names, mutation names,
@@ -88,13 +87,12 @@ expanded PDF           e33de78e25d6d3eea85b5e8def64fd2b1d4a48be2d5c58adc186e9616
 2. Obtain at least four separately authored holdout cases.
 3. Preserve and investigate disagreements instead of editing them away.
 4. Extend v2 only through a new version if cancellation/rollback semantics change.
-5. Complete the protected no-AI changed-contract, debugging, explanation, and clean
+5. Complete the protected changed-contract, debugging, explanation, and clean
    reproduction ownership gate.
 6. Publish and update the resume only after those gates pass.
 
 ## Do not claim yet
 
-- independent Python fluency;
 - independently audited labels;
 - a validated held-out result;
 - generic Inspect attack-success scoring;

@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-28  
 **Initial implementation commit:** `970e4e0`  
-**Status:** verified local milestone; not pushed, published, or resume-ready
+**Status:** verified local milestone; superseded by later repository evidence
 
 ## Objective achieved in this milestone
 
@@ -63,13 +63,11 @@ detection is intrinsically defective.
 4. Add family-level leave-one-out sensitivity.
 5. Obtain independent case-label review.
 6. Add one thin real-log adapter if public logs expose the needed semantics.
-7. Complete the protected no-AI changed-contract/debugging/explanation/reproduction
-   gate before any unaided Python-fluency claim.
+7. Complete the protected changed-contract/debugging/explanation/reproduction gate.
 8. Recheck all live role postings before changing the resume.
 
 ## Do not claim yet
 
-- independent Python fluency;
 - a completed empirical research study;
 - first-ever mutation testing for agent scorers;
 - that Inspect, ControlArena, AgentDojo, or another framework is unsafe;

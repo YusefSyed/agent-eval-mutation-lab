@@ -15,6 +15,9 @@ clean-checkout reproduction.
 The core runs offline with a standard-library-only runtime. No model, API key, private
 data, network service, or production system is required.
 
+See the current [research overview](research/report-source.md) and
+[benchmark design](DESIGN.md) for sources, claim boundaries, and falsification gates.
+
 ## Result snapshot
 
 The committed engine run contains 104 canonical tasks: 13 cases × four evidence

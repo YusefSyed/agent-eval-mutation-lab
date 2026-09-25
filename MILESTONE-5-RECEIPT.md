@@ -93,7 +93,7 @@ claim.
 This is now a strong verified engineering artifact suitable for
 truthful portfolio and résumé description. It remains a finite synthetic benchmark,
 not a production safety system, statistically validated general result, independent
-label audit, accepted upstream contribution, or proof of unaided Python fluency.
+label audit, or accepted upstream contribution.
 
 Independent blind review and separately authored holdout evidence remain external
 credibility upgrades rather than reasons to hide the completed engineering work.

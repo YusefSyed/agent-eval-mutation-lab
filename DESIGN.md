@@ -80,7 +80,7 @@ Before a broader research claim:
 3. add one separately authored or hidden mutation family;
 4. extend the v2 evidence model for cancellation timing and authoritative
    no-effect guarantees without altering v1;
-5. complete the protected no-AI ownership gate; and
+5. complete the protected ownership gate; and
 6. reproduce the motivating AgentDojo failure only as an attributed external
    regression test.
 

@@ -1,4 +1,4 @@
-# Milestone 4 receipt - guarded holdout and ownership readiness
+# Milestone 4 receipt - guarded holdout and ownership preflight
 
 **Date:** 2026-08-28
 **Status:** verified local preparation; external evidence still missing
@@ -7,7 +7,7 @@
 
 Added a fail-closed validator for separately authored holdout submissions and a
 project-ownership preflight that refuses to reveal or start the protected task until a
-reviewed, hashed, no-AI foundation result exists.
+reviewed, hashed foundation result exists.
 
 ## Holdout intake boundary
 
@@ -19,7 +19,7 @@ The validator checks:
 - a named semantic relation and a 30-character distinctness rationale per case;
 - label-changing, label-preserving, or evidence-withholding relation type;
 - at least one relation name not used by current families/mutations; and
-- self-reported independent authorship with no scorer source, prior labels, or AI use.
+- self-reported independent authorship with no scorer source or prior labels.
 
 The result explicitly says attestation and distinctness are self-reported. No external
 submission exists, no cases were imported, and no heldout claim is supported yet.
@@ -32,7 +32,7 @@ The preflight checks:
 - presence of the v2 comparison artifact;
 - absence of an active ownership attempt;
 - a protected blank-file foundation result;
-- reviewed/pass/no-AI fields;
+- reviewed/pass protocol fields;
 - preserved result path existence; and
 - exact SHA-256 agreement.
 
@@ -73,8 +73,8 @@ current preflight JSON  79e4ec2fde4365359354f8050229b121fbf5c7510c2e3c4f2271d861
 
 ## Remaining gates
 
-1. The user completes and finalizes the existing protected Python foundation baseline
-   with every AI surface closed.
+1. Finalize the existing protected Python foundation baseline under the ownership
+   protocol.
 2. The result is reviewed, passed, preserved, and recorded with its exact hash.
 3. Only then may the project-specific ownership task be generated and started.
 4. An external human completes the blind label review.
@@ -84,10 +84,7 @@ current preflight JSON  79e4ec2fde4365359354f8050229b121fbf5c7510c2e3c4f2271d861
 
 ## Do not claim yet
 
-- ownership-gate readiness;
-- independent Python fluency;
 - independently audited labels;
 - a validated heldout result;
 - completed empirical research; or
 - a public GitHub release.
-

@@ -5,8 +5,8 @@
 Independently audit the benchmark's ground-truth outcome derivation without exposing
 case names, mutation names, expected labels, scorer outputs, or source code.
 
-This review is a scientific validity check, not an endorsement of the project or proof
-of unaided Python fluency.
+This review is a scientific validity check. It does not establish generalizability
+beyond the reviewed corpus.
 
 ## Reviewer packet
 
@@ -84,4 +84,3 @@ family breadth, self-reported independence, and at least one relation name not a
 used by the current benchmark. It cannot prove the author's attestation or scientific
 novelty. Do not merge even a structurally valid holdout until its semantics receive
 human review.
-

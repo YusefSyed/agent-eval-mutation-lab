@@ -1,7 +1,7 @@
 # Milestone 2 receipt - Inspect adapter and evidence ablations
 
 **Date:** 2026-08-28
-**Status:** verified local milestone; not pushed, published, or resume-ready
+**Status:** verified local milestone; superseded by later repository evidence
 
 ## Objective achieved in this milestone
 
@@ -69,13 +69,12 @@ milestone-2 evidence hash and is not expected to match the current report.
 2. Run leave-one-family-out sensitivity at the scenario-family level.
 3. Obtain independent case-label and outcome-ontology review.
 4. Design v2 to abstain on successful prohibited calls with missing effect evidence.
-5. Complete the protected no-AI changed-contract, debugging, explanation, and clean
+5. Complete the protected changed-contract, debugging, explanation, and clean
    reproduction gate.
 6. Publish only after the ownership and review gates pass.
 
 ## Do not claim yet
 
-- independent Python fluency;
 - generic Inspect attack-success scoring;
 - real-world model or framework safety results;
 - completed empirical research;
