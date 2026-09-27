@@ -42,7 +42,8 @@ boundaries change; do not treat its embedded counts as authority over current co
 | Completed model study | `model_study/`, `benchmarks/model-study-v1/frozen/`, `artifacts/model-study/v1/` | Live inference never enters the deterministic engine or sees oracle metadata; five of six promotion gates failed |
 | Persisted tool effects | `integrations/inspect_tool_execution/PROTOCOL.md`, `src/inspect_tool_execution/`, `sandbox/registry.py` within that integration | Synthetic publication is a DB flag; separate read-only scoring, exact approvals and isolation remain intact |
 | Frozen real-tool model run | `integrations/inspect_tool_execution/local_model/manifest.json`, `runner.py`, `rescore.py`, `artifacts/inspect-tool-execution/local-v1/REPORT.md` | Do not change frozen inputs or retune/retry under the same run identity; controlled faults and observed model behavior are separate evidence |
-| Research | `DESIGN.md`, `PRIOR_ART.md` | No first-ever, framework-safety
+| AgentHarm observation audit | `integrations/agentharm_semantics/`, `artifacts/agentharm-semantics/v1/` | Pinned upstream sources, controlled fixture state, mocked judges; no scoring-policy change or model-safety estimate |
+| Research | `DESIGN.md`, `PRIOR_ART.md` | No first-ever or framework-safety claims |
 
 Trace a concrete `case_id` from `cases.py` through `simulator.execute`, the
 scorer-safe observation, each scorer, and the generated case result.

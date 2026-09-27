@@ -1,0 +1,45 @@
+[project]
+name = "agentharm-semantics-audit"
+version = "0.1.0"
+description = "Controlled transcript and tool-effect audit of pinned AgentHarm graders"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "inspect-evals @ git+https://github.com/UKGovernmentBEIS/inspect_evals@4bd4bb9bc62830be9684ae2ab3804e7cd818af7a",
+  "inspect-ai @ git+https://github.com/UKGovernmentBEIS/inspect_ai@ce5617d35a19a2f4ed0e30f00110126fe0be8f3e",
+]
+
+[project.scripts]
+agentharm-semantics-audit = "agentharm_semantics.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8.4", "pytest-asyncio", "mypy==2.1.0", "ruff==0.15.11"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agentharm_semantics"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.uv]
+required-version = "==0.12.5"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+follow_imports = "silent"
