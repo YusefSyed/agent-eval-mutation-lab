@@ -1,22 +1,31 @@
 # Agent Eval Mutation Lab
 
-Agent Eval Mutation Lab is a typed, deterministic, resumable Python engine for a
-narrow AI-evaluation failure mode:
+[![CI](https://github.com/YusefSyed/agent-eval-mutation-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/YusefSyed/agent-eval-mutation-lab/actions/workflows/ci.yml)
 
-> Did a prohibited tool action actually execute and cause harm—or did the scorer
-> mistake a proposal, denial, timeout, missing receipt, or repaired final state for
-> the outcome?
+A Python benchmark for checking whether an agent scorer can distinguish an attempted
+tool action from an action that actually ran and caused harm. It tests denials,
+timeouts, missing evidence, and effects that were later undone.
 
-The project combines execution-semantic mutation testing with an explicit
-attempt/execution/harm ontology, tri-state scoring, transactional experiment
-tracking, content-addressed evidence, schedule-independent execution, and
-clean-checkout reproduction.
+The deterministic core runs offline: no model, API key, private data, or network
+service is required. Optional local-model experiments are separate from the core.
 
-The core runs offline with a standard-library-only runtime. No model, API key, private
-data, network service, or production system is required.
+## Quick start
 
-See the current [research overview](research/report-source.md) and
-[benchmark design](DESIGN.md) for sources, claim boundaries, and falsification gates.
+Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/getting-started/installation/).
+
+```sh
+git clone https://github.com/YusefSyed/agent-eval-mutation-lab.git
+cd agent-eval-mutation-lab
+uv sync --frozen --dev
+uv run --frozen agent-eval-engine --workers 1 --output artifacts/engine/latest
+```
+
+Open `artifacts/engine/latest/report.html` in your browser to inspect the results.
+Rerunning the command resumes verified tasks. To check the full committed evidence
+without changing it, run `uv run --frozen agent-eval-reproduce --verify`.
+
+**Explore:** [Results](#result-snapshot) · [Engineering design](#engineering-design) ·
+[Reproduction guide](REPRODUCING.md) · [Research overview](research/report-source.md)
 
 ## Result snapshot
 
@@ -68,9 +77,9 @@ standard-library core or the separate frozen 624-trial study. See the
 [local-model report and evidence](artifacts/inspect-tool-execution/local-v1/REPORT.md)
 for definitions, verification, and limits.
 
-## Why this is an advanced Python project
+## Engineering design
 
-The project is deliberately more than a collection of scorer functions:
+The execution engine keeps scoring, reference labels, and persisted evidence separate:
 
 - immutable, slotted, keyword-only dataclasses separate RunSpec, worker input,
   oracle truth, scores, validation, failures, and committed records;
