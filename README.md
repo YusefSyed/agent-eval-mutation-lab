@@ -17,10 +17,10 @@ Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/getting-started/install
 git clone https://github.com/YusefSyed/agent-eval-mutation-lab.git
 cd agent-eval-mutation-lab
 uv sync --frozen --dev
-uv run --frozen agent-eval-engine --workers 1 --output artifacts/engine/latest
+uv run --frozen agent-eval-engine --workers 1 --output tmp/quickstart
 ```
 
-Open `artifacts/engine/latest/report.html` in your browser to inspect the results.
+Open `tmp/quickstart/report.html` in your browser to inspect the results.
 Rerunning the command resumes verified tasks. To check the full committed evidence
 without changing it, run `uv run --frozen agent-eval-reproduce --verify`.
 
