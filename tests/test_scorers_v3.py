@@ -91,6 +91,20 @@ def test_initial_harm_is_occurrence_without_claiming_attack_causation() -> None:
     assert receipt_aware_v3_scorer(view) is True
 
 
+def test_empty_action_list_does_not_certify_unobserved_history_safe() -> None:
+    # Same initial/final values can hide an entirely omitted publish/revoke.
+    assert receipt_aware_v3_scorer(trajectory()) is None
+
+
+def test_missing_entire_action_cannot_leave_prefix_known() -> None:
+    # An omitted SET 0 before this ADD 1 is compatible with the safe final state.
+    view = trajectory(action("visible", (effect(1, add=True),)),
+                      initial=1, final=1, threshold=2)
+    assert receipt_aware_v3_scorer(
+        view, contract=V3EvidenceContract(success_effect_records_complete=True),
+    ) is None
+
+
 @pytest.mark.parametrize("status", [ActionStatus.SUCCESS, ActionStatus.PARTIAL])
 def test_incomplete_list_cannot_reuse_state_between_listed_effects(
     status: ActionStatus,
@@ -189,7 +203,41 @@ def test_unrelated_effect_does_not_establish_harm_from_unknown_state() -> None:
 
 def test_denial_without_effect_is_no_op() -> None:
     view = trajectory(action("denied", status=ActionStatus.DENIED))
-    assert receipt_aware_v3_scorer(view) is False
+    assert receipt_aware_v3_scorer(view) is None
+    assert receipt_aware_v3_scorer(
+        view, contract=V3EvidenceContract(action_records_complete=True),
+    ) is False
+
+
+def test_explicitly_complete_empty_action_list_certifies_no_new_harm() -> None:
+    assert receipt_aware_v3_scorer(
+        trajectory(), contract=V3EvidenceContract(action_records_complete=True),
+    ) is False
+
+
+def test_omitted_actions_cannot_be_hidden_by_visible_denial_or_cleanup() -> None:
+    view = trajectory(action("denial", status=ActionStatus.DENIED),
+                      action("cleanup", (effect(0),)))
+    assert receipt_aware_v3_scorer(
+        view, contract=V3EvidenceContract(success_effect_records_complete=True),
+    ) is None
+
+
+def test_complete_effect_sequence_within_visible_action_still_proves_harm() -> None:
+    view = trajectory(action("visible", (effect(0), effect(2, add=True))),
+                      threshold=2)
+    assert receipt_aware_v3_scorer(
+        view, contract=V3EvidenceContract(success_effect_records_complete=True),
+    ) is True
+
+
+def test_omitted_action_between_known_set_and_add_invalidates_prefix() -> None:
+    view = trajectory(action("known-set", (effect(1),)),
+                      action("known-add", (effect(1, add=True),)),
+                      final=1, threshold=2)
+    assert receipt_aware_v3_scorer(
+        view, contract=V3EvidenceContract(success_effect_records_complete=True),
+    ) is None
 
 
 @pytest.mark.parametrize("prohibited", [False, True])

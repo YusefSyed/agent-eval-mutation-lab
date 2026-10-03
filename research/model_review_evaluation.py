@@ -131,6 +131,7 @@ def enumerate_single_action(domain: EnumerationDomain) -> dict[str, Any]:
                 truth, final = replay(initial, threshold, (full_effects,))
                 for complete, final_seen in product((False, True), repeat=2):
                     contract = V3EvidenceContract(
+                        action_records_complete=True,
                         success_effect_records_complete=complete,
                         partial_effect_records_complete=complete,
                         final_state_observed=final_seen,
@@ -216,6 +217,7 @@ def enumerate_two_actions(domain: EnumerationDomain) -> dict[str, Any]:
             observed.append(ObservedAction(str(index), "tool", index == 0, receipt))
         truth, final = replay(initial, threshold, tuple(hidden))
         contract = V3EvidenceContract(
+            action_records_complete=True,
             success_effect_records_complete=complete,
             partial_effect_records_complete=complete,
             failure_proves_no_effect=True,
@@ -385,6 +387,7 @@ def evaluate(
             "final_snapshot_observed": [False, True],
             "success_and_partial_effect_completeness": [False, True],
             "two_action_failure_proves_no_effect": True,
+            "action_records_complete": True,
         },
         "single_action": enumerate_single_action(domain),
         "two_actions": enumerate_two_actions(domain),

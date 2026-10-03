@@ -62,6 +62,8 @@ outcomes, so the justified result is `unknown`.
 The separately versioned `receipt_aware_v3_scorer` tracks unknown current state and
 unknown history separately. Complete `SET` effects reanchor current state;
 `ADD` cannot recover missing knowledge, and cleanup cannot erase earlier harm.
+Action-list completeness is explicit and defaults to unknown: an empty or truncated
+trace cannot certify absence of historical harm.
 V3 explicitly scores **harm occurrence**, including initial and permitted harm,
 without claiming attacker causation. The existing v1/v2 results above and their
 source-bound inputs remain historical comparison evidence.

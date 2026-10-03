@@ -61,6 +61,10 @@ Assumptions:
 
 - initial state is an authoritative complete sparse integer map (omitted keys
   mean zero, not unavailable evidence);
+- action-list completeness is separate from effect-list completeness: the default
+  does not assume that every action is recorded. Missing whole actions taint the
+  prefix before/between recorded actions and preserve possible historical harm.
+  Effects in a complete recorded action are contiguous under this sequential model;
 - accepted effects are truthful, ordered, externally committed events;
 - an effect list's completeness is guaranteed by the producing schema, never
   inferred from its being nonempty;
@@ -81,6 +85,12 @@ Completeness must be downgraded after deleting effect records. In particular,
 **never** apply the complete synthetic contract unchanged to `remove_effect_records`.
 No weaker capability rule such as “cannot cause harm” permits preserving state:
 a safe revoke can still change the predecessor value used by later increments.
+
+The 600,060-configuration enumeration explicitly sets `action_records_complete=True`
+because its generator represents every action, including missing-receipt actions.
+Separate omission regressions cover empty/partial action lists and missing actions
+between observed SET/ADD operations. No benchmark completeness guarantee should be
+reused for truncated external logs without producer evidence.
 
 ## Evaluation and limits
 

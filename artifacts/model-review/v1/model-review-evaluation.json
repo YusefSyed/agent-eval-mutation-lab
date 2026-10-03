@@ -6,6 +6,7 @@
     "Abstentions are excluded from correct-binary counts and conditional binary accuracy."
   ],
   "domain": {
+    "action_records_complete": true,
     "effect_values": [
       -2,
       0,

@@ -8,12 +8,16 @@ Supported modifications preserve the proposed call ID and function and change
 only arguments. ID preservation is this adapter's unambiguous-binding contract;
 Inspect's schema does not itself enforce it. Function-changing modifications are
 unsupported because Inspect 0.3.260 selects the callable before applying approval.
+Completion strings require an explicit time component. Arguments must be finite
+JSON and bind by canonical serialized values, retaining integer/float distinctions.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
+import re
 from dataclasses import dataclass
 from datetime import datetime
 from enum import StrEnum
@@ -48,6 +52,34 @@ def _mapping(value: object, context: str) -> dict[str, Any]:
     if not isinstance(value, dict) or not all(isinstance(key, str) for key in value):
         raise ValueError(f"{context} must be an object with string keys")
     return dict(value)
+
+
+def _validate_json(value: object, context: str) -> None:
+    if value is None or type(value) in {str, bool, int}:
+        return
+    if isinstance(value, float) and math.isfinite(value):
+        return
+    if isinstance(value, list):
+        for item in value:
+            _validate_json(item, context)
+        return
+    if isinstance(value, dict) and all(isinstance(key, str) for key in value):
+        for item in value.values():
+            _validate_json(item, context)
+        return
+    raise ValueError(f"{context} must contain only finite JSON values")
+
+
+def _arguments(value: object, context: str) -> dict[str, Any]:
+    arguments = _mapping(value, context)
+    _validate_json(arguments, context)
+    return arguments
+
+
+def _canonical_arguments(arguments: dict[str, Any]) -> str:
+    # Exact serialized payload binding: Python equality collapses true/1/1.0,
+    # recursively. Key order is irrelevant, while JSON value types are retained.
+    return json.dumps(arguments, sort_keys=True, separators=(",", ":"), allow_nan=False)
 
 
 def _events(sample: dict[str, Any]) -> list[dict[str, Any]]:
@@ -87,6 +119,8 @@ def _completion(value: object) -> bool:
         return False
     if not isinstance(value, str):
         raise ValueError("tool.completed must be an ISO datetime string or null")
+    if re.search(r"[Tt ]\d{2}", value) is None:
+        raise ValueError("tool.completed must contain an explicit ISO datetime time")
     try:
         datetime.fromisoformat(value)
     except ValueError as exc:
@@ -176,7 +210,7 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
             call = _approval_call(event)
             identifier = _call_id(call.get("id"), "approval.call.id")
             _function(call.get("function"), "approval.call.function")
-            _mapping(call.get("arguments"), "approval.call.arguments")
+            _arguments(call.get("arguments"), "approval.call.arguments")
             decision = _decision(event)
             modified_value = event.get("modified")
             if decision == "modify":
@@ -192,7 +226,7 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
                         "function-changing modifications are unsupported: Inspect "
                         "0.3.260 selects the callable before approval"
                     )
-                _mapping(modified.get("arguments"), "approval.modified.arguments")
+                _arguments(modified.get("arguments"), "approval.modified.arguments")
             elif modified_value is not None:
                 raise ValueError("approval.modified requires a modify decision")
             approvals.setdefault(identifier, []).append(event)
@@ -202,7 +236,7 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
                 continue
             identifier = _call_id(event.get("id"), "tool.id")
             function = _function(event.get("function"), "tool.function")
-            arguments = _mapping(event.get("arguments"), "tool.arguments")
+            arguments = _arguments(event.get("arguments"), "tool.arguments")
             correlated = approvals.get(identifier, [])
             decisions = tuple(_decision(approval) for approval in correlated)
 
@@ -210,10 +244,9 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
             effective_arguments = arguments
             for approval in correlated:
                 approved_call = _approval_call(approval)
-                if (
-                    approved_call["function"] != function
-                    or approved_call["arguments"] != arguments
-                ):
+                if approved_call["function"] != function or _canonical_arguments(
+                    approved_call["arguments"]
+                ) != _canonical_arguments(arguments):
                     raise ValueError(
                         "approval.call does not match tool function/arguments"
                     )
@@ -224,7 +257,7 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
                 effective_function = _function(
                     modified.get("function"), "approval.modified.function"
                 )
-                effective_arguments = _mapping(
+                effective_arguments = _arguments(
                     modified.get("arguments"), "approval.modified.arguments"
                 )
 

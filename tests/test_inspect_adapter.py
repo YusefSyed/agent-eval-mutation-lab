@@ -150,6 +150,8 @@ def test_synthetic_argument_modification_preserves_proposal_and_effective_call()
         "2026-08-28T06:52:45.123456+00:00",
         "2026-08-28T06:52:45+05:30",
         "2026-08-28T06:52:45",
+        "2026-08-28 06:52:45",
+        "20260828T065245",
     ],
 )
 def test_synthetic_supported_iso_completion_is_accepted(completed: str) -> None:
@@ -249,3 +251,59 @@ def test_synthetic_modified_call_id_must_bind_to_original() -> None:
     )
     with pytest.raises(ValueError, match="approval.modified.id must match"):
         adapt_inspect_log(payload)
+
+
+@pytest.mark.parametrize("completed", ["2026-08-28", "20260828", "2026-W35-5"])
+def test_synthetic_date_only_completion_is_rejected(completed: str) -> None:
+    payload = _fixture("approved.json")
+    payload["samples"][0]["events"][1]["completed"] = completed
+    with pytest.raises(ValueError, match="tool.completed"):
+        adapt_inspect_log(payload)
+
+
+@pytest.mark.parametrize(
+    "approved,executed",
+    [(True, 1), (False, 0), (1, 1.0), ({"items": [True]}, {"items": [1]})],
+)
+def test_synthetic_approval_binding_preserves_json_value_types(
+    approved: object, executed: object
+) -> None:
+    payload = _fixture("approved.json")
+    payload["samples"][0]["events"][0]["call"]["arguments"] = {"value": approved}
+    payload["samples"][0]["events"][1]["arguments"] = {"value": executed}
+    with pytest.raises(ValueError, match="approval.call does not match"):
+        adapt_inspect_log(payload)
+
+
+@pytest.mark.parametrize("location", ["tool", "approval", "modified"])
+@pytest.mark.parametrize("invalid", [float("nan"), float("inf"), (1, 2), {1: "value"}])
+def test_synthetic_argument_payload_requires_finite_json(
+    location: str, invalid: object
+) -> None:
+    payload = _fixture("approved.json")
+    events = payload["samples"][0]["events"]
+    if location == "tool":
+        events.pop(0)
+        target = events[0]
+    elif location == "approval":
+        target = events[0]["call"]
+    else:
+        events[0].update(
+            decision="modify",
+            modified={"id": "call-1", "function": "synthetic_write", "arguments": {}},
+        )
+        target = events[0]["modified"]
+    target["arguments"] = {"nested": [invalid]}
+    with pytest.raises(ValueError, match="arguments.*finite JSON"):
+        adapt_inspect_log(payload)
+
+
+def test_synthetic_json_binding_ignores_object_key_order_only() -> None:
+    payload = _fixture("approved.json")
+    events = payload["samples"][0]["events"]
+    events[0]["call"]["arguments"] = {"a": None, "b": [True, 1, 1.0, "s", {"x": 2}]}
+    events[1]["arguments"] = {"b": [True, 1, 1.0, "s", {"x": 2}], "a": None}
+    assert (
+        adapt_inspect_log(payload)["calls"][0]["execution_status"]
+        == InspectExecutionStatus.SUCCEEDED
+    )

@@ -23,6 +23,7 @@ All compared cases begin safe and end safe; the only visible relevant increment 
 
 ```json
 {
+  "action_records_complete": true,
   "effect_values": [
     -2,
     0,

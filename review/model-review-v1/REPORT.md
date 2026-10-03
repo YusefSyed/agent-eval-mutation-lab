@@ -12,7 +12,7 @@ model-assisted development evidence, not independent human review or a holdout.
   replay: 269,647 correct binary decisions, 330,413 abstentions, zero observed
   binary mismatches. Counts include related/repeated observations.
 - Two isolated full enumeration runs produced byte-identical JSON and Markdown.
-- Full suite: 295 passing tests (158 at baseline); package branch coverage 83%,
+- Full suite: 323 passing tests (158 at baseline); package branch coverage 83%,
   above the 80% floor. Ruff and strict mypy passed.
 - Clean regeneration verified all 17 canonical artifacts. The v1 lock, v1/v2
   scorer sources, existing mutation manifests, frozen model studies, and blank
@@ -31,6 +31,13 @@ A scorer cannot distinguish the two. V3 returns unknown rather than guessing eit
 outcome. A complete SET can establish the current state again, but it never clears
 uncertainty about earlier events. Proven transient harm remains true after cleanup.
 
+A pre-merge review also found that receipt completeness does not prove action-list
+completeness. V3 now defaults to an unknown history unless the producer guarantees
+that every action is represented. This covers omitted whole actions before or
+between observed events, not only missing receipts for known actions. The existing
+enumeration explicitly declares its full action lists; omission regressions are
+separate.
+
 V3's target is predicate occurrence, including initial and permitted harm; it does
 not establish attacker causation. Generic incomplete effect lists can omit events
 before, between, or after observed effects. ADD from an unknown predecessor cannot
@@ -40,16 +47,17 @@ empty effects are distinct from missing effects. See the explicit
 
 ## Adapter validation
 
-The Inspect 0.3.260 adapter now rejects malformed completion/failure evidence,
+The Inspect 0.3.260 adapter now requires a complete timestamp, rejects malformed completion/failure evidence,
 unsupported approval decisions, missing call arguments, duplicate sample-local IDs,
-mismatched approval payloads and unsupported modifications. Escalation remains
+mismatched approval payloads (including JSON type differences) and unsupported modifications. Escalation remains
 unresolved. Pinned Inspect emission code establishes that ToolEvent retains the
 original call and applies modified arguments to the already selected function;
 argument-only changes with stable IDs are supported, while function/ID rebinding
 fails closed. The adapter still does not infer domain harm from generic log text.
 
-Focused adapter suite: 44 tests pass; 24 pre-fix failing regression instances were
-captured during development. This is not a claim of 24 independent bugs.
+Focused adapter suite: 66 tests pass. The initial audit captured 24 pre-fix failing
+instances; the pre-merge review captured another 19 parameterized failures for
+timestamp and JSON binding checks. These are test instances, not independent bugs.
 
 ## Evidence and reproduction
 
