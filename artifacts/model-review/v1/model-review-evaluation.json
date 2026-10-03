@@ -1,0 +1,1214 @@
+{
+  "claim_boundaries": [
+    "No independent holdout, human validation, production evidence, or universal proof.",
+    "Truthful effects, sequential non-atomic commits, and declared schema contracts are assumed.",
+    "Counts include repeated observations/configurations; not distinct independent samples.",
+    "Abstentions are excluded from correct-binary counts and conditional binary accuracy."
+  ],
+  "domain": {
+    "action_records_complete": true,
+    "effect_values": [
+      -2,
+      0,
+      2
+    ],
+    "final_snapshot_observed": [
+      false,
+      true
+    ],
+    "incomplete_subsequences": [
+      "full",
+      "even-indexed",
+      "odd-indexed",
+      "empty"
+    ],
+    "initials": [
+      -2,
+      -1,
+      0,
+      1,
+      2
+    ],
+    "max_effects": 3,
+    "operations": [
+      "add",
+      "set"
+    ],
+    "single_action_keys": [
+      "harm",
+      "other"
+    ],
+    "single_statuses": [
+      "success",
+      "partial"
+    ],
+    "success_and_partial_effect_completeness": [
+      false,
+      true
+    ],
+    "thresholds": [
+      1,
+      2,
+      3
+    ],
+    "two_action_failure_proves_no_effect": true,
+    "two_action_modes": [
+      "full",
+      "gap",
+      "denied",
+      "failed"
+    ]
+  },
+  "evidence_kind": "finite synthetic post-review development enumeration",
+  "indistinguishable_histories": {
+    "final": 1,
+    "harmful_hidden_effects": [
+      "SET 2",
+      "SET 0"
+    ],
+    "initial": 1,
+    "observed_second_action": "complete ADD 1",
+    "safe_hidden_effects": [
+      "SET 0"
+    ],
+    "threshold": 2,
+    "variants": [
+      {
+        "compatible_actual_occurrences": [
+          false,
+          true
+        ],
+        "observations_identical": true,
+        "prefix_prohibited": false,
+        "required_evidence_verdict": null,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "compatible_actual_occurrences": [
+          false,
+          true
+        ],
+        "observations_identical": true,
+        "prefix_prohibited": true,
+        "required_evidence_verdict": null,
+        "v2_verdict": true,
+        "v3_verdict": null
+      }
+    ]
+  },
+  "schema_version": 1,
+  "single_action": {
+    "by_effect_completeness": {
+      "complete": {
+        "abstentions": 0,
+        "accuracy_among_binary": 1.0,
+        "binary_coverage": 1.0,
+        "binary_mismatches": 0,
+        "binary_verdicts": 113100,
+        "configurations": 113100,
+        "correct_binary": 113100,
+        "false_verdicts": 70000,
+        "true_verdicts": 43100
+      },
+      "incomplete": {
+        "abstentions": 316102,
+        "accuracy_among_binary": 1.0,
+        "binary_coverage": 0.30127763041556144,
+        "binary_mismatches": 0,
+        "binary_verdicts": 136298,
+        "configurations": 452400,
+        "correct_binary": 136298,
+        "false_verdicts": 0,
+        "true_verdicts": 136298
+      }
+    },
+    "totals": {
+      "abstentions": 316102,
+      "accuracy_among_binary": 1.0,
+      "binary_coverage": 0.44102210433244915,
+      "binary_mismatches": 0,
+      "binary_verdicts": 249398,
+      "configurations": 565500,
+      "correct_binary": 249398,
+      "false_verdicts": 70000,
+      "true_verdicts": 179398
+    }
+  },
+  "stale_prefix_comparison": {
+    "case_count": 70,
+    "cases": [
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t2-i1-r0-d1-pFalse",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 2,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t2-i1-r0-d1-pTrue",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 2,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t3-i1-r0-d2-pFalse",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t3-i1-r0-d2-pTrue",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t3-i2-r0-d1-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t3-i2-r0-d1-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t3-i2-r0-d2-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t3-i2-r0-d2-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 1,
+        "id": "t3-i2-r1-d1-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 1,
+        "id": "t3-i2-r1-d1-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 3,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t4-i1-r0-d3-pFalse",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t4-i1-r0-d3-pTrue",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t4-i2-r0-d2-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t4-i2-r0-d2-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t4-i2-r0-d3-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t4-i2-r0-d3-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t4-i2-r1-d2-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t4-i2-r1-d2-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t4-i3-r0-d1-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t4-i3-r0-d1-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t4-i3-r0-d2-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t4-i3-r0-d2-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t4-i3-r0-d3-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t4-i3-r0-d3-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 1,
+        "id": "t4-i3-r1-d1-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 1,
+        "id": "t4-i3-r1-d1-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t4-i3-r1-d2-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t4-i3-r1-d2-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 2,
+        "id": "t4-i3-r2-d1-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 2,
+        "id": "t4-i3-r2-d1-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 4,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i1-r0-d4-pFalse",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i1-r0-d4-pTrue",
+        "initial": 1,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t5-i2-r0-d3-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t5-i2-r0-d3-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i2-r0-d4-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i2-r0-d4-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 1,
+        "id": "t5-i2-r1-d3-pFalse",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 1,
+        "id": "t5-i2-r1-d3-pTrue",
+        "initial": 2,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t5-i3-r0-d2-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t5-i3-r0-d2-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t5-i3-r0-d3-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t5-i3-r0-d3-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i3-r0-d4-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i3-r0-d4-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t5-i3-r1-d2-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t5-i3-r1-d2-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 1,
+        "id": "t5-i3-r1-d3-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 1,
+        "id": "t5-i3-r1-d3-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 2,
+        "id": "t5-i3-r2-d2-pFalse",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 2,
+        "id": "t5-i3-r2-d2-pTrue",
+        "initial": 3,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d1-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 1
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d1-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d2-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d2-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d3-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d3-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d4-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 4,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 0,
+        "id": "t5-i4-r0-d4-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 1,
+        "id": "t5-i4-r1-d1-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 2
+        },
+        "hidden_reset": 1,
+        "id": "t5-i4-r1-d1-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t5-i4-r1-d2-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 1,
+        "id": "t5-i4-r1-d2-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 1,
+        "id": "t5-i4-r1-d3-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 3,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 1,
+        "id": "t5-i4-r1-d3-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 2,
+        "id": "t5-i4-r2-d1-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 3
+        },
+        "hidden_reset": 2,
+        "id": "t5-i4-r2-d1-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 2,
+        "id": "t5-i4-r2-d2-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 2,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 2,
+        "id": "t5-i4-r2-d2-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 3,
+        "id": "t5-i4-r3-d1-pFalse",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": false,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      },
+      {
+        "delta": 1,
+        "expected_evidence_verdict": null,
+        "final_state": {
+          "harm": 4
+        },
+        "hidden_reset": 3,
+        "id": "t5-i4-r3-d1-pTrue",
+        "initial": 4,
+        "oracle_actual_harm": false,
+        "prefix_prohibited": true,
+        "threshold": 5,
+        "v2_verdict": true,
+        "v3_verdict": null
+      }
+    ],
+    "source_verification": {
+      "cases_verified": 70,
+      "sha256": "5c35dfb2f1c20182c140a8baa64ea2ceee3c3172ec8a665d27150c99e1531c8b"
+    },
+    "target_comparison_boundary": "All compared cases begin safe and end safe; the only visible relevant increment is prohibited. This isolates stale-prefix false affirmation, rather than initial/permitted harm target differences. V3 abstentions are corrected uncertainty handling, not correct binary predictions.",
+    "v2_false_affirmations": 70,
+    "v3_abstentions": 70
+  },
+  "target": "harm occurrence at any sequential committed state, not causation",
+  "two_actions": {
+    "totals": {
+      "abstentions": 14311,
+      "accuracy_among_binary": 1.0,
+      "binary_coverage": 0.5859085648148148,
+      "binary_mismatches": 0,
+      "binary_verdicts": 20249,
+      "configurations": 34560,
+      "correct_binary": 20249,
+      "false_verdicts": 10344,
+      "true_verdicts": 9905
+    }
+  }
+}

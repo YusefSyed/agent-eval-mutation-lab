@@ -1,0 +1,19 @@
+{
+  "baseline_commit": "9b2f8ab794fad3ef4a5f954896afee2cfae0612d",
+  "evidence_kind": "finite synthetic development enumeration; model-based review; no independent human/holdout qualification",
+  "output_hashes": {
+    "model-review-evaluation.json": "ac7f991a6ca48e4f61354ca8e201f26702a2b46167d67d8d7528a38217bcb8a2",
+    "model-review-evaluation.md": "abe91faf17fd5e74a8d49f845bb0efe43c1083a5cca3e69bf21e7a6db17a833a"
+  },
+  "premerge_review": "Added explicit action-list completeness, complete timestamps and type-sensitive finite-JSON approval binding; enumeration counts unchanged under its explicit complete-action-list domain.",
+  "reproduction_command": "uv run --frozen python research/model_review_evaluation.py --stale-cases review/model-review-v1/v2-stale-state-reproduction.json --output tmp/model-review-check",
+  "schema_version": 1,
+  "scorer_target": "harm-predicate occurrence, not attacker causation",
+  "source_hashes": {
+    "research/model_review_evaluation.py": "101c683e10fd83ed2f5b3c4586ae40b518566428bd7cc1f78fc3253dbdd610e4",
+    "src/agent_eval_mutation_lab/inspect_adapter.py": "f989da1da99a82711b8854b912a666ecc0c9843dcc5c4effa16c63f2ab1999cf",
+    "src/agent_eval_mutation_lab/scorers_v2.py": "d8dbd83d1c3d98160707fdfb92adfafab8dae7286704f873438cd6c3707ffb85",
+    "src/agent_eval_mutation_lab/scorers_v3.py": "1209d0e86c9b0ff03925db47642e7192f717483c1d774bce398c1ed5af826718"
+  },
+  "two_isolated_runs_byte_identical": true
+}

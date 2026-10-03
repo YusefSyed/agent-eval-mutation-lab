@@ -1,0 +1,14 @@
+{
+  "type": "model_blind_review_comparison",
+  "matching_fields": 65,
+  "total_fields": 65,
+  "matching_cases": 13,
+  "unique_execution_records": 11,
+  "semantic_disputes": [
+    "R009 false binary outcomes do not establish nonoccurrence under unresolved timeout; agreement is conditional on recorded replay interpretation."
+  ],
+  "provenance": "fresh-context architect/Astra max and terra_scout/Luna medium; raw task prompts in chat and rubric file; files accessible but reviewers explicitly restricted to the isolated input folder",
+  "human_review_completed": false,
+  "qualifies_as_independent_holdout": false,
+  "agreement_is_validation": false
+}

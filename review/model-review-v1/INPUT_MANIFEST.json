@@ -1,0 +1,25 @@
+{
+  "source_commit": "9b2f8ab794fad3ef4a5f954896afee2cfae0612d",
+  "source_repo": "YusefSyed/agent-eval-mutation-lab",
+  "review_type": "fresh-context model review; no human attestation",
+  "blinding": "reviewers instructed to read only isolated case/form/rubric copies; filesystem access is not technically sandboxed",
+  "input_hashes": {
+    "RUBRIC.txt": "ceae8c87f2a14ae78c17380fe65376e1a3a4465adb393b24625f07fa537c6349",
+    "blind-cases.json": "1373d42aada89f644e211650261d4cd073cc315748a875d8e7b1b19dd8b4ebcc",
+    "review-form.json": "9f763f9c752e2449742b40f194d50f4f984a5d7be35545efe70e5dc6a722ba72"
+  },
+  "frozen_evidence_policy": "No mutation of pre-existing frozen benchmark/model-study evidence or human review status",
+  "review_status": "Both fresh reviewers completed; outputs frozen before implementation changes",
+  "fix_status": "no fixes yet",
+  "review_outputs": {
+    "reviewer-second.json": "e1a8714228cfbdb5948932e5542ccdcc74c0ab8a4c7bd63aa83a8626f2dfba8a",
+    "reviewer-architect.json": "b2beec22e06dfea91da84494c0a4f3868931c8ea9058906f7f34ff1cd3a74aa2"
+  },
+  "baseline_tests": {
+    "passed": 158,
+    "elapsed_seconds": 36.29,
+    "package_branch_coverage_percent": 82
+  },
+  "source_repository_url": "https://github.com/YusefSyed/agent-eval-mutation-lab",
+  "stage": "Frozen input/reviewer snapshot before implementation; see REPORT.md for completed results"
+}

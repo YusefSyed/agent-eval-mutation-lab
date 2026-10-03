@@ -83,6 +83,18 @@ and the prompts were not retuned under the same study ID.
 
 ## Reproducibility and engineering controls
 
+### Subsequent model-review development audit
+
+The original zero-overclaim result above is limited to its finite corpus. A later
+audit reproduced a stale-prefix false-positive in v2 using missing receipts and
+relative effects. An optional v3 scorer uses explicit partial-observation semantics
+for harm occurrence and preserves uncertainty after incomplete execution records.
+See [the protocol and limitations](review/model-review-v1/PROTOCOL.md). Model-review
+agreement is not human validation; the new enumeration is a bounded development
+evaluation, not independent sampling or an estimate of production error rates.
+
+### Existing engine controls
+
 - Immutable typed RunSpec, TaskSpec, scorer projection, result, and validation
   contracts.
 - Content-derived task keys and deterministic per-task seeds.
