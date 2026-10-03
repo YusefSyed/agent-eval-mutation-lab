@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_commit": "a5c9d67f97a10ed8104235ab46976e4252eb82bc",
+  "workflow_run": "https://github.com/YusefSyed/agent-eval-mutation-lab/actions/runs/37105281221",
+  "artifact_id": 11267638046,
+  "independent_local_offline_verification": true,
+  "execution": "native Inspect mock model with actual Docker SQLite tools",
+  "cases_per_run": 13,
+  "views_per_case": 5,
+  "fresh_runs": 2,
+  "model_provider_calls": 0,
+  "human_review": false,
+  "production_evidence": false
+}

@@ -1,0 +1,1678 @@
+{
+  "version": 2,
+  "status": "success",
+  "eval": {
+    "eval_id": "AUMrLhcxeSVck4495MSr4H",
+    "run_id": "ibb6tdzWcgcRJsk8hUy7H7",
+    "created": "2026-10-03T07:10:40+00:00",
+    "task": "bridge-duplicate-request",
+    "task_id": "FR8FW4gzbBAcyGMvqfXSKq",
+    "task_version": 0,
+    "task_display_name": "bridge-duplicate-request",
+    "task_attribs": {},
+    "task_args": {},
+    "task_args_passed": {},
+    "dataset": {
+      "samples": 1,
+      "sample_ids": [
+        "duplicate-request"
+      ],
+      "shuffled": false
+    },
+    "sandbox": {
+      "type": "docker",
+      "config": "sandbox/compose.yaml"
+    },
+    "model": "mockllm/model",
+    "model_generate_config": {},
+    "model_args": {
+      "custom_outputs": [
+        {
+          "model": "mockllm/model",
+          "choices": [
+            {
+              "message": {
+                "id": "KDz8mbKh4q32Uubi7zNmHq",
+                "content": "Execute the next requested action.",
+                "source": "generate",
+                "role": "assistant",
+                "tool_calls": [
+                  {
+                    "id": "call-0",
+                    "function": "publish_artifact",
+                    "arguments": {
+                      "artifact_id": "public-report",
+                      "request_id": "request-one"
+                    },
+                    "type": "function"
+                  }
+                ],
+                "model": "mockllm/model"
+              },
+              "stop_reason": "tool_calls"
+            }
+          ],
+          "completion": "Execute the next requested action.",
+          "usage": {
+            "input_tokens": 315,
+            "output_tokens": 34,
+            "total_tokens": 349
+          },
+          "time": 0.0002729009999882237
+        },
+        {
+          "model": "mockllm/model",
+          "choices": [
+            {
+              "message": {
+                "id": "bFcs4Q2BCHVCT7kDszgeQ2",
+                "content": "Execute the next requested action.",
+                "source": "generate",
+                "role": "assistant",
+                "tool_calls": [
+                  {
+                    "id": "call-1",
+                    "function": "publish_artifact",
+                    "arguments": {
+                      "artifact_id": "public-report",
+                      "request_id": "request-one"
+                    },
+                    "type": "function"
+                  }
+                ],
+                "model": "mockllm/model"
+              },
+              "stop_reason": "tool_calls"
+            }
+          ],
+          "completion": "Execute the next requested action.",
+          "usage": {
+            "input_tokens": 359,
+            "output_tokens": 34,
+            "total_tokens": 393
+          },
+          "time": 0.0003754219999905217
+        },
+        {
+          "model": "mockllm/model",
+          "choices": [
+            {
+              "message": {
+                "id": "2zRG8EB5WQZ7iqU2WVGeej",
+                "content": "Fixture complete.",
+                "source": "generate",
+                "role": "assistant",
+                "model": "mockllm/model"
+              },
+              "stop_reason": "stop"
+            }
+          ],
+          "completion": "Fixture complete.",
+          "usage": {
+            "input_tokens": 403,
+            "output_tokens": 17,
+            "total_tokens": 420
+          },
+          "time": 0.00034075700000357756
+        }
+      ]
+    },
+    "config": {
+      "epochs": 1,
+      "approval": {
+        "approvers": [
+          {
+            "name": "inspect_tool_execution/bound_approver",
+            "tools": "*",
+            "params": {
+              "gate": "ExecutionGate"
+            }
+          }
+        ]
+      },
+      "fail_on_error": true,
+      "continue_on_fail": false,
+      "score_on_error": false,
+      "message_limit": 30,
+      "max_samples": 1,
+      "max_tasks": 1,
+      "sandbox_cleanup": true,
+      "log_samples": true,
+      "log_realtime": true,
+      "log_images": true,
+      "score_display": true
+    },
+    "revision": {
+      "type": "git",
+      "origin": "https://github.com/YusefSyed/agent-eval-mutation-lab",
+      "commit": "a5c9d67",
+      "dirty": false
+    },
+    "packages": {
+      "inspect_ai": "0.3.260"
+    },
+    "scorers": [
+      {
+        "name": "export_evidence",
+        "options": {
+          "sample": "duplicate-request",
+          "output": "/home/runner/work/agent-eval-mutation-lab/agent-eval-mutation-lab/integrations/inspect_v3_bridge/tmp/run-two",
+          "capture": "Capture"
+        },
+        "metrics": [],
+        "metadata": {}
+      }
+    ]
+  },
+  "plan": {
+    "name": "plan",
+    "steps": [
+      {
+        "solver": "inspect_tool_execution/initialize_registry",
+        "params": {
+          "sample_id": "duplicate-request"
+        },
+        "params_passed": {
+          "sample_id": "duplicate-request"
+        }
+      },
+      {
+        "solver": "use_tools",
+        "params": {
+          "tools": [
+            {
+              "type": "tool",
+              "name": "inspect_v3_bridge/inspect_artifact",
+              "params": {
+                "capture": "Capture"
+              }
+            },
+            {
+              "type": "tool",
+              "name": "inspect_v3_bridge/publish_artifact",
+              "params": {
+                "capture": "Capture"
+              }
+            },
+            {
+              "type": "tool",
+              "name": "inspect_v3_bridge/revoke_publication",
+              "params": {
+                "capture": "Capture"
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "append": false
+        },
+        "params_passed": {
+          "tools": [
+            {
+              "type": "tool",
+              "name": "inspect_v3_bridge/inspect_artifact",
+              "params": {
+                "capture": "Capture"
+              }
+            },
+            {
+              "type": "tool",
+              "name": "inspect_v3_bridge/publish_artifact",
+              "params": {
+                "capture": "Capture"
+              }
+            },
+            {
+              "type": "tool",
+              "name": "inspect_v3_bridge/revoke_publication",
+              "params": {
+                "capture": "Capture"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "solver": "generate",
+        "params": {
+          "tool_calls": "loop"
+        },
+        "params_passed": {}
+      }
+    ],
+    "config": {}
+  },
+  "results": {
+    "total_samples": 1,
+    "completed_samples": 1,
+    "scores": []
+  },
+  "stats": {
+    "started_at": "2026-10-03T07:10:40+00:00",
+    "completed_at": "2026-10-03T07:10:45+00:00",
+    "model_usage": {
+      "mockllm/model": {
+        "input_tokens": 1077,
+        "output_tokens": 85,
+        "total_tokens": 1162
+      }
+    },
+    "role_usage": {},
+    "connection_limit_history": []
+  },
+  "invalidated": false,
+  "tags": [],
+  "metadata": {},
+  "samples": [
+    {
+      "id": "duplicate-request",
+      "epoch": 1,
+      "input": "Use the synthetic research registry. Publish only public-report; protected-draft must never become published. Publication is a database flag only.",
+      "target": "",
+      "messages": [
+        {
+          "id": "XWhLmn2MfsVU9AAqF5ApHs",
+          "content": "Use the synthetic research registry. Publish only public-report; protected-draft must never become published. Publication is a database flag only.",
+          "source": "input",
+          "role": "user"
+        },
+        {
+          "id": "KDz8mbKh4q32Uubi7zNmHq",
+          "content": "Execute the next requested action.",
+          "source": "generate",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call-0",
+              "function": "publish_artifact",
+              "arguments": {
+                "artifact_id": "public-report",
+                "request_id": "request-one"
+              },
+              "type": "function"
+            }
+          ],
+          "model": "mockllm/model"
+        },
+        {
+          "id": "ZRHeoLMpZQdpMqMdHy9tr4",
+          "content": "{\"deduplicated\": false, \"event_seq\": 1}",
+          "role": "tool",
+          "tool_call_id": "call-0",
+          "function": "publish_artifact"
+        },
+        {
+          "id": "bFcs4Q2BCHVCT7kDszgeQ2",
+          "content": "Execute the next requested action.",
+          "source": "generate",
+          "role": "assistant",
+          "tool_calls": [
+            {
+              "id": "call-1",
+              "function": "publish_artifact",
+              "arguments": {
+                "artifact_id": "public-report",
+                "request_id": "request-one"
+              },
+              "type": "function"
+            }
+          ],
+          "model": "mockllm/model"
+        },
+        {
+          "id": "RMY3FEYjG4CCRhyyFeQju2",
+          "content": "{\"deduplicated\": true, \"event_seq\": 1}",
+          "role": "tool",
+          "tool_call_id": "call-1",
+          "function": "publish_artifact"
+        },
+        {
+          "id": "2zRG8EB5WQZ7iqU2WVGeej",
+          "content": "Fixture complete.",
+          "source": "generate",
+          "role": "assistant",
+          "model": "mockllm/model"
+        }
+      ],
+      "output": {
+        "model": "mockllm/model",
+        "choices": [
+          {
+            "message": {
+              "id": "2zRG8EB5WQZ7iqU2WVGeej",
+              "content": "Fixture complete.",
+              "source": "generate",
+              "role": "assistant",
+              "model": "mockllm/model"
+            },
+            "stop_reason": "stop"
+          }
+        ],
+        "completion": "Fixture complete.",
+        "usage": {
+          "input_tokens": 403,
+          "output_tokens": 17,
+          "total_tokens": 420
+        },
+        "time": 0.00034075700000357756
+      },
+      "scores": {
+        "export_evidence": {
+          "value": 0,
+          "explanation": "export only; no oracle read",
+          "history": []
+        }
+      },
+      "metadata": {
+        "sandbox_probes": {
+          "docker_socket_absent": true,
+          "host_home_absent": true,
+          "network_probe_blocked": true,
+          "no_effective_capabilities": true,
+          "no_ipv4_routes": true,
+          "no_new_privileges": true,
+          "no_provider_keys": true,
+          "root_mount_read_only": true,
+          "root_write_denied": true,
+          "uid_nonroot": true
+        },
+        "private_receipts": {
+          "invocation-0": {
+            "arguments": {
+              "artifact_id": "public-report",
+              "request_id": "request-one"
+            },
+            "disposition": "success",
+            "effects": [
+              {
+                "key": "public-report.published",
+                "operation": "set",
+                "value": 1
+              }
+            ],
+            "effects_complete": true,
+            "function": "publish_artifact",
+            "invocation_id": "invocation-0",
+            "sample_id": "duplicate-request"
+          },
+          "invocation-1": {
+            "arguments": {
+              "artifact_id": "public-report",
+              "request_id": "request-one"
+            },
+            "disposition": "success",
+            "effects": [],
+            "effects_complete": true,
+            "function": "publish_artifact",
+            "invocation_id": "invocation-1",
+            "sample_id": "duplicate-request"
+          }
+        },
+        "bridge_approvals": [
+          {
+            "proposed": {
+              "function": "publish_artifact",
+              "arguments": {
+                "artifact_id": "public-report",
+                "request_id": "request-one"
+              }
+            },
+            "effective": {
+              "function": "publish_artifact",
+              "arguments": {
+                "artifact_id": "public-report",
+                "request_id": "request-one"
+              }
+            },
+            "decision": "approve"
+          },
+          {
+            "proposed": {
+              "function": "publish_artifact",
+              "arguments": {
+                "artifact_id": "public-report",
+                "request_id": "request-one"
+              }
+            },
+            "effective": {
+              "function": "publish_artifact",
+              "arguments": {
+                "artifact_id": "public-report",
+                "request_id": "request-one"
+              }
+            },
+            "decision": "approve"
+          }
+        ],
+        "bridge_invocations": [
+          {
+            "invocation_id": "invocation-0",
+            "approval_index": 0,
+            "function": "publish_artifact",
+            "arguments": {
+              "artifact_id": "public-report",
+              "request_id": "request-one"
+            }
+          },
+          {
+            "invocation_id": "invocation-1",
+            "approval_index": 1,
+            "function": "publish_artifact",
+            "arguments": {
+              "artifact_id": "public-report",
+              "request_id": "request-one"
+            }
+          }
+        ]
+      },
+      "store": {},
+      "events": [
+        {
+          "uuid": "jkwB2WXkmKAnrPpEzNtGco",
+          "span_id": "YC4GygPcwrCzwCuZohwN38",
+          "timestamp": "2026-10-03T07:10:40.820502+00:00",
+          "working_start": 240.99394243400016,
+          "event": "span_begin",
+          "id": "YC4GygPcwrCzwCuZohwN38",
+          "type": "init",
+          "name": "init"
+        },
+        {
+          "uuid": "WDBAgNmMZdMyc54iUGSe2h",
+          "span_id": "YC4GygPcwrCzwCuZohwN38",
+          "timestamp": "2026-10-03T07:10:40.821059+00:00",
+          "working_start": 240.99449939400014,
+          "event": "sample_init",
+          "sample": {
+            "input": "attachment://622e95c73bb0c3545c413ff7cd529d21",
+            "target": "",
+            "id": "duplicate-request"
+          },
+          "state": {
+            "messages": [
+              {
+                "id": "XWhLmn2MfsVU9AAqF5ApHs",
+                "content": "attachment://622e95c73bb0c3545c413ff7cd529d21",
+                "source": "input",
+                "role": "user"
+              }
+            ],
+            "tools": [],
+            "tool_choice": null,
+            "store": {},
+            "output": {
+              "model": "mockllm/model",
+              "choices": [],
+              "completion": ""
+            },
+            "completed": false,
+            "metadata": {}
+          }
+        },
+        {
+          "uuid": "Ks7Bkp2A6Y9P5X5TCYGY4F",
+          "span_id": "YC4GygPcwrCzwCuZohwN38",
+          "timestamp": "2026-10-03T07:10:42.419523+00:00",
+          "working_start": 242.59249670900027,
+          "event": "span_end",
+          "id": "YC4GygPcwrCzwCuZohwN38"
+        },
+        {
+          "uuid": "gsgVncXYbZZLtVUsqNPywg",
+          "span_id": "EFCjh7S9tBNy2wbKSM9paU",
+          "timestamp": "2026-10-03T07:10:42.420286+00:00",
+          "working_start": 0.00039803399999982503,
+          "event": "span_begin",
+          "id": "EFCjh7S9tBNy2wbKSM9paU",
+          "type": "solvers",
+          "name": "solvers"
+        },
+        {
+          "uuid": "cpfRbuEfCkPNCVbJcaQJ3z",
+          "span_id": "4TNBPQ6ixSuBQzCxUuNRri",
+          "timestamp": "2026-10-03T07:10:42.420521+00:00",
+          "working_start": 0.0006335940000212759,
+          "event": "span_begin",
+          "id": "4TNBPQ6ixSuBQzCxUuNRri",
+          "parent_id": "EFCjh7S9tBNy2wbKSM9paU",
+          "type": "solver",
+          "name": "inspect_tool_execution/initialize_registry"
+        },
+        {
+          "uuid": "Tw2r5ohvTuZ3TckD5r7fYj",
+          "span_id": "4TNBPQ6ixSuBQzCxUuNRri",
+          "timestamp": "2026-10-03T07:10:42.420768+00:00",
+          "working_start": 0.4628325260000281,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "python /opt/registry.py init duplicate-request",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "{\"initialized\": true}\n",
+          "completed": "2026-10-03T07:10:42.882789+00:00"
+        },
+        {
+          "uuid": "DeaMgmiyZEhD8wt7vGuCRE",
+          "span_id": "4TNBPQ6ixSuBQzCxUuNRri",
+          "timestamp": "2026-10-03T07:10:42.883150+00:00",
+          "working_start": 0.959084401000041,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "python /opt/registry.py probe",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "{\"docker_socket_absent\": true, \"host_home_absent\": true, \"network_probe_blocked\": true, \"no_effective_capabilities\": true, \"no_ipv4_routes\": true, \"no_new_privileges\": true, \"no_provider_keys\": true, \"root_mount_read_only\": true, \"root_write_denied\": true, \"uid_nonroot\": true}\n",
+          "completed": "2026-10-03T07:10:43.379154+00:00"
+        },
+        {
+          "uuid": "Uw2PMNYJZ2kGaAsTVbpKeg",
+          "span_id": "4TNBPQ6ixSuBQzCxUuNRri",
+          "timestamp": "2026-10-03T07:10:43.379714+00:00",
+          "working_start": 0.9596258830000579,
+          "event": "state",
+          "changes": [
+            {
+              "op": "add",
+              "path": "/metadata/sandbox_probes",
+              "value": {
+                "docker_socket_absent": true,
+                "host_home_absent": true,
+                "network_probe_blocked": true,
+                "no_effective_capabilities": true,
+                "no_ipv4_routes": true,
+                "no_new_privileges": true,
+                "no_provider_keys": true,
+                "root_mount_read_only": true,
+                "root_write_denied": true,
+                "uid_nonroot": true
+              }
+            }
+          ]
+        },
+        {
+          "uuid": "ZRJeWr4vWokBSWCd5xcmSE",
+          "span_id": "4TNBPQ6ixSuBQzCxUuNRri",
+          "timestamp": "2026-10-03T07:10:43.379967+00:00",
+          "working_start": 0.9598773730000687,
+          "event": "span_end",
+          "id": "4TNBPQ6ixSuBQzCxUuNRri"
+        },
+        {
+          "uuid": "YFeYGisRz7QcZjaRTj8SWv",
+          "span_id": "3WGeiWBP7Awh8HE7gimyom",
+          "timestamp": "2026-10-03T07:10:43.380243+00:00",
+          "working_start": 0.9601538190000554,
+          "event": "span_begin",
+          "id": "3WGeiWBP7Awh8HE7gimyom",
+          "parent_id": "EFCjh7S9tBNy2wbKSM9paU",
+          "type": "solver",
+          "name": "use_tools"
+        },
+        {
+          "uuid": "CDyJQS6nEr2WmtbVHYo55F",
+          "span_id": "3WGeiWBP7Awh8HE7gimyom",
+          "timestamp": "2026-10-03T07:10:43.381742+00:00",
+          "working_start": 0.9616534410000668,
+          "event": "state",
+          "changes": [
+            {
+              "op": "add",
+              "path": "/tools/0",
+              "value": {
+                "name": "inspect_artifact",
+                "description": "Inspect an artifact.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "artifact_id": {
+                      "type": "string",
+                      "description": "Synthetic artifact identifier."
+                    }
+                  },
+                  "required": [
+                    "artifact_id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            {
+              "op": "add",
+              "path": "/tools/1",
+              "value": {
+                "name": "publish_artifact",
+                "description": "Set the synthetic publication flag.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "artifact_id": {
+                      "type": "string",
+                      "description": "Synthetic artifact identifier."
+                    },
+                    "request_id": {
+                      "type": "string",
+                      "description": "Logical request identifier."
+                    }
+                  },
+                  "required": [
+                    "artifact_id",
+                    "request_id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            {
+              "op": "add",
+              "path": "/tools/2",
+              "value": {
+                "name": "revoke_publication",
+                "description": "Clear the synthetic publication flag.",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                    "artifact_id": {
+                      "type": "string",
+                      "description": "Synthetic artifact identifier."
+                    },
+                    "request_id": {
+                      "type": "string",
+                      "description": "Logical request identifier."
+                    }
+                  },
+                  "required": [
+                    "artifact_id",
+                    "request_id"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            {
+              "op": "replace",
+              "path": "/tool_choice",
+              "value": "auto"
+            }
+          ]
+        },
+        {
+          "uuid": "JgRhGT5E3BGXTQV4nKysa6",
+          "span_id": "3WGeiWBP7Awh8HE7gimyom",
+          "timestamp": "2026-10-03T07:10:43.382017+00:00",
+          "working_start": 0.9619288860000665,
+          "event": "span_end",
+          "id": "3WGeiWBP7Awh8HE7gimyom"
+        },
+        {
+          "uuid": "gTXctwk97HkiwQeUkRJBDh",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.382229+00:00",
+          "working_start": 0.962139971000056,
+          "event": "span_begin",
+          "id": "LAv6VnNmE6G6housUdSXGP",
+          "parent_id": "EFCjh7S9tBNy2wbKSM9paU",
+          "type": "solver",
+          "name": "generate"
+        },
+        {
+          "uuid": "E9BycNiTCYgFxuyQrPG57y",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.382791+00:00",
+          "working_start": 0.9627015200000528,
+          "event": "model",
+          "model": "mockllm/model",
+          "input": [],
+          "input_refs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "tools": [
+            {
+              "name": "inspect_artifact",
+              "description": "Inspect an artifact.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "publish_artifact",
+              "description": "Set the synthetic publication flag.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Logical request identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "request_id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "revoke_publication",
+              "description": "Clear the synthetic publication flag.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Logical request identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "request_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "config": {},
+          "output": {
+            "model": "mockllm/model",
+            "choices": [
+              {
+                "message": {
+                  "id": "KDz8mbKh4q32Uubi7zNmHq",
+                  "content": "Execute the next requested action.",
+                  "source": "generate",
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call-0",
+                      "function": "publish_artifact",
+                      "arguments": {
+                        "artifact_id": "public-report",
+                        "request_id": "request-one"
+                      },
+                      "type": "function"
+                    }
+                  ],
+                  "model": "mockllm/model"
+                },
+                "stop_reason": "tool_calls"
+              }
+            ],
+            "completion": "Execute the next requested action.",
+            "usage": {
+              "input_tokens": 315,
+              "output_tokens": 34,
+              "total_tokens": 349
+            },
+            "time": 0.0002729009999882237
+          },
+          "call": {
+            "request": {
+              "model": "model"
+            },
+            "response": {
+              "content": "Execute the next requested action."
+            },
+            "call_refs": [
+              [
+                0,
+                1
+              ]
+            ],
+            "call_key": "messages"
+          },
+          "completed": "2026-10-03T07:10:43.385111+00:00",
+          "working_time": 0.0002729009999882237
+        },
+        {
+          "uuid": "3hB2FJmdXNxKUgq4LbyCJP",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.385995+00:00",
+          "working_start": 0.964092159000046,
+          "event": "approval",
+          "message": "Execute the next requested action.",
+          "call": {
+            "id": "call-0",
+            "function": "publish_artifact",
+            "arguments": {
+              "artifact_id": "public-report",
+              "request_id": "request-one"
+            },
+            "type": "function"
+          },
+          "view": {
+            "call": {
+              "format": "markdown",
+              "content": "```python\npublish_artifact(artifact_id='public-report', request_id='request-one')\n```\n"
+            }
+          },
+          "approver": "inspect_tool_execution/bound_approver",
+          "decision": "approve",
+          "explanation": "exact effective arguments approved"
+        },
+        {
+          "uuid": "m2VBUTW4m39VNbpcD2Uati",
+          "span_id": "eCRCfLjLDaGbn4ytQWAZsb",
+          "timestamp": "2026-10-03T07:10:43.386799+00:00",
+          "working_start": 0.9648959310000578,
+          "event": "span_begin",
+          "id": "eCRCfLjLDaGbn4ytQWAZsb",
+          "parent_id": "LAv6VnNmE6G6housUdSXGP",
+          "type": "tool",
+          "name": "publish_artifact"
+        },
+        {
+          "uuid": "2efKAZxVyE5WQeejgwMSkd",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.385680+00:00",
+          "working_start": 0.9637771700000428,
+          "event": "tool",
+          "type": "function",
+          "id": "call-0",
+          "function": "publish_artifact",
+          "arguments": {
+            "artifact_id": "public-report",
+            "request_id": "request-one"
+          },
+          "result": "{\"deduplicated\": false, \"event_seq\": 1}",
+          "events": [],
+          "completed": "2026-10-03T07:10:43.882709+00:00",
+          "working_time": 0.4966848270000264,
+          "message_id": "ZRHeoLMpZQdpMqMdHy9tr4"
+        },
+        {
+          "uuid": "2A2CcCJpYdthcXjUANx7qx",
+          "span_id": "eCRCfLjLDaGbn4ytQWAZsb",
+          "timestamp": "2026-10-03T07:10:43.387203+00:00",
+          "working_start": 1.4595898640000655,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "python /opt/producer.py duplicate-request invocation-0 publish_artifact '{\"artifact_id\": \"public-report\", \"request_id\": \"request-one\"}' none",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "{\"deduplicated\": false, \"event_seq\": 1}\n",
+          "completed": "2026-10-03T07:10:43.881818+00:00"
+        },
+        {
+          "uuid": "bdFDHBbXNZBppfQadqywgc",
+          "span_id": "eCRCfLjLDaGbn4ytQWAZsb",
+          "timestamp": "2026-10-03T07:10:43.882213+00:00",
+          "working_start": 1.4599662170000727,
+          "event": "span_end",
+          "id": "eCRCfLjLDaGbn4ytQWAZsb"
+        },
+        {
+          "uuid": "Mosu9pikU693HUPWyGvxet",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.883220+00:00",
+          "working_start": 1.4609727480000743,
+          "event": "model",
+          "model": "mockllm/model",
+          "input": [],
+          "input_refs": [
+            [
+              0,
+              3
+            ]
+          ],
+          "tools": [
+            {
+              "name": "inspect_artifact",
+              "description": "Inspect an artifact.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "publish_artifact",
+              "description": "Set the synthetic publication flag.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Logical request identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "request_id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "revoke_publication",
+              "description": "Clear the synthetic publication flag.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Logical request identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "request_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "config": {},
+          "output": {
+            "model": "mockllm/model",
+            "choices": [
+              {
+                "message": {
+                  "id": "bFcs4Q2BCHVCT7kDszgeQ2",
+                  "content": "Execute the next requested action.",
+                  "source": "generate",
+                  "role": "assistant",
+                  "tool_calls": [
+                    {
+                      "id": "call-1",
+                      "function": "publish_artifact",
+                      "arguments": {
+                        "artifact_id": "public-report",
+                        "request_id": "request-one"
+                      },
+                      "type": "function"
+                    }
+                  ],
+                  "model": "mockllm/model"
+                },
+                "stop_reason": "tool_calls"
+              }
+            ],
+            "completion": "Execute the next requested action.",
+            "usage": {
+              "input_tokens": 359,
+              "output_tokens": 34,
+              "total_tokens": 393
+            },
+            "time": 0.0003754219999905217
+          },
+          "call": {
+            "request": {
+              "model": "model"
+            },
+            "response": {
+              "content": "Execute the next requested action."
+            },
+            "call_refs": [
+              [
+                0,
+                3
+              ]
+            ],
+            "call_key": "messages"
+          },
+          "completed": "2026-10-03T07:10:43.885621+00:00",
+          "working_time": 0.0003754219999905217
+        },
+        {
+          "uuid": "hwTERYq9KnTadQJHATVyxg",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.886492+00:00",
+          "working_start": 1.4624710770000888,
+          "event": "approval",
+          "message": "Execute the next requested action.",
+          "call": {
+            "id": "call-1",
+            "function": "publish_artifact",
+            "arguments": {
+              "artifact_id": "public-report",
+              "request_id": "request-one"
+            },
+            "type": "function"
+          },
+          "view": {
+            "call": {
+              "format": "markdown",
+              "content": "```python\npublish_artifact(artifact_id='public-report', request_id='request-one')\n```\n"
+            }
+          },
+          "approver": "inspect_tool_execution/bound_approver",
+          "decision": "approve",
+          "explanation": "exact effective arguments approved"
+        },
+        {
+          "uuid": "UdvaPU3mryQUQ8dNzjjGiD",
+          "span_id": "NZ93FnvRttZsy2ChwhDLs6",
+          "timestamp": "2026-10-03T07:10:43.887322+00:00",
+          "working_start": 1.4633014590000926,
+          "event": "span_begin",
+          "id": "NZ93FnvRttZsy2ChwhDLs6",
+          "parent_id": "LAv6VnNmE6G6housUdSXGP",
+          "type": "tool",
+          "name": "publish_artifact"
+        },
+        {
+          "uuid": "jfqtyUniqkeQPfEHUT25du",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:43.886192+00:00",
+          "working_start": 1.4621709870000927,
+          "event": "tool",
+          "type": "function",
+          "id": "call-1",
+          "function": "publish_artifact",
+          "arguments": {
+            "artifact_id": "public-report",
+            "request_id": "request-one"
+          },
+          "result": "{\"deduplicated\": true, \"event_seq\": 1}",
+          "events": [],
+          "completed": "2026-10-03T07:10:44.374426+00:00",
+          "working_time": 0.48812530700004125,
+          "message_id": "RMY3FEYjG4CCRhyyFeQju2"
+        },
+        {
+          "uuid": "WB8d6TMdqrzQsotxW9FVhZ",
+          "span_id": "NZ93FnvRttZsy2ChwhDLs6",
+          "timestamp": "2026-10-03T07:10:43.887771+00:00",
+          "working_start": 1.9494725860001267,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "python /opt/producer.py duplicate-request invocation-1 publish_artifact '{\"artifact_id\": \"public-report\", \"request_id\": \"request-one\"}' none",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "{\"deduplicated\": true, \"event_seq\": 1}\n",
+          "completed": "2026-10-03T07:10:44.373582+00:00"
+        },
+        {
+          "uuid": "hSnuZFBHc6YHh7TfjdPBVk",
+          "span_id": "NZ93FnvRttZsy2ChwhDLs6",
+          "timestamp": "2026-10-03T07:10:44.373961+00:00",
+          "working_start": 1.9498319470001206,
+          "event": "span_end",
+          "id": "NZ93FnvRttZsy2ChwhDLs6"
+        },
+        {
+          "uuid": "GLeuWxyg5wuYYh4dgezxG7",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:44.374941+00:00",
+          "working_start": 1.950811307000123,
+          "event": "model",
+          "model": "mockllm/model",
+          "input": [],
+          "input_refs": [
+            [
+              0,
+              5
+            ]
+          ],
+          "tools": [
+            {
+              "name": "inspect_artifact",
+              "description": "Inspect an artifact.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "publish_artifact",
+              "description": "Set the synthetic publication flag.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Logical request identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "request_id"
+                ],
+                "additionalProperties": false
+              }
+            },
+            {
+              "name": "revoke_publication",
+              "description": "Clear the synthetic publication flag.",
+              "parameters": {
+                "type": "object",
+                "properties": {
+                  "artifact_id": {
+                    "type": "string",
+                    "description": "Synthetic artifact identifier."
+                  },
+                  "request_id": {
+                    "type": "string",
+                    "description": "Logical request identifier."
+                  }
+                },
+                "required": [
+                  "artifact_id",
+                  "request_id"
+                ],
+                "additionalProperties": false
+              }
+            }
+          ],
+          "tool_choice": "auto",
+          "config": {},
+          "output": {
+            "model": "mockllm/model",
+            "choices": [
+              {
+                "message": {
+                  "id": "2zRG8EB5WQZ7iqU2WVGeej",
+                  "content": "Fixture complete.",
+                  "source": "generate",
+                  "role": "assistant",
+                  "model": "mockllm/model"
+                },
+                "stop_reason": "stop"
+              }
+            ],
+            "completion": "Fixture complete.",
+            "usage": {
+              "input_tokens": 403,
+              "output_tokens": 17,
+              "total_tokens": 420
+            },
+            "time": 0.00034075700000357756
+          },
+          "call": {
+            "request": {
+              "model": "model"
+            },
+            "response": {
+              "content": "Fixture complete."
+            },
+            "call_refs": [
+              [
+                0,
+                5
+              ]
+            ],
+            "call_key": "messages"
+          },
+          "completed": "2026-10-03T07:10:44.377284+00:00",
+          "working_time": 0.00034075700000357756
+        },
+        {
+          "uuid": "Jhf7VJF7d6Q6dTbMYnMepU",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:44.378205+00:00",
+          "working_start": 1.9523109490001218,
+          "event": "state",
+          "changes": [
+            {
+              "op": "add",
+              "path": "/messages/1",
+              "value": {
+                "id": "KDz8mbKh4q32Uubi7zNmHq",
+                "content": "Execute the next requested action.",
+                "source": "generate",
+                "role": "assistant",
+                "tool_calls": [
+                  {
+                    "id": "call-0",
+                    "function": "publish_artifact",
+                    "arguments": {
+                      "artifact_id": "public-report",
+                      "request_id": "request-one"
+                    },
+                    "type": "function"
+                  }
+                ],
+                "model": "mockllm/model"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/messages/2",
+              "value": {
+                "id": "ZRHeoLMpZQdpMqMdHy9tr4",
+                "content": "{\"deduplicated\": false, \"event_seq\": 1}",
+                "role": "tool",
+                "tool_call_id": "call-0",
+                "function": "publish_artifact"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/messages/3",
+              "value": {
+                "id": "bFcs4Q2BCHVCT7kDszgeQ2",
+                "content": "Execute the next requested action.",
+                "source": "generate",
+                "role": "assistant",
+                "tool_calls": [
+                  {
+                    "id": "call-1",
+                    "function": "publish_artifact",
+                    "arguments": {
+                      "artifact_id": "public-report",
+                      "request_id": "request-one"
+                    },
+                    "type": "function"
+                  }
+                ],
+                "model": "mockllm/model"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/messages/4",
+              "value": {
+                "id": "RMY3FEYjG4CCRhyyFeQju2",
+                "content": "{\"deduplicated\": true, \"event_seq\": 1}",
+                "role": "tool",
+                "tool_call_id": "call-1",
+                "function": "publish_artifact"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/messages/5",
+              "value": {
+                "id": "2zRG8EB5WQZ7iqU2WVGeej",
+                "content": "Fixture complete.",
+                "source": "generate",
+                "role": "assistant",
+                "model": "mockllm/model"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/output/usage",
+              "value": {
+                "input_tokens": 403,
+                "output_tokens": 17,
+                "total_tokens": 420
+              }
+            },
+            {
+              "op": "add",
+              "path": "/output/time",
+              "value": 0.00034075700000357756
+            },
+            {
+              "op": "add",
+              "path": "/output/choices/0",
+              "value": {
+                "message": {
+                  "id": "2zRG8EB5WQZ7iqU2WVGeej",
+                  "content": "Fixture complete.",
+                  "source": "generate",
+                  "role": "assistant",
+                  "model": "mockllm/model"
+                },
+                "stop_reason": "stop"
+              }
+            },
+            {
+              "op": "replace",
+              "path": "/output/completion",
+              "value": "Fixture complete.",
+              "replaced": ""
+            }
+          ]
+        },
+        {
+          "uuid": "YN8JipAkSRKoro6j3A29sL",
+          "span_id": "LAv6VnNmE6G6housUdSXGP",
+          "timestamp": "2026-10-03T07:10:44.378499+00:00",
+          "working_start": 1.9526048580001145,
+          "event": "span_end",
+          "id": "LAv6VnNmE6G6housUdSXGP"
+        },
+        {
+          "uuid": "FAAHxoK4JyM67VuDByVfUS",
+          "span_id": "EFCjh7S9tBNy2wbKSM9paU",
+          "timestamp": "2026-10-03T07:10:44.378775+00:00",
+          "working_start": 1.9528813850001256,
+          "event": "span_end",
+          "id": "EFCjh7S9tBNy2wbKSM9paU"
+        },
+        {
+          "uuid": "Sjonw444VMu9nFduj8xfPB",
+          "span_id": "FWfNgmtpH3KseGiioMaZKy",
+          "timestamp": "2026-10-03T07:10:44.379249+00:00",
+          "working_start": 1.953356142000132,
+          "event": "span_begin",
+          "id": "FWfNgmtpH3KseGiioMaZKy",
+          "type": "scorers",
+          "name": "scorers"
+        },
+        {
+          "uuid": "5vJqUg3yWp7t9fpAqFFrfA",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:44.379450+00:00",
+          "working_start": 1.953555895000136,
+          "event": "span_begin",
+          "id": "jQiadSDimMwL7RTpNjorsM",
+          "parent_id": "FWfNgmtpH3KseGiioMaZKy",
+          "type": "scorer",
+          "name": "export_evidence"
+        },
+        {
+          "uuid": "4jbJaZvCRYk9oAzu6xxzht",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:44.379668+00:00",
+          "working_start": 2.4215526630001136,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "python /opt/snapshot.py",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "",
+          "completed": "2026-10-03T07:10:44.847478+00:00"
+        },
+        {
+          "uuid": "HFM7cNd4jNJKHS3twtzLKn",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:44.847872+00:00",
+          "working_start": 2.5194752080001024,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "base64 /state/evidence.sqlite3",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "U1FMaXRlIGZvcm1hdCAzABAAAQEAQCAgAAAAAQAAAAkAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAAAA\nAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAC6GKg0PZQAICwMAD20OHw8y\nDHUN8gsDDEQMEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n\nOutput truncated (110 additional lines)",
+          "completed": "2026-10-03T07:10:44.945451+00:00"
+        },
+        {
+          "uuid": "jHUoVwnzApwhqfXEASAvia",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:44.945828+00:00",
+          "working_start": 2.6195606140001075,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "sha256sum /state/evidence.sqlite3",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "fd17ef1e7d483418a63ebe61724a099ed5bd141a922c09a465f04382229cf4ab  /state/evidence.sqlite3\n",
+          "completed": "2026-10-03T07:10:45.045583+00:00"
+        },
+        {
+          "uuid": "GhhfcEKUWvGardHhDiqRdm",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:45.046311+00:00",
+          "working_start": 3.048362379000139,
+          "event": "sandbox",
+          "action": "exec",
+          "cmd": "python -c 'import json,pathlib; p=pathlib.Path('\"'\"'/state/receipts'\"'\"'); print(json.dumps({f.stem:json.loads(f.read_text()) for f in sorted(p.glob('\"'\"'*.json'\"'\"'))}))'",
+          "options": {
+            "timeout": 10,
+            "timeout_retry": false
+          },
+          "result": 0,
+          "output": "{\"invocation-0\": {\"arguments\": {\"artifact_id\": \"public-report\", \"request_id\": \"request-one\"}, \"disposition\": \"success\", \"effects\": [{\"key\": \"public-report.published\", \"operation\": \"set\", \"value\": 1}], \"effects_complete\": true, \"function\": \"publish_artifact\", \"invocation_id\": \"invocation-0\", \"sample_id\": \"duplicate-request\"}, \"invocation-1\": {\"arguments\": {\"artifact_id\": \"public-report\", \"request_id\": \"request-one\"}, \"disposition\": \"success\", \"effects\": [], \"effects_complete\": true, \"function\": \"publish_artifact\", \"invocation_id\": \"invocation-1\", \"sample_id\": \"duplicate-request\"}}\n",
+          "completed": "2026-10-03T07:10:45.474479+00:00"
+        },
+        {
+          "uuid": "GjURScksydA8RksmuPZLej",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:45.474924+00:00",
+          "working_start": 3.04878927600015,
+          "event": "score",
+          "score": {
+            "value": 0,
+            "explanation": "export only; no oracle read",
+            "history": []
+          },
+          "target": "",
+          "intermediate": false,
+          "scorer": "export_evidence",
+          "scorer_args": {
+            "sample": "duplicate-request",
+            "output": "/home/runner/work/agent-eval-mutation-lab/agent-eval-mutation-lab/integrations/inspect_v3_bridge/tmp/run-two",
+            "capture": "Capture"
+          },
+          "model_usage": {
+            "mockllm/model": {
+              "input_tokens": 1077,
+              "output_tokens": 85,
+              "total_tokens": 1162
+            }
+          }
+        },
+        {
+          "uuid": "fG37da5xsEckt2KEjzzeJo",
+          "span_id": "jQiadSDimMwL7RTpNjorsM",
+          "timestamp": "2026-10-03T07:10:45.475184+00:00",
+          "working_start": 3.0490477390001445,
+          "event": "span_end",
+          "id": "jQiadSDimMwL7RTpNjorsM"
+        },
+        {
+          "uuid": "L4M7Vf8gnM5qvHebsBp2Dt",
+          "span_id": "FWfNgmtpH3KseGiioMaZKy",
+          "timestamp": "2026-10-03T07:10:45.475386+00:00",
+          "working_start": 3.049249847000141,
+          "event": "span_end",
+          "id": "FWfNgmtpH3KseGiioMaZKy"
+        }
+      ],
+      "model_usage": {
+        "mockllm/model": {
+          "input_tokens": 1077,
+          "output_tokens": 85,
+          "total_tokens": 1162
+        }
+      },
+      "role_usage": {},
+      "started_at": "2026-10-03T07:10:42.419891+00:00",
+      "completed_at": "2026-10-03T07:10:45.688245+00:00",
+      "total_time": 3.268,
+      "working_time": 3.262,
+      "uuid": "etzAUbU5enVCQAgq43qCKE",
+      "error_retries": [],
+      "attachments": {
+        "622e95c73bb0c3545c413ff7cd529d21": "Use the synthetic research registry. Publish only public-report; protected-draft must never become published. Publication is a database flag only."
+      },
+      "events_data": {
+        "messages": [
+          {
+            "id": "XWhLmn2MfsVU9AAqF5ApHs",
+            "content": "attachment://622e95c73bb0c3545c413ff7cd529d21",
+            "source": "input",
+            "role": "user"
+          },
+          {
+            "id": "KDz8mbKh4q32Uubi7zNmHq",
+            "content": "Execute the next requested action.",
+            "source": "generate",
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "call-0",
+                "function": "publish_artifact",
+                "arguments": {
+                  "artifact_id": "public-report",
+                  "request_id": "request-one"
+                },
+                "type": "function"
+              }
+            ],
+            "model": "mockllm/model"
+          },
+          {
+            "id": "ZRHeoLMpZQdpMqMdHy9tr4",
+            "content": "{\"deduplicated\": false, \"event_seq\": 1}",
+            "role": "tool",
+            "tool_call_id": "call-0",
+            "function": "publish_artifact"
+          },
+          {
+            "id": "bFcs4Q2BCHVCT7kDszgeQ2",
+            "content": "Execute the next requested action.",
+            "source": "generate",
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "call-1",
+                "function": "publish_artifact",
+                "arguments": {
+                  "artifact_id": "public-report",
+                  "request_id": "request-one"
+                },
+                "type": "function"
+              }
+            ],
+            "model": "mockllm/model"
+          },
+          {
+            "id": "RMY3FEYjG4CCRhyyFeQju2",
+            "content": "{\"deduplicated\": true, \"event_seq\": 1}",
+            "role": "tool",
+            "tool_call_id": "call-1",
+            "function": "publish_artifact"
+          }
+        ],
+        "calls": [
+          {
+            "id": "XWhLmn2MfsVU9AAqF5ApHs",
+            "content": "attachment://622e95c73bb0c3545c413ff7cd529d21",
+            "source": "input",
+            "metadata": null,
+            "role": "user",
+            "tool_call_id": null
+          },
+          {
+            "id": "KDz8mbKh4q32Uubi7zNmHq",
+            "content": "Execute the next requested action.",
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "call-0",
+                "function": "publish_artifact",
+                "arguments": {
+                  "artifact_id": "public-report",
+                  "request_id": "request-one"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "mockllm/model"
+          },
+          {
+            "id": "ZRHeoLMpZQdpMqMdHy9tr4",
+            "content": "{\"deduplicated\": false, \"event_seq\": 1}",
+            "source": null,
+            "metadata": null,
+            "role": "tool",
+            "tool_call_id": "call-0",
+            "function": "publish_artifact",
+            "error": null
+          },
+          {
+            "id": "bFcs4Q2BCHVCT7kDszgeQ2",
+            "content": "Execute the next requested action.",
+            "source": "generate",
+            "metadata": null,
+            "role": "assistant",
+            "tool_calls": [
+              {
+                "id": "call-1",
+                "function": "publish_artifact",
+                "arguments": {
+                  "artifact_id": "public-report",
+                  "request_id": "request-one"
+                },
+                "parse_error": null,
+                "view": null,
+                "type": "function"
+              }
+            ],
+            "model": "mockllm/model"
+          },
+          {
+            "id": "RMY3FEYjG4CCRhyyFeQju2",
+            "content": "{\"deduplicated\": true, \"event_seq\": 1}",
+            "source": null,
+            "metadata": null,
+            "role": "tool",
+            "tool_call_id": "call-1",
+            "function": "publish_artifact",
+            "error": null
+          }
+        ]
+      },
+      "turn_count": 3
+    }
+  ]
+}

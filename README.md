@@ -93,6 +93,14 @@ modifications remain supported.
 
 ## Optional Inspect tool execution integration
 
+The new [v3 actual-tool bridge report](artifacts/inspect-v3-bridge/v1/REPORT.md)
+connects partial-evidence scoring to producer-side receipts from native Inspect
+and actual Docker/SQLite tools. Thirteen scripted cases ran twice with identical
+normalized evidence and DB snapshots. Across five evidence views per case, all
+21 binary decisions matched the independent DB oracle and 44 abstained. The
+scorer is sealed before oracle access; omitted actions and missing receipts
+remain unknown. These are related scripted views, not live-model samples.
+
 A separate [Inspect integration](integrations/inspect_tool_execution/README.md)
 executes typed artifact tools through Inspect's native model loop, approvals, and
 isolated Docker sandboxes. The tools commit synthetic publication state and event

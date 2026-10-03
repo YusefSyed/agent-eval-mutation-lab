@@ -1,0 +1,11 @@
+**
+!integrations/
+!integrations/inspect_tool_execution/
+!integrations/inspect_tool_execution/sandbox/
+!integrations/inspect_tool_execution/sandbox/registry.py
+!integrations/inspect_tool_execution/sandbox/snapshot.py
+!integrations/inspect_v3_bridge/
+!integrations/inspect_v3_bridge/sandbox/
+!integrations/inspect_v3_bridge/sandbox/producer.py
+!integrations/inspect_v3_bridge/sandbox/Dockerfile
+!integrations/inspect_v3_bridge/sandbox/Dockerfile.dockerignore
