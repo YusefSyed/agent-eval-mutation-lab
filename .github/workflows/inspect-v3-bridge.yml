@@ -3,6 +3,7 @@ name: Inspect v3 trusted partial receipts
 on:
   push:
     paths:
+      - "artifacts/inspect-v3-bridge/**"
       - "integrations/inspect_v3_bridge/**"
       - "integrations/inspect_tool_execution/**"
       - "src/agent_eval_mutation_lab/models.py"
@@ -13,6 +14,7 @@ on:
       - ".github/workflows/inspect-v3-bridge.yml"
   pull_request:
     paths:
+      - "artifacts/inspect-v3-bridge/**"
       - "integrations/inspect_v3_bridge/**"
       - "integrations/inspect_tool_execution/**"
       - "src/agent_eval_mutation_lab/models.py"
@@ -44,6 +46,8 @@ jobs:
       - run: uv run --frozen ruff check .
       - run: uv run --frozen mypy
       - run: uv run --frozen pytest
+      - name: Verify committed actual-tool evidence
+        run: uv run --frozen inspect-v3-verify ../../artifacts/inspect-v3-bridge/v1/run-one --compare ../../artifacts/inspect-v3-bridge/v1/run-two
       - name: Core frozen reproduction and legacy unit regression
         run: |
           uv run --frozen agent-eval-reproduce --root ../.. --verify

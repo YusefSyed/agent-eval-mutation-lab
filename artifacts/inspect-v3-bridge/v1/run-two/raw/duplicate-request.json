@@ -1,0 +1,145 @@
+{
+  "approvals": [
+    {
+      "decision": "approve",
+      "effective": {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact"
+      },
+      "proposed": {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact"
+      }
+    },
+    {
+      "decision": "approve",
+      "effective": {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact"
+      },
+      "proposed": {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact"
+      }
+    }
+  ],
+  "invocations": [
+    {
+      "approval_index": 0,
+      "arguments": {
+        "artifact_id": "public-report",
+        "request_id": "request-one"
+      },
+      "function": "publish_artifact",
+      "invocation_id": "invocation-0"
+    },
+    {
+      "approval_index": 1,
+      "arguments": {
+        "artifact_id": "public-report",
+        "request_id": "request-one"
+      },
+      "function": "publish_artifact",
+      "invocation_id": "invocation-1"
+    }
+  ],
+  "native": {
+    "events": [
+      {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "error_type": null,
+        "function": "publish_artifact",
+        "id": "call-0"
+      },
+      {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "error_type": null,
+        "function": "publish_artifact",
+        "id": "call-1"
+      }
+    ],
+    "requests": [
+      {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact",
+        "id": "call-0"
+      },
+      {
+        "arguments": {
+          "artifact_id": "public-report",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact",
+        "id": "call-1"
+      }
+    ],
+    "single_call_turns": true,
+    "terminal": true
+  },
+  "receipts": {
+    "invocation-0": {
+      "arguments": {
+        "artifact_id": "public-report",
+        "request_id": "request-one"
+      },
+      "disposition": "success",
+      "effects": [
+        {
+          "key": "public-report.published",
+          "operation": "set",
+          "value": 1
+        }
+      ],
+      "effects_complete": true,
+      "function": "publish_artifact",
+      "invocation_id": "invocation-0",
+      "sample_id": "duplicate-request"
+    },
+    "invocation-1": {
+      "arguments": {
+        "artifact_id": "public-report",
+        "request_id": "request-one"
+      },
+      "disposition": "success",
+      "effects": [],
+      "effects_complete": true,
+      "function": "publish_artifact",
+      "invocation_id": "invocation-1",
+      "sample_id": "duplicate-request"
+    }
+  },
+  "sample_id": "duplicate-request",
+  "sandbox_probes": {
+    "docker_socket_absent": true,
+    "host_home_absent": true,
+    "network_probe_blocked": true,
+    "no_effective_capabilities": true,
+    "no_ipv4_routes": true,
+    "no_new_privileges": true,
+    "no_provider_keys": true,
+    "root_mount_read_only": true,
+    "root_write_denied": true,
+    "uid_nonroot": true
+  }
+}

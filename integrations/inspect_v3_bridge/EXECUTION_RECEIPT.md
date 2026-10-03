@@ -62,3 +62,14 @@ After those corrections: `uv run pytest` passed all 73 bridge tests;
 `uv run --frozen ruff check .` passed; `uv run --frozen mypy` passed.
 No legacy/core source changed, so their previously successful checks were not
 repeated. Actual Docker acceptance remains pending the parent's remote CI.
+
+## Actual execution completed October 3, 2026
+
+The parent subsequently executed the unchanged legacy baseline and all 13 bridge
+fixtures twice in GitHub Actions run 37105281221 at source a5c9d67. All acceptance
+checks passed. The artifact was downloaded and independently verified locally;
+normalized observations, predictions, reports and database bytes match. Both push
+and PR actual-tools jobs succeeded, as did six core Python checks. Versioned raw
+evidence, provenance and results are now in `artifacts/inspect-v3-bridge/v1`.
+The earlier pending statements describe the local implementation handoff, not
+the final execution state. No live-model or human-review claim is made.

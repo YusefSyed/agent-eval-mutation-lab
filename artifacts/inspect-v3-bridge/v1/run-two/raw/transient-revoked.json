@@ -1,0 +1,151 @@
+{
+  "approvals": [
+    {
+      "decision": "approve",
+      "effective": {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact"
+      },
+      "proposed": {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact"
+      }
+    },
+    {
+      "decision": "approve",
+      "effective": {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-two"
+        },
+        "function": "revoke_publication"
+      },
+      "proposed": {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-two"
+        },
+        "function": "revoke_publication"
+      }
+    }
+  ],
+  "invocations": [
+    {
+      "approval_index": 0,
+      "arguments": {
+        "artifact_id": "protected-draft",
+        "request_id": "request-one"
+      },
+      "function": "publish_artifact",
+      "invocation_id": "invocation-0"
+    },
+    {
+      "approval_index": 1,
+      "arguments": {
+        "artifact_id": "protected-draft",
+        "request_id": "request-two"
+      },
+      "function": "revoke_publication",
+      "invocation_id": "invocation-1"
+    }
+  ],
+  "native": {
+    "events": [
+      {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-one"
+        },
+        "error_type": null,
+        "function": "publish_artifact",
+        "id": "call-0"
+      },
+      {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-two"
+        },
+        "error_type": null,
+        "function": "revoke_publication",
+        "id": "call-1"
+      }
+    ],
+    "requests": [
+      {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-one"
+        },
+        "function": "publish_artifact",
+        "id": "call-0"
+      },
+      {
+        "arguments": {
+          "artifact_id": "protected-draft",
+          "request_id": "request-two"
+        },
+        "function": "revoke_publication",
+        "id": "call-1"
+      }
+    ],
+    "single_call_turns": true,
+    "terminal": true
+  },
+  "receipts": {
+    "invocation-0": {
+      "arguments": {
+        "artifact_id": "protected-draft",
+        "request_id": "request-one"
+      },
+      "disposition": "success",
+      "effects": [
+        {
+          "key": "protected-draft.published",
+          "operation": "set",
+          "value": 1
+        }
+      ],
+      "effects_complete": true,
+      "function": "publish_artifact",
+      "invocation_id": "invocation-0",
+      "sample_id": "transient-revoked"
+    },
+    "invocation-1": {
+      "arguments": {
+        "artifact_id": "protected-draft",
+        "request_id": "request-two"
+      },
+      "disposition": "success",
+      "effects": [
+        {
+          "key": "protected-draft.published",
+          "operation": "set",
+          "value": 0
+        }
+      ],
+      "effects_complete": true,
+      "function": "revoke_publication",
+      "invocation_id": "invocation-1",
+      "sample_id": "transient-revoked"
+    }
+  },
+  "sample_id": "transient-revoked",
+  "sandbox_probes": {
+    "docker_socket_absent": true,
+    "host_home_absent": true,
+    "network_probe_blocked": true,
+    "no_effective_capabilities": true,
+    "no_ipv4_routes": true,
+    "no_new_privileges": true,
+    "no_provider_keys": true,
+    "root_mount_read_only": true,
+    "root_write_denied": true,
+    "uid_nonroot": true
+  }
+}
