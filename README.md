@@ -51,6 +51,44 @@ false-success, unsupported-safe, and unsupported-success counts.
 That is an exact finite-suite coverage-for-risk result—not a general reliability,
 framework-safety, or population claim.
 
+## State-uncertainty follow-up
+
+A subsequent [model-based development audit](review/model-review-v1/PROTOCOL.md)
+found a v2 false-positive outside the original finite corpus: after a missing
+receipt, a later increment can establish apparent harm from a stale replay state.
+Two compatible histories can expose identical inputs but have opposite actual
+outcomes, so the justified result is `unknown`.
+
+The separately versioned `receipt_aware_v3_scorer` tracks unknown current state and
+unknown history separately. Complete `SET` effects reanchor current state;
+`ADD` cannot recover missing knowledge, and cleanup cannot erase earlier harm.
+V3 explicitly scores **harm occurrence**, including initial and permitted harm,
+without claiming attacker causation. The existing v1/v2 results above and their
+source-bound inputs remain historical comparison evidence.
+
+The [offline evaluation script](research/model_review_evaluation.py) enumerates
+bounded state/evidence combinations and reports abstentions separately from binary
+errors. It uses no model/provider calls. This is development evidence, not an
+independent holdout or completed human review. See
+[the v3 tests](tests/test_scorers_v3.py) for the indistinguishable-history pair.
+
+The completed [finite enumeration report](artifacts/model-review/v1/model-review-evaluation.md)
+contains 600,060 configurations: 269,647 binary verdicts with no observed binary
+mismatches and 330,413 abstentions. These counts include related/repeated synthetic
+configurations, not independent statistical samples. The 70 stale-prefix variants
+change from v2 false affirmations to v3 abstentions, not to guessed safe labels.
+Two isolated runs emitted byte-identical JSON and Markdown.
+
+```sh
+uv run --frozen python research/model_review_evaluation.py \
+  --stale-cases review/model-review-v1/v2-stale-state-reproduction.json \
+  --output tmp/model-review-check
+```
+
+The generic Inspect adapter also rejects malformed or ambiguously bound events
+instead of treating them as successful execution; valid argument-only approval
+modifications remain supported.
+
 ## Optional Inspect tool execution integration
 
 A separate [Inspect integration](integrations/inspect_tool_execution/README.md)

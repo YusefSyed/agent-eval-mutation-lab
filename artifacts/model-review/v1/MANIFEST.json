@@ -1,0 +1,18 @@
+{
+  "baseline_commit": "9b2f8ab794fad3ef4a5f954896afee2cfae0612d",
+  "evidence_kind": "finite synthetic development enumeration; model-based review; no independent human/holdout qualification",
+  "output_hashes": {
+    "model-review-evaluation.json": "e7072d1ec581774c9e95821bb9061b7d37a90cfdd09b79b9e954540272405232",
+    "model-review-evaluation.md": "bcdbc4c1be62cf1a771b3875c9114766de6b7d2dd9dd78f338b24aff3ed18259"
+  },
+  "reproduction_command": "uv run --frozen python research/model_review_evaluation.py --stale-cases review/model-review-v1/v2-stale-state-reproduction.json --output tmp/model-review-check",
+  "schema_version": 1,
+  "scorer_target": "harm-predicate occurrence, not attacker causation",
+  "source_hashes": {
+    "research/model_review_evaluation.py": "077d4823455631b112c23bfcf1660d09bc15a435f8be540c3843523fdad22ac5",
+    "src/agent_eval_mutation_lab/inspect_adapter.py": "55a4bf7efa50bdb289c98e7454a6f6b220138191c6573e6ec1c4c15a5bb5de24",
+    "src/agent_eval_mutation_lab/scorers_v2.py": "d8dbd83d1c3d98160707fdfb92adfafab8dae7286704f873438cd6c3707ffb85",
+    "src/agent_eval_mutation_lab/scorers_v3.py": "300a42aaef003557a4fe814e005dcd5b915401ce9db03ae5f1965a1ab6538f0a"
+  },
+  "two_isolated_runs_byte_identical": true
+}

@@ -3,6 +3,11 @@
 The adapter normalizes proposal, approval, and coarse execution evidence. It
 does not infer side effects, transient harm, final environment state, or attack
 success because generic Inspect tool events do not establish those facts.
+
+Supported modifications preserve the proposed call ID and function and change
+only arguments. ID preservation is this adapter's unambiguous-binding contract;
+Inspect's schema does not itself enforce it. Function-changing modifications are
+unsupported because Inspect 0.3.260 selects the callable before applying approval.
 """
 
 from __future__ import annotations
@@ -10,6 +15,7 @@ from __future__ import annotations
 import argparse
 import json
 from dataclasses import dataclass
+from datetime import datetime
 from enum import StrEnum
 from pathlib import Path
 from typing import Any
@@ -39,9 +45,7 @@ class InspectCallEvidence:
 
 
 def _mapping(value: object, context: str) -> dict[str, Any]:
-    if not isinstance(value, dict) or not all(
-        isinstance(key, str) for key in value
-    ):
+    if not isinstance(value, dict) or not all(isinstance(key, str) for key in value):
         raise ValueError(f"{context} must be an object with string keys")
     return dict(value)
 
@@ -65,8 +69,36 @@ def _call_id(value: object, context: str) -> str:
 
 def _decision(event: dict[str, Any]) -> str:
     value = event.get("decision")
+    if not isinstance(value, str) or value not in {
+        "approve",
+        "modify",
+        "reject",
+        "escalate",
+        "terminate",
+    }:
+        raise ValueError("approval.decision must be a supported Inspect decision")
+    return value
+
+
+def _completion(value: object) -> bool:
+    # Inspect 0.3.260 ToolEvent serializes completed as an ISO datetime or null.
+    # Its dateutil also accepts legacy naive ISO timestamps with a UTC fallback.
+    if value is None:
+        return False
     if not isinstance(value, str):
-        raise ValueError("approval.decision must be a string")
+        raise ValueError("tool.completed must be an ISO datetime string or null")
+    try:
+        datetime.fromisoformat(value)
+    except ValueError as exc:
+        raise ValueError(
+            "tool.completed must be an ISO datetime string or null"
+        ) from exc
+    return True
+
+
+def _function(value: object, context: str) -> str:
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{context} must be a non-empty string")
     return value
 
 
@@ -75,7 +107,7 @@ def _status_for(
     decisions: tuple[str, ...],
     error_type: str | None,
     completed: bool,
-    failed: object,
+    failed: bool | None,
 ) -> tuple[InspectExecutionStatus, tuple[str, ...]]:
     notes: list[str] = []
     unique_decisions = set(decisions)
@@ -84,6 +116,9 @@ def _status_for(
         return InspectExecutionStatus.UNKNOWN, tuple(notes)
 
     decision = decisions[-1] if decisions else None
+    if decision == "escalate":
+        notes.append("unresolved approval escalation")
+        return InspectExecutionStatus.UNKNOWN, tuple(notes)
     if decision in {"reject", "terminate"}:
         if error_type == "approval":
             return InspectExecutionStatus.DENIED, tuple(notes)
@@ -128,37 +163,69 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
             raise ValueError("sample.id is required")
         events = _events(sample)
         approvals: dict[str, list[dict[str, Any]]] = {}
+        tool_ids: set[str] = set()
         for event in events:
+            if event.get("event") == "tool":
+                identifier = _call_id(event.get("id"), "tool.id")
+                if identifier in tool_ids:
+                    raise ValueError(f"duplicate tool.id in sample: {identifier}")
+                tool_ids.add(identifier)
             if event.get("event") != "approval":
                 continue
             approval_event_count += 1
             call = _approval_call(event)
             identifier = _call_id(call.get("id"), "approval.call.id")
+            _function(call.get("function"), "approval.call.function")
+            _mapping(call.get("arguments"), "approval.call.arguments")
+            decision = _decision(event)
+            modified_value = event.get("modified")
+            if decision == "modify":
+                modified = _mapping(modified_value, "approval.modified")
+                modified_id = _call_id(modified.get("id"), "approval.modified.id")
+                if modified_id != identifier:
+                    raise ValueError("approval.modified.id must match approval.call.id")
+                modified_function = _function(
+                    modified.get("function"), "approval.modified.function"
+                )
+                if modified_function != call["function"]:
+                    raise ValueError(
+                        "function-changing modifications are unsupported: Inspect "
+                        "0.3.260 selects the callable before approval"
+                    )
+                _mapping(modified.get("arguments"), "approval.modified.arguments")
+            elif modified_value is not None:
+                raise ValueError("approval.modified requires a modify decision")
             approvals.setdefault(identifier, []).append(event)
 
         for event in events:
             if event.get("event") != "tool":
                 continue
             identifier = _call_id(event.get("id"), "tool.id")
-            function = event.get("function")
-            if not isinstance(function, str) or not function:
-                raise ValueError("tool.function must be a non-empty string")
-            arguments = _mapping(event.get("arguments", {}), "tool.arguments")
+            function = _function(event.get("function"), "tool.function")
+            arguments = _mapping(event.get("arguments"), "tool.arguments")
             correlated = approvals.get(identifier, [])
             decisions = tuple(_decision(approval) for approval in correlated)
 
             effective_function = function
             effective_arguments = arguments
             for approval in correlated:
+                approved_call = _approval_call(approval)
+                if (
+                    approved_call["function"] != function
+                    or approved_call["arguments"] != arguments
+                ):
+                    raise ValueError(
+                        "approval.call does not match tool function/arguments"
+                    )
                 modified_value = approval.get("modified")
                 if modified_value is None:
                     continue
                 modified = _mapping(modified_value, "approval.modified")
-                modified_function = modified.get("function")
-                if isinstance(modified_function, str) and modified_function:
-                    effective_function = modified_function
+                effective_function = _function(
+                    modified.get("function"), "approval.modified.function"
+                )
                 effective_arguments = _mapping(
-                    modified.get("arguments", {}), "approval.modified.arguments"
+                    modified.get("arguments"), "approval.modified.arguments"
                 )
 
             error_value = event.get("error")
@@ -169,12 +236,15 @@ def adapt_inspect_log(payload: dict[str, Any]) -> dict[str, Any]:
                 if not isinstance(raw_error_type, str):
                     raise ValueError("tool.error.type must be a string")
                 error_type = raw_error_type
-            completed = isinstance(event.get("completed"), str)
+            completed = _completion(event.get("completed"))
+            failed = event.get("failed")
+            if failed is not None and not isinstance(failed, bool):
+                raise ValueError("tool.failed must be a boolean or null")
             status, notes = _status_for(
                 decisions=decisions,
                 error_type=error_type,
                 completed=completed,
-                failed=event.get("failed"),
+                failed=failed,
             )
             result = event.get("result")
             result_present = result is not None and result != ""
