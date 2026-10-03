@@ -1,0 +1,67 @@
+name: Inspect v3 trusted partial receipts
+
+on:
+  push:
+    paths:
+      - "integrations/inspect_v3_bridge/**"
+      - "integrations/inspect_tool_execution/**"
+      - "src/agent_eval_mutation_lab/models.py"
+      - "src/agent_eval_mutation_lab/scorers_v3.py"
+      - "tests/test_scorers_v3.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/inspect-v3-bridge.yml"
+  pull_request:
+    paths:
+      - "integrations/inspect_v3_bridge/**"
+      - "integrations/inspect_tool_execution/**"
+      - "src/agent_eval_mutation_lab/models.py"
+      - "src/agent_eval_mutation_lab/scorers_v3.py"
+      - "tests/test_scorers_v3.py"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/inspect-v3-bridge.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  actual-tools:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: integrations/inspect_v3_bridge
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d
+        with:
+          version: "0.11.29"
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --frozen --dev
+      - run: uv run --frozen ruff check .
+      - run: uv run --frozen mypy
+      - run: uv run --frozen pytest
+      - name: Core frozen reproduction and legacy unit regression
+        run: |
+          uv run --frozen agent-eval-reproduce --root ../.. --verify
+          uv run --frozen pytest ../inspect_tool_execution/tests
+      - name: Unchanged legacy actual-tool baseline
+        run: |
+          uv run --frozen python -m inspect_tool_execution.task --output tmp/legacy-baseline
+          uv run --frozen python -m inspect_tool_execution.verify tmp/legacy-baseline --compare ../../artifacts/inspect-tool-execution/v2-security
+      - name: Thirteen actual Docker fixtures, two fresh runs
+        run: |
+          uv run --frozen inspect-v3-bridge --output tmp/run-one
+          uv run --frozen inspect-v3-bridge --output tmp/run-two
+          uv run --frozen inspect-v3-verify tmp/run-one --compare tmp/run-two > tmp/proof-comparison.json
+      - name: Upload raw logs, sealed observations, oracle reports and databases
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: inspect-v3-bridge-v1-evidence
+          path: integrations/inspect_v3_bridge/tmp/
+          if-no-files-found: warn
+          retention-days: 30

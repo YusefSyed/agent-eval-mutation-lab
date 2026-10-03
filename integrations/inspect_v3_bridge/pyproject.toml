@@ -1,0 +1,34 @@
+[project]
+name = "inspect-v3-bridge"
+version = "0.1.0"
+description = "Trusted partial receipts from isolated Inspect tools to the v3 scorer"
+requires-python = ">=3.12"
+dependencies = ["agent-eval-mutation-lab", "inspect-tool-execution"]
+[tool.uv.sources]
+agent-eval-mutation-lab = { path = "../..", editable = true }
+inspect-tool-execution = { path = "../inspect_tool_execution", editable = true }
+[project.scripts]
+inspect-v3-bridge = "inspect_v3_bridge.runner:main"
+inspect-v3-verify = "inspect_v3_bridge.verify:main"
+[dependency-groups]
+dev = ["pytest==9.0.3", "ruff==0.15.0", "mypy==1.19.1"]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/inspect_v3_bridge/projection.py"]
+follow_imports = "silent"
+
+[[tool.mypy.overrides]]
+module = "inspect_tool_execution.*"
+ignore_missing_imports = true
